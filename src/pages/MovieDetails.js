@@ -18,7 +18,7 @@ class MovieDetails extends Component {
   }
 
   movieInformations() {
-    const { id } = this.props.match.params;
+    const { match: { params: { id } } } = this.props;
     this.setState({
       loading: true,
     }, async () => {
@@ -31,8 +31,9 @@ class MovieDetails extends Component {
   }
 
   content() {
-    const { storyline, imagePath, genre, rating, subtitle, title } = this.state.movie;
-    const { id } = this.props.match.params;
+    const { movie: {
+      storyline, imagePath, genre, rating, subtitle, title } } = this.state;
+    const { match: { params: { id } } } = this.props;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -60,5 +61,12 @@ class MovieDetails extends Component {
     );
   }
 }
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.shape(String, Number).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default MovieDetails;
