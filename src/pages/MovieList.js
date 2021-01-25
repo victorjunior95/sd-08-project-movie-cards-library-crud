@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 
-// eslint-disable-next-line
 import * as movieAPI from '../services/movieAPI';
-import NotFound from './NotFound';
 import Loading from '../components/Loading';
 
 class MovieList extends Component {
@@ -21,12 +18,8 @@ class MovieList extends Component {
   }
 
   async fetchData() {
-    try {
-      const res = await movieAPI.getMovies();
-      this.setState({ movies: res });
-    } catch (e) {
-      return <Redirect to={ NotFound } />;
-    }
+    const data = await movieAPI.getMovies();
+    this.setState({ movies: data });
   }
 
   render() {
