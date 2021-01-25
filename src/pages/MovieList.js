@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Loading } from '../components';
 import MovieCard from '../components/MovieCard';
 
-// import * as movieAPI from '../services/movieAPI';
+import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
   constructor() {
@@ -15,14 +15,22 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
-    console.log('oi');
+    this.addStateMovies();
   }
 
   addStateMovies() {
     this.setState({
       loading: true,
     },
-    async () => {});
+    async () => {
+      await movieAPI.getMovies()
+        .then((data) => {
+          this.setState({
+            movies: [...data],
+            loading: false,
+          });
+        });
+    });
   }
 
   render() {
