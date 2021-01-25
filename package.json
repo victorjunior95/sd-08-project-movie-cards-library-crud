@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "acorn": ">=7.1.1",
+    "acorn": "^8.0.5",
     "minimist": ">=1.2.3",
     "mutationobserver-shim": "^0.3.7",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.2.0",
+    "react-scripts": "^4.0.1",
     "serialize-javascript": ">=3.1.0"
   },
   "scripts": {
