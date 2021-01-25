@@ -11,6 +11,8 @@ class MovieDetails extends Component {
       done: false,
     };
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.remover = this.remover.bind(this);
+    this.renderDetails = this.renderDetails.bind(this);
   }
 
   componentDidMount() {
@@ -18,12 +20,18 @@ class MovieDetails extends Component {
   }
 
   redirectNotFound() {
-    const { push } = this.props.history;
+    const {
+      history: { push },
+    } = this.props;
     push('/notfound');
   }
 
   async fetchMovie() {
-    const { id } = this.props.match.params;
+    const {
+      match: {
+        params: { id },
+      },
+    } = this.props;
     const data = await movieAPI.getMovie(id);
 
     this.setState({ movie: data });
@@ -35,12 +43,34 @@ class MovieDetails extends Component {
   }
 
   remover() {
-    //
+    const {
+      movie: { id },
+    } = this.state;
+    movieAPI.deleteMovie(id);
   }
 
-  /* eslint-disable  */
+  renderLinks() {
+    const {
+      movie: { id },
+    } = this.state;
+    return (
+      <>
+        <Link to="/" onClick={ this.remover }>
+          {' '}
+          DELETAR
+        </Link>
+        <br />
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <br />
+        <Link to="/">VOLTAR</Link>
+      </>
+    );
+  }
+
   renderDetails() {
-    const { id, title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+    const {
+      movie: { title, storyline, imagePath, genre, rating, subtitle },
+    } = this.state;
     return (
       <>
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -49,13 +79,10 @@ class MovieDetails extends Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <br />
-        <Link to="/">VOLTAR</Link>
+        {this.renderLinks()}
       </>
     );
   }
-  /* eslint-enable  */
 
   render() {
     const { done } = this.state;
