@@ -10,12 +10,24 @@ class NewMovie extends Component {
   }
 
   // handleSubmit(newMovie) {
+
   // }
+
+  emptyState() {
+    return { bookmarked: false,
+      genre: '',
+      id: '',
+      imagePath: '',
+      rating: '',
+      storyline: '',
+      subtitle: '',
+      title: '' };
+  }
 
   render() {
     return (
       <div data-testid="new-movie">
-        <MovieForm onSubmit={ this.handleSubmit } />
+        <MovieForm movie={ this.emptyState() } onSubmit={ this.handleSubmit } />
       </div>
     );
   }
