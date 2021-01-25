@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import MovieCard from '../components/MovieCard';
+import { MovieCard, Loading } from '../components/index';
 
-import Loading from '../components/Loading';
 import { getMovies } from '../services/movieAPI';
 
 class MovieList extends Component {
   constructor() {
     super();
-    this.fetchAPIMovie = this.fetchAPIMovie.bind(this);
     this.state = {
       movies: [],
-      loading: true,
+      loading: false,
     };
+    this.fetchAPIMovie = this.fetchAPIMovie.bind(this);
   }
 
   componentDidMount() {
@@ -21,7 +20,6 @@ class MovieList extends Component {
   async fetchAPIMovie() {
     this.setState(
       { loading: true },
-
       async () => {
         const movie = await getMovies();
         this.setState({
