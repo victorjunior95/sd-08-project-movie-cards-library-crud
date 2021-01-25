@@ -126,20 +126,20 @@ describe('1 - Renderize `BrowserRouter` no componente `App` usando rotas', () =>
   })
 });
 
-// describe('2 - Faça uma requisição para buscar e mostrar a lista de filmes quando `MovieList` for montado', () => {
-//   test('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
-//     const { container, unmount, getByText } = renderPath('/');
-//     expect(getByText('Carregando...'));
-//     await waitFor(() => movieAPI.getMovies())
-//     unmount();
-//   })
-//   test('deverá exibir um MovieCard para cada filme retornado pela API', async () => {
-//     const { unmount, getAllByTestId } = renderPath('/');
-//     await waitFor(() => movieAPI.getMovies());
-//     expect(getAllByTestId('movie-card').length).toBe(5);
-//     unmount();
-//   })
-// });
+describe('2 - Faça uma requisição para buscar e mostrar a lista de filmes quando `MovieList` for montado', () => {
+  test('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
+    const { container, unmount, getByText } = renderPath('/');
+    expect(getByText('Carregando...'));
+    await waitFor(() => movieAPI.getMovies())
+    unmount();
+  })
+  test('deverá exibir um MovieCard para cada filme retornado pela API', async () => {
+    const { unmount, getAllByTestId } = renderPath('/');
+    await waitFor(() => movieAPI.getMovies());
+    expect(getAllByTestId('movie-card').length).toBe(5);
+    unmount();
+  })
+});
 
 // describe('3 - Insira um link para a página de detalhes de um filme dentro de `MovieCard`', () => {
 //   test('deve exibir pelo menos o título e a sinopse de seu respectivo filme', async () => {
