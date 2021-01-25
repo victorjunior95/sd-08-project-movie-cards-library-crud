@@ -22,10 +22,12 @@ class EditMovie extends Component {
     if (status === 'loading') {
       // render Loading
     }
+    const { id } = this.props.match.params;
 
     return (
       <div data-testid="edit-movie">
-        <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
+        <h3>{id}</h3>
+        {/* <MovieForm movie={ movie } onSubmit={ this.handleSubmit } /> */}
       </div>
     );
   }

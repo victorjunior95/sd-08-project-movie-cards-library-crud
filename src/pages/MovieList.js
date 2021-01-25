@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 
 // eslint-disable-next-line
