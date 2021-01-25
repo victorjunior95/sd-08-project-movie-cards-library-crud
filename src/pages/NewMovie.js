@@ -12,6 +12,10 @@ class NewMovie extends Component {
   // handleSubmit(newMovie) {
   // }
 
+  handleSubmit() {
+    console.log(this.props);
+  }
+
   render() {
     return (
       <div data-testid="new-movie">
