@@ -91,7 +91,7 @@ Outra diferença importante neste projeto em relação aos anteriores é que os 
 
 ## Data de entrega
 
-Data de entrega para avaliação final do projeto: `02/01/2021 - 14:00h`.
+Data de entrega para avaliação final do projeto: `02/02/2021 - 14:00h`.
 
 ---
 
