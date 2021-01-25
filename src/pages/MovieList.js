@@ -6,8 +6,6 @@ import * as movieAPI from '../services/movieAPI';
 class MovieList extends Component {
   constructor() {
     super();
-    // const movies = movieAPI.getMovies().then((resolve) => resolve);
-    // console.log(movies);
     this.state = {
       loading: true,
       // movies,
@@ -21,7 +19,7 @@ class MovieList extends Component {
 
   render() {
     const { movies, loading } = this.state;
-    console.log(movies);
+    // console.log(movies);
     // Render Loading here if the request is still happening
 
     return (
