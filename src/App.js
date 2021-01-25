@@ -8,7 +8,7 @@ function App() {
     <BrowserRouter>
       <div>Movie Card Library CRUD</div>
       <Switch>
-        <Route path="/" component={ MovieList } />
+        <Route exact path="/" component={ MovieList } />
         <Route
           path="/movies/:id"
           render={ (props) => <MovieDetails { ... props } id="id" /> }
@@ -18,7 +18,7 @@ function App() {
           path="/movies/:id/edit"
           render={ (props) => <EditMovie { ...props } id="id" /> }
         />
-        <Route path="/" component={ NotFound } />
+        <Route path="" component={ NotFound } />
       </Switch>
     </BrowserRouter>
   );
