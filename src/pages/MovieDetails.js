@@ -5,9 +5,6 @@ import React, { Component } from 'react';
 
 class MovieDetails extends Component {
   render() {
-    // Change the condition to check the state
-    // if ('*') return <Loading />;
-
     const { title, storyline, imagePath, genre, rating, subtitle } = {};
 
     return (
