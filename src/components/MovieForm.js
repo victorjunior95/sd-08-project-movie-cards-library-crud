@@ -23,6 +23,7 @@ class MovieForm extends React.Component {
     return (
       <div>
         <label htmlFor="movie_title">
+          Título
           <input
             placeholder="Insira o título"
             id="movie_title"
@@ -31,7 +32,6 @@ class MovieForm extends React.Component {
             value={ title }
             onChange={ (event) => this.updateMovie('title', event.target.value) }
           />
-          Título
         </label>
       </div>
     );
@@ -163,5 +163,10 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  movie: PropTypes.objectOf().isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default MovieForm;
