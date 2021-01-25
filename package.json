@@ -2,16 +2,6 @@
   "name": "sd-0x-block14-project-movie-card-library-crud",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "acorn": ">=7.1.1",
-    "minimist": ">=1.2.3",
-    "mutationobserver-shim": "^0.3.7",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.2.0",
-    "serialize-javascript": ">=3.1.0"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -49,5 +39,15 @@
     "stylelint": "^13.8.0",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.1.0"
+  },
+  "dependencies": {
+    "acorn": ">=7.1.1",
+    "minimist": ">=1.2.3",
+    "mutationobserver-shim": "^0.3.7",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.2.0",
+    "serialize-javascript": ">=3.1.0"
   }
 }

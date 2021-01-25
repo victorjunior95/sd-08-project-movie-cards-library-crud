@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
+// eslint-disable-next-line
 import * as movieAPI from '../services/movieAPI';
+// eslint-disable-next-line
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
@@ -13,10 +15,10 @@ class MovieDetails extends Component {
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
+        <p>{`Subtitle: ${subtitle}`}</p>
+        <p>{`Storyline: ${storyline}`}</p>
+        <p>{`Genre: ${genre}`}</p>
+        <p>{`Rating: ${rating}`}</p>
       </div>
     );
   }

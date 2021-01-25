@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { MovieForm } from '../components';
+// eslint-disable-next-line
 import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
@@ -10,8 +11,7 @@ class EditMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(updatedMovie) {
-  }
+  handleSubmit(updatedMovie) {}
 
   render() {
     const { status, shouldRedirect, movie } = this.state;
