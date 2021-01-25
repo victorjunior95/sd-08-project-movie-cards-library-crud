@@ -1,26 +1,82 @@
 import React, { Component } from 'react';
-
-// import * as movieAPI from '../services/movieAPI';
-// import { Loading } from '../components';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import * as movieAPI from '../services/movieAPI';
+import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
+  constructor(props) {
+    super(props);
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+    this.state = {
+      movie: '',
+      hasLoading: true,
+    };
 
+    this.fetchMovie = this.fetchMovie.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchMovie();
+  }
+
+  async fetchMovie() {
+    const { match: { params: { id } } } = this.props;
+    const response = await movieAPI.getMovie(id);
+    const data = await response;
+    this.setState({ movie: data, hasLoading: false });
+  }
+
+  renderMovieDetailsLink() {
+    const { match: { params: { id } } } = this.props;
+    return (
+      <p>
+        <Link to={ `/movies/${id}/edit` }>
+          EDITAR
+        </Link>
+        <Link to="/">
+          VOLTAR
+        </Link>
+      </p>
+    );
+  }
+
+  renderMovieDetails() {
+    const {
+      movie: { title, storyline, imagePath, genre, rating, subtitle },
+    } = this.state;
     return (
       <div data-testid="movie-details">
-        <h5>{title}</h5>
         <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
+        <h1>{title}</h1>
+        <p>{`Subtitle: ${subtitle}`}</p>
+        <p>{`Storyline: ${storyline}`}</p>
+        <p>{`Genre: ${genre}`}</p>
+        <p>{`Rating: ${rating}`}</p>
+        {this.renderMovieDetailsLink()}
       </div>
     );
   }
+
+  render() {
+    // Change the condition to check the state
+    const { hasLoading } = this.state;
+    if (hasLoading) return <Loading />;
+
+    return (
+      <>
+        {this.renderMovieDetails()}
+      </>
+    );
+  }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 export default MovieDetails;
