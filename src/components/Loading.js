@@ -10,8 +10,12 @@ class Loading extends Component {
   }
 }
 
+Loading.defaultProps = {
+  children: 'Carregando...',
+};
+
 Loading.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.string,
 };
 
 export default Loading;
