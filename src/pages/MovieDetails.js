@@ -31,6 +31,16 @@ class MovieDetails extends Component {
     });
   }
 
+  links(id) {
+    return (
+      <div className="links">
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
+        <Link to={ { pathname: '/', deleteMovie: id } }>DELETAR</Link>
+      </div>
+    );
+  }
+
   render() {
     const { details, loading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = details;
@@ -44,8 +54,7 @@ class MovieDetails extends Component {
             <p>{ `Storyline: ${storyline}` }</p>
             <p>{ `Genre: ${genre}` }</p>
             <p>{ `Rating: ${rating}` }</p>
-            <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-            <Link to="/">VOLTAR</Link>
+            {this.links(id)}
           </div>
         )}
       </div>

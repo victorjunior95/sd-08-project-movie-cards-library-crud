@@ -23,7 +23,7 @@ function App() {
           path="/movies/:id"
           render={ (props) => <MovieDetails id={ props.match.params.id } /> }
         />
-        <Route path="/" component={ MovieList } />
+        <Route exact path="/" component={ MovieList } />
         <Route component={ NotFound } />
       </Switch>
     </Router>

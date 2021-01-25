@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
-import { Link } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       movies: [],
       loading: true,
     };
-
     this.fetchMovies = this.fetchMovies.bind(this);
   }
 
   componentDidMount() {
-    this.fetchMovies();
+    const { location } = this.props;
+    const del = location.deleteMovie
+      ? async () => { movieAPI.deleteMovie(location.deleteMovie); } : () => {};
+    this.fetchMovies(del);
   }
 
-  fetchMovies() {
+  fetchMovies(callback = () => {}) {
     this.setState({ loading: true }, async () => {
+      await callback();
       const movies = await movieAPI.getMovies();
       this.setState({
         movies,
@@ -44,5 +48,11 @@ class MovieList extends Component {
     );
   }
 }
+
+MovieList.propTypes = {
+  location: PropTypes.shape({
+    deleteMovie: PropTypes.number,
+  }).isRequired,
+};
 
 export default MovieList;
