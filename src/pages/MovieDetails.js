@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { Loading } from '../components';
 
@@ -11,7 +11,6 @@ class MovieDetails extends Component {
     super(props);
     this.state = {
       loading: true,
-      deleted: false,
       movie: {},
     };
 
@@ -25,12 +24,11 @@ class MovieDetails extends Component {
 
   handleDelete() {
     const { movie: { id } } = this.state;
-    movieAPI.deleteMovie(id).then(() => this.setState({ deleted: true }));
+    movieAPI.deleteMovie(id);
   }
 
   renderMovieDetails() {
-    const { movie, deleted } = this.state;
-    if (deleted) return <Redirect to="/" />;
+    const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
     return (
       <div data-testid="movie-details">
