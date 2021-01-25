@@ -14,7 +14,10 @@ function App() {
     <Router>
       <div>Movie Card Library CRUD</div>
       <Switch>
-        <Route path="/movies/:id/edit" component={ EditMovie } />
+        <Route
+          path="/movies/:id/edit"
+          render={ (props) => <EditMovie id={ props.match.params.id } /> }
+        />
         <Route
           path="/movies/:id"
           render={ (props) => <MovieDetails id={ props.match.params.id } /> }
