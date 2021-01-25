@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ReactLoading from 'react-loading';
 import MovieCard from '../components/MovieCard';
 import * as movieAPI from '../services/movieAPI';
+import Loading from '../components/Loading';
 
 class MovieList extends Component {
   constructor() {
@@ -33,7 +33,7 @@ class MovieList extends Component {
   render() {
     const { movies, loading } = this.state;
     if (loading) {
-      return <ReactLoading />;
+      return <Loading />;
     }
     return (
 
