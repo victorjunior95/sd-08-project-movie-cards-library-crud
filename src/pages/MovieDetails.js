@@ -9,7 +9,7 @@ class MovieDetails extends Component {
     super();
 
     this.state = {
-      movie: [],
+      movie: {},
       loading: true,
     };
 
@@ -57,19 +57,23 @@ class MovieDetails extends Component {
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
     }).isRequired,
   }).isRequired,
 
   movie: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     title: PropTypes.string,
     subtitle: PropTypes.string,
     storyline: PropTypes.string,
     rating: PropTypes.number,
     imagePath: PropTypes.string,
     genre: PropTypes.string,
-  }).isRequired,
+  }),
+};
+
+MovieDetails.defaultProps = {
+  movie: {},
 };
 
 export default MovieDetails;
