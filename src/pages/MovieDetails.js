@@ -19,11 +19,14 @@ class MovieDetails extends Component {
     movieAPI.getMovie(id).then((result) => this.setState({ movie: result }));
   }
 
+  async handleClick(deleteMovie) {
+    await movieAPI.deleteMovie(deleteMovie);
+  }
+
   render() {
     const { movie } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
     if (!movie) return <Loading />;
-
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -34,6 +37,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => this.handleClick(id) }>DELETAR</Link>
       </div>
     );
   }
