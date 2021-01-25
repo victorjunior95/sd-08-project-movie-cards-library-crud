@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
 // import * as movieAPI from '../services/movieAPI';
-import { Loading } from '../components';
+// import { Loading } from '../components';
 
 class MovieDetails extends Component {
   render() {
-    const { loading } = this.state;
+    // const { loading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = {};
 
-    if (loading) {
-      return <Loading />;
-    }
+    // if (loading) {
+    //   return <Loading />;
+    // }
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
