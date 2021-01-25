@@ -1,7 +1,7 @@
 body {
-	background-color: whitesmoke;
+  background-color: whitesmoke;
   box-sizing: border-box;
-  font-family: Montserrat, sans-serif;
+  font-family: Montserrat , sans-serif;
 }
 
 .movie-list {

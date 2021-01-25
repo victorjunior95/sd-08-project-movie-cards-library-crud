@@ -14,7 +14,7 @@
   padding: 0 20px;
 }
 
-.movie-card-detailed p:nth-child(2) {
+.movie-card-detailed p:nth-child( 2 ) {
   color: white;
   position: absolute;
   top: 220px;
