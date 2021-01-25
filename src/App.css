@@ -1,5 +1,16 @@
+/*font-family: 'Raleway', sans-serif;*/
+/*font-family: 'Roboto Condensed', sans-serif;*/
+/*font-family: 'Montserrat', sans-serif;*/
+/*font-family: 'Abel', sans-serif;*/
+/*font-family: 'Dancing Script', cursive;*/
+
 body {
   background-color: whitesmoke;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
+.movie-list{
+  display: flex;
+  flex-flow: row wrap;
+}
