@@ -164,16 +164,27 @@ class MovieForm extends React.Component {
   }
 }
 
+MovieForm.defaultProps = {
+  movie: {
+    title: '',
+    storyline: '',
+    imagePath: '',
+    genre: '',
+    rating: 0,
+    subtitle: '',
+  },
+};
+
 MovieForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    storyline: PropTypes.string.isRequired,
-    imagePath: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    subtitle: PropTypes.string.isRequired,
-  }).isRequired,
+    title: PropTypes.string,
+    storyline: PropTypes.string,
+    imagePath: PropTypes.string,
+    genre: PropTypes.string,
+    rating: PropTypes.number,
+    subtitle: PropTypes.string,
+  }),
 };
 
 export default MovieForm;

@@ -30,10 +30,8 @@ class MovieDetails extends Component {
 
   renderMovieDetails() {
     const { movie, deleted } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
-
     if (deleted) return <Redirect to="/" />;
-
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -50,13 +48,9 @@ class MovieDetails extends Component {
   }
 
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
     const { loading } = this.state;
-
-    return (
-      loading ? <Loading /> : this.renderMovieDetails()
-    );
+    if (loading) return <Loading />;
+    return this.renderMovieDetails();
   }
 }
 
