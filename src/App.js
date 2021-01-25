@@ -2,7 +2,7 @@ import React from 'react';
 
 function App() {
   return (
-    <div>Movie Card Library CRUD</div>
+    <div>Movie Card Library CRUD v3.0</div>
   );
 }
 
