@@ -13,6 +13,7 @@ class MovieDetails extends Component {
       loading: true,
     };
     this.renderMovieList = this.renderMovieList.bind(this);
+    this.handleSubmitDelete = this.handleSubmitDelete.bind(this);
   }
 
   componentDidMount() {
@@ -20,6 +21,11 @@ class MovieDetails extends Component {
     movieAPI.getMovie(id).then((movie) => {
       this.setState({ movie, loading: false });
     });
+  }
+
+  handleSubmitDelete() {
+    const { movie: { id } } = this.state;
+    movieAPI.deleteMovie(id);
   }
 
   renderMovieList() {
@@ -34,6 +40,7 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ this.handleSubmitDelete }>DELETAR</Link>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
       </div>
     );
