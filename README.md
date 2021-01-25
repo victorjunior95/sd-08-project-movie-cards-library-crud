@@ -338,8 +338,8 @@ Ao clicar neste link, faça uma requisição utilizando a função `deleteMovie`
 
 #### O que será verificado:
 ```
-- `MovieDetails` deverá conter um botão com o texto "DELETAR"
-- o botão "DELETAR" deverá fazer uma requisição para a API para excluir o filme em questão
+- `MovieDetails` deverá conter um link com o texto "DELETAR"
+- o link "DELETAR" deverá fazer uma requisição para a API para excluir o filme em questão
 ```
 
 ---
