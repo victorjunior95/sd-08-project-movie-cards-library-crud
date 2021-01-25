@@ -170,8 +170,20 @@ MovieForm.propTypes = {
     id: PropTypes.number,
     imagePath: PropTypes.string,
     title: PropTypes.string,
+    subtitle: PropTypes.string,
     storyline: PropTypes.string,
-  }).isRequired,
+  }),
+};
+
+MovieForm.defaultProps = {
+  movie: {
+    id: 0,
+    imagePath: '',
+    title: '',
+    subtitle: '',
+    storyline: '',
+    rating: 0,
+  },
 };
 
 export default MovieForm;

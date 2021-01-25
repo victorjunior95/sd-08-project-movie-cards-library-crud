@@ -22,3 +22,12 @@ body {
 .imgLoad {
   width: 400px;
 }
+
+.btn-add {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+}
