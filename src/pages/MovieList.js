@@ -16,7 +16,6 @@ class MovieList extends Component {
 
   componentDidMount() {
     this.fetchMovies();
-    console.log(this.state.movies);
   }
 
   async fetchMovies() {
@@ -30,11 +29,11 @@ class MovieList extends Component {
     const { movies } = this.state;
 
     // Render Loading here if the request is still happening
-    if (movies === []) { return <span>Carregando...</span>; }
 
     return (
       <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        { movies === [] ? <p>Carregando...</p>
+          : movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
     );
   }
