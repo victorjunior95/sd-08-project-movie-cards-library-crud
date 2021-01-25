@@ -1,13 +1,13 @@
 .card-container {
   border: 1px #ccc solid;
   display: flex;
-  height: 400px;
   flex-direction: column;
+  height: 400px;
   margin: 20px 50px;
   width: 400px;
 }
 
-.card-container p{
+.card-container p {
   padding: 15px 25px;
 }
 

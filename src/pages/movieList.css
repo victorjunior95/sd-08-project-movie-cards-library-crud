@@ -1,6 +1,6 @@
 .movie-list {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: wrap;
   justify-content: center;
 }
