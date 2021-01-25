@@ -1,11 +1,11 @@
 import React from 'react';
-import { Switch, BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
 import NewMovie from './pages/NewMovie';
 import EditMovie from './pages/EditMovie';
-import NotFound from './pages/NotFound';
+// import NotFound from './pages/NotFound';
 
 import './App.css';
 
@@ -17,7 +17,7 @@ function App() {
         <Route path="/movies/:id" component={ MovieDetails } />
         <Route path="/movies/new" component={ NewMovie } />
         <Route path="/movies/:id/edit" component={ EditMovie } />
-        <Redirect from="*" component={ NotFound } />
+        {/* <Redirect from="*" component={ NotFound } /> */}
       </Switch>
     </Router>
   );

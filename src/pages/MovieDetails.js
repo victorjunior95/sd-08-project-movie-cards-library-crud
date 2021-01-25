@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { useParams } from 'react-router-dom';
 
 // eslint-disable-next-line
 import * as movieAPI from '../services/movieAPI';
@@ -11,9 +12,11 @@ class MovieDetails extends Component {
     // if (true) return <Loading />;
 
     const { title, storyline, imagePath, genre, rating, subtitle } = {};
+    const { id } = this.props.match.params;
 
     return (
       <div data-testid="movie-details">
+        <p>{id}</p>
         <img alt="Movie Cover" src={ `../${imagePath}` } />
         <p>{`Subtitle: ${subtitle}`}</p>
         <p>{`Storyline: ${storyline}`}</p>
