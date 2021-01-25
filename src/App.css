@@ -1,9 +1,10 @@
 body {
 	background-color: whitesmoke;
-	box-sizing: border-box;
-	font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  font-family: Montserrat, sans-serif;
 }
+
 .movie-list {
-	display: flex;
-	flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
 }
