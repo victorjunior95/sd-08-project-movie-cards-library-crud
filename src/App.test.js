@@ -141,26 +141,26 @@ describe('2 - Faça uma requisição para buscar e mostrar a lista de filmes qua
   })
 });
 
-// describe('3 - Insira um link para a página de detalhes de um filme dentro de `MovieCard`', () => {
-//   test('deve exibir pelo menos o título e a sinopse de seu respectivo filme', async () => {
-//     const { unmount, getAllByText } = renderPath('/');
-//     await waitFor(() => movieAPI.getMovies());
-//     expect(screen.getAllByTestId('movie-card').length).toBe(5);
-//     readMovies().forEach((movie) => {
-//       expect(getAllByText(movie.title).length).toBeGreaterThanOrEqual(1);
-//       expect(getAllByText(movie.storyline).length).toBeGreaterThanOrEqual(1);
-//     })
-//     unmount();
-//   })
-//   test('deve conter um link com o texto "VER DETALHES" que redireciona para a página de detalhes do filme', async () => {
-//     const { unmount, getAllByText } = renderPath('/');
-//     await waitFor(() => movieAPI.getMovies());
-//     getAllByText('VER DETALHES').forEach((link, index) => {
-//       expect(link.href).toBe('http://localhost/movies/' + (index + 1));
-//     })
-//     unmount();
-//   })
-// });
+describe('3 - Insira um link para a página de detalhes de um filme dentro de `MovieCard`', () => {
+  test('deve exibir pelo menos o título e a sinopse de seu respectivo filme', async () => {
+    const { unmount, getAllByText } = renderPath('/');
+    await waitFor(() => movieAPI.getMovies());
+    expect(screen.getAllByTestId('movie-card').length).toBe(5);
+    readMovies().forEach((movie) => {
+      expect(getAllByText(movie.title).length).toBeGreaterThanOrEqual(1);
+      expect(getAllByText(movie.storyline).length).toBeGreaterThanOrEqual(1);
+    })
+    unmount();
+  })
+  test('deve conter um link com o texto "VER DETALHES" que redireciona para a página de detalhes do filme', async () => {
+    const { unmount, getAllByText } = renderPath('/');
+    await waitFor(() => movieAPI.getMovies());
+    getAllByText('VER DETALHES').forEach((link, index) => {
+      expect(link.href).toBe('http://localhost/movies/' + (index + 1));
+    })
+    unmount();
+  })
+});
 
 // describe('4 - Faça uma requisição para buscar o filme que deverá ser renderizado dentro de `Movie Details`', () => {
 
