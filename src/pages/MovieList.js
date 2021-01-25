@@ -16,32 +16,30 @@ class MovieList extends Component {
     this.fetchMovies = this.fetchMovies.bind(this);
   }
 
-  async fetchMovies() {
-    const { getMovies } = movieAPI;
-    const movies = await getMovies();
-    this.setState({ 
-      movies: movies,
-      isLoaded: true,
-    });
-  }
-
   componentDidMount() {
     this.fetchMovies();
+  }
+
+  async fetchMovies() {
+    const { getMovies } = movieAPI;
+    const moviesRecieved = await getMovies();
+    this.setState({
+      movies: moviesRecieved,
+      isLoaded: true,
+    });
   }
 
   render() {
     const { movies, isLoaded } = this.state;
 
-    // Render Loading here if the request is still happening
     if (!isLoaded) {
       return <Loading />;
-    } else {
-      return (
-        <div data-testid="movie-list">
-          {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
-        </div>
-      );
     }
+    return (
+      <div data-testid="movie-list">
+        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+      </div>
+    );
   }
 }
 
