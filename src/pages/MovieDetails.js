@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import Loading from '../components/Loading';
-import './MovieDetails.css';
 import PStrong from '../components/PStrong';
+import './MovieDetails.css';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -58,7 +58,7 @@ class MovieDetails extends Component {
     const { loading, movie: { id } } = this.state;
 
     return (loading ? <Loading /> : (
-      <main>
+      <main className="details-wrapper">
         <section data-testid="movie-details" className="movie-details">
           { this.detailsImage() }
           { this.detailsBody() }

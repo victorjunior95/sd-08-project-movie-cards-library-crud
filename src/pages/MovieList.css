@@ -1,6 +1,26 @@
+.movie-list-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 .movie-list {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   padding: 48px 30px;
+}
+
+.new-movie {
+  background-color: #007bff;
+  border-radius: 7px;
+  color: aliceblue;
+  display: block;
+  font-size: 20px;
+  margin: 0 auto 40px;
+  min-width: 120px;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  width: 30vw;
 }

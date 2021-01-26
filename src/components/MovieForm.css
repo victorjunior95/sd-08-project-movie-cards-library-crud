@@ -1,0 +1,32 @@
+.movie-form {
+  margin: 5vh auto;
+  width: 80%;
+}
+
+.movie-form label {
+  color: aliceblue;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.movie-form input, .movie-form textarea, .movie-form select {
+  font-size: 17px;
+  margin-bottom: 2vh;
+  padding: 5px 8px;
+  width: 100%;
+}
+
+.genre-rating-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.movie-form button {
+  background-color: #007bff;
+  border-radius: 7px;
+  color: aliceblue;
+  display: block;
+  font-size: 20px;
+  margin: 20px auto;
+  padding: 5px 20px;
+}
