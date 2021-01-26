@@ -3,3 +3,6 @@ body {
   box-sizing: border-box;
 }
 
+a {
+  margin-left: 20px;
+}

@@ -25,6 +25,15 @@ class MovieDetails extends Component {
       .then((resolve) => this.setState({ movie: resolve, loading: false }));
   }
 
+  // componentWillUnmount() {
+  //   const { id } = this.state;
+  //   movieAPI.deleteMovie(id).then((resolve) => resolve);
+  // }
+
+  handleDelete(id) {
+    movieAPI.deleteMovie(id).then((resolve) => resolve);
+  }
+
   renderMovieDetails() {
     const { movie, id } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
@@ -38,6 +47,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ () => this.handleDelete(id) }>DELETAR</Link>
       </div>
     );
   }
