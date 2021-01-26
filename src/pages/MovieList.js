@@ -22,9 +22,7 @@ class MovieList extends Component {
     const { movies } = this.state;
 
     // Render Loading here if the request is still happening
-    if (!movies.length) {
-      return <Loading />;
-    }
+    if (!movies.length) return <Loading />;
 
     return (
       <div data-testid="movie-list">
