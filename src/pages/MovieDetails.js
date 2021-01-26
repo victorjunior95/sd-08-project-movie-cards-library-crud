@@ -1,61 +1,61 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import * as movieAPI from '../services/movieAPI';
+
 import { Loading } from '../components';
 
+import * as movieAPI from '../services/movieAPI';
+
 class MovieDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      movieState: undefined,
-      load: 1,
+      loading: true,
+      movie: {},
     };
+
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
-    this.buscaMovie();
-  }
-
-  async buscaMovie() {
     const { match: { params: { id } } } = this.props;
-    const movie = await movieAPI.getMovie(id);
-    this.setState({ movieState: movie, load: 0 });
-    console.log(movie);
+    movieAPI.getMovie(id).then((movie) => this.setState({ movie, loading: false }));
   }
 
-  exibe() {
-    const { movieState } = this.state;
+  handleDelete() {
+    const { movie: { id } } = this.state;
+    movieAPI.deleteMovie(id);
+  }
+
+  renderMovieDetails() {
+    const { movie } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
     return (
-      <div>
-        <img alt="Movie Cover" src={ `../${movieState.imagePath}` } />
-        <p>{ movieState.title }</p>
-        <p>{ `Subtitle: ${movieState.subtitle}` }</p>
-        <p>{ `Storyline: ${movieState.storyline}` }</p>
-        <p>{ `Genre: ${movieState.genre}` }</p>
-        <p>{ `Rating: ${movieState.rating}` }</p>
-        <Link to={ `/movies/${movieState.id}/edit` }>EDITAR</Link>
+      <div data-testid="movie-details">
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{ `Title: ${title}` }</p>
+        <p>{ `Subtitle: ${subtitle}` }</p>
+        <p>{ `Storyline: ${storyline}` }</p>
+        <p>{ `Genre: ${genre}` }</p>
+        <p>{ `Rating: ${rating}` }</p>
+        <Link to="/" onClick={ this.handleDelete }>DELETAR</Link>
         <Link to="/">VOLTAR</Link>
-      </div>);
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+      </div>
+    );
   }
 
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-    const { load } = this.state;
-    return (
-      <div data-testid="movie-details">
-        {load && <Loading /> }
-        {!load && this.exibe()}
-      </div>
-    );
+    const { loading } = this.state;
+    if (loading) return <Loading />;
+    return this.renderMovieDetails();
   }
 }
 
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };
