@@ -17,12 +17,13 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    movieAPI.getMovie(this.props.match.params.id)
+    const { match: { params: { id } } } = this.props;
+    movieAPI.getMovie(id)
       .then((movie) => this.setState({ movie, status: 'details' }));
   }
 
   delete() {
-    const { id } = this.state.movie;
+    const { id } = this.state;
     movieAPI.deleteMovie(id)
       .then(() => this.setState({ shouldRedirect: true }));
   }
@@ -56,5 +57,5 @@ MovieDetails.propTypes = {
     }),
   }).isRequired,
 };
-// consultei https://github.com/tryber/sd-07-project-movie-card-library-crud/blob/08bc22ad390041c9465d970500a5cf2e57b498be/src/pages/MovieDetails.js
+// consultei https://github.com/tryber/sd-07-project-movie-card-library-crud/blob/08bc22ad390041c9465d970500a5cf2e57b498be/src/pages/MovieDetails.js para implementação das funções.
 export default MovieDetails;
