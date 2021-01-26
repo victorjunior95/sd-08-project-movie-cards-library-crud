@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
 import { getMovie } from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -10,6 +11,7 @@ class MovieDetails extends Component {
 
     this.state = {
       movie: [],
+      loading: true,
     };
 
     this.findMovie = this.findMovie.bind(this);
@@ -24,12 +26,13 @@ class MovieDetails extends Component {
     const result = await getMovie(id);
     this.setState({
       movie: result,
+      loading: false,
     });
   }
 
   contentMovieDetails() {
     const { movie: { title, storyline, imagePath, genre,
-      rating, subtitle } } = this.state;
+      rating, subtitle, id } } = this.state;
     return (
       <div>
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -38,15 +41,22 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+        <div>
+          <Link to="/">VOLTAR</Link>
+          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        </div>
       </div>
     );
   }
 
   render() {
-    const { movie } = this.state;
+    const { loading } = this.state;
+    if (loading === true) {
+      return <Loading />;
+    }
     return (
       <div data-testid="movie-details">
-        { movie.length === 0 ? <Loading /> : this.contentMovieDetails() }
+        { this.contentMovieDetails() }
       </div>
     );
   }
