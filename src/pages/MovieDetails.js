@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -13,6 +14,7 @@ class MovieDetails extends Component {
     };
     
     this.hundleApi = this.hundleApi.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +28,14 @@ class MovieDetails extends Component {
     this.setState({
       movies: result,
     });
+  }
+
+  async handleDelete() {
+    const { match: { params: { id } } } = this.props;    
+    await movieAPI.deleteMovie(id); 
+      this.setState({
+        deleteMovie: true,
+      });    
   }
 
 
@@ -48,9 +58,18 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={`/movies/${movies.id}/edit`}>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ this.handleDelete }>DELETAR</Link>
       </div>
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+};
 
 export default MovieDetails;

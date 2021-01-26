@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
-import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';;
 
 class NewMovie extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class NewMovie extends Component {
   }
 
   async handleSubmit(newMovie) {
-    await movieAPI.createMovie({ ...newMovie });    
+    await movieAPI.createMovie(newMovie);    
     this.setState({
       status: true,
     });
@@ -27,7 +27,7 @@ class NewMovie extends Component {
     if (status) return <Redirect exact to="/" /> 
     
     return (
-      <div data-testid="new-movie">
+      <div data-testid="new-movie">        
         <MovieForm onSubmit={ this.handleSubmit } />
       </div>
     );
