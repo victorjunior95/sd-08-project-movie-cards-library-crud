@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -14,6 +15,7 @@ class MovieDetails extends Component {
     };
 
     this.fetchMovies = this.fetchMovies.bind(this);
+    this.renderMovieCard = this.renderMovieCard.bind(this);
   }
 
   componentDidMount() {
@@ -26,21 +28,34 @@ class MovieDetails extends Component {
     this.setState({ movie: getMovie, load: false });
   }
 
+  renderMovieCard(movie) {
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
+    return (
+      <section className="card-details">
+        <section className="card-movie-info">
+          <h3>{title}</h3>
+          <img alt="Movie Cover" src={ `../${imagePath}` } />
+          <p>{ `Subtitle: ${subtitle}` }</p>
+          <p>{ `Storyline: ${storyline}` }</p>
+          <p>{ `Genre: ${genre}` }</p>
+          <p>{ `Rating: ${rating}` }</p>
+        </section>
+        <nav className="card-movie-link">
+          <Link to="/">VOLTAR</Link>
+          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        </nav>
+      </section>
+    );
+  }
+
   render() {
-    const { movie:
-      { title, storyline, imagePath, genre, rating, subtitle } } = this.state;
-    const { load } = this.state;
+    const { load, movie } = this.state;
     if (load) {
       return <Loading />;
     }
     return (
       <div data-testid="movie-details">
-        <h3>{title}</h3>
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
+        {this.renderMovieCard(movie)}
       </div>
     );
   }
