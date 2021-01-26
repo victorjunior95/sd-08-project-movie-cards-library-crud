@@ -12,7 +12,6 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-        <p>Movie Card Library CRUD</p>
         <Switch>
           <Route path exact="/" component={ MovieList } />
           <Route path="/movies/:id" component={ MovieDetails } />
