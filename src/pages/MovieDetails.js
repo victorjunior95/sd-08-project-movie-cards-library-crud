@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 class MovieDetails extends Component {
   constructor() {
-    super();    
+    super();
 
     this.state = {
       movies: [],
@@ -21,8 +21,8 @@ class MovieDetails extends Component {
     this.hundleApi();
   }
 
-  async hundleApi() { 
-    const { match: { params: { id } } } = this.props;  
+  async hundleApi() {
+    const { match: { params: { id } } } = this.props;
     const result = await movieAPI.getMovie(id);
     
     this.setState({
@@ -31,27 +31,22 @@ class MovieDetails extends Component {
   }
 
   async handleDelete() {
-    const { match: { params: { id } } } = this.props;    
-    await movieAPI.deleteMovie(id); 
+    const { match: { params: { id } } } = this.props;
+    await movieAPI.deleteMovie(id);
       this.setState({
-        deleteMovie: true,
-      });    
+      deleteMovie: true,
+    });
   }
 
-
-  render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-
-    
-    const { movies } = this.state;     ;    
+  render() {    
+    const { movies } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movies;
  
     return (
       <div data-testid="movie-details">
         <Loading />
         <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Title: ${title}` }</p>       
+        <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>

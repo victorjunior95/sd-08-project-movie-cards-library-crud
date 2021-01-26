@@ -9,6 +9,7 @@ import { Redirect } from 'react-router-dom';
 class EditMovie extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       movie: [],
       status: 'loading',
@@ -28,20 +29,18 @@ class EditMovie extends Component {
     });
   };
 
-  async handleSubmit(updatedMovie) {    
-    console.log(updatedMovie)
+  async handleSubmit(updatedMovie) {   
     await movieAPI.updateMovie(updatedMovie);
-    this.setState({      
+    this.setState({
       shouldRedirect: true,
     });
-  }
+  };
 
   render() {
-
     const { status, shouldRedirect, movie } = this.state;
     
     if (shouldRedirect) {
-      return <Redirect exact to="/" />   
+      return <Redirect exact to="/" />
     }
 
     if (status === 'loading') {
@@ -49,7 +48,7 @@ class EditMovie extends Component {
     }
 
     return (
-      <div data-testid="edit-movie">        
+      <div data-testid="edit-movie">
         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
       </div>
     );
