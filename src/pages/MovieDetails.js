@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -9,14 +10,20 @@ class MovieDetails extends Component {
     super();
 
     this.state = {
-      movie: '',
+      movie: {
+        title: '',
+        storyline: '',
+        imagePath: '',
+        genre: '',
+        rating: 0,
+        subtitle: '',
+      },
       isLoading: true,
     };
   }
 
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    console.log(id);
 
     movieAPI.getMovie(id)
       .then((response) => {
@@ -24,21 +31,25 @@ class MovieDetails extends Component {
           movie: response,
           isLoading: false,
         });
-        console.log(response);
       });
   }
 
   render() {
     const { movie, isLoading } = this.state;
-    const { storyline, imagePath, genre, rating, subtitle } = { movie };
+    const { title, storyline, imagePath, genre, rating, subtitle } = { movie };
+    const { match: { params: { id } } } = this.props;
     if (isLoading) return <Loading />;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => this.apagarMovie(id) }>DELETAR</Link>
       </div>
     );
   }
