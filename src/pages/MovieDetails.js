@@ -11,10 +11,16 @@ class MovieDetails extends Component {
       loading: true,
       data: [],
     };
+    this.delete = this.delete.bind(this);
   }
 
   componentDidMount() {
     this.update();
+  }
+
+  delete() {
+    const { match: { params: { id } } } = this.props;
+    movieAPI.deleteMovie(id);
   }
 
   async update() {
@@ -42,6 +48,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ this.delete }>DELETAR</Link>
       </div>
     );
   }
