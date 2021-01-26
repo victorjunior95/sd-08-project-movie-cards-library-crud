@@ -1,0 +1,98 @@
+@font-face {
+  font-family: BlackOneRegular;
+  src: url('../font/black_ops_one//BlackOpsOne-Regular.ttf');
+}
+
+@font-face {
+  font-family: Alata;
+  src: url('../font//alata/Alata-Regular.ttf');
+}
+
+@font-face {
+  font-family: FiraMono;
+  src: url('../font/fira_mono/FiraMono-Regular.ttf');
+}
+
+@font-face {
+  font-family: SairaExtraMedium;
+  src: url('../font/saira_extra_condensed/SairaExtraCondensed-Medium.ttf');
+}
+
+@font-face {
+  font-family: Michroma;
+  src: url('../font//michroma/Michroma-Regular.ttf');
+}
+
+.movie-card-content {
+  background-color: rgb(26, 24, 24);
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  flex-flow: column;
+  font-size: 16px;
+  height: calc(50vh + 200px);
+  margin: 3px;
+  width: calc((100% / 5) + 60px);
+}
+
+.movie-car-img {
+  height: 50%;
+  width: 100%;
+}
+
+.movie-img {
+  border-radius: 2px 2px 0 0;
+  height: 100%;
+  mask-image: linear-gradient(to top, transparent 0%, black 100%);
+  width: 100%;
+}
+
+.movie-car-info {
+  height: auto;
+  margin: 3px auto;
+  padding: 3px;
+  width: 98%;
+}
+
+.movie-car-title {
+  display: block;
+  font-family: Alata , sans-serif;
+  font-size: calc(2vh + 1vw);
+  letter-spacing: 5px;
+  margin: 5px 0;
+}
+
+.movie-car-subtitle {
+  font-family: FiraMono , sans-serif;
+  font-size: calc(0.8vh + 1vw);
+  margin-right: 10%;
+}
+
+.movie-car-genre {
+  font-size: calc(0.8vh + 0.8vw);
+}
+
+.movie-car-storyline {
+  font-family: Michroma , sans-serif;
+  font-size: calc(0.8vh + 0.6vw);
+  letter-spacing: 2px;
+  padding: 3px;
+}
+
+@media screen and ( max-width : 800px ) {
+
+  .movie-card-content {
+    height: calc(15vh 120px);
+    width: calc(100% / 3);
+  }
+}
+
+@media screen and ( max-width : 600px ) {
+
+  .movie-card-content {
+    border: none;
+    height: calc(10vh 80px);
+    width: calc(100% / 2);
+  }
+}
