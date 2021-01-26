@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
 class MovieForm extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class MovieForm extends React.Component {
   handleSubmit() {
     const { onSubmit } = this.props;
     onSubmit(this.state);
+    return <Redirect to="/" />;
   }
 
   updateMovie(field, newValue) {
