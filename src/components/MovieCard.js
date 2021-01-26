@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class MovieCard extends React.Component {
   render() {
     const { movie: { title,
-      subtitle, imagePath, storyline, genre, rating, id } } = this.props;
+      subtitle, imagePath, storyline, id } } = this.props;
 
     return (
       <div data-testid="movie-card">
@@ -13,9 +13,7 @@ class MovieCard extends React.Component {
         <section className="movie-card-body">
           <h3 className="movie-title">{title}</h3>
           <h4 className="movie-subtitle">{subtitle}</h4>
-          <p className="movie-genre">{genre}</p>
           <p className="movie-storyline">{storyline}</p>
-          <p className="movie-rating">{rating}</p>
           <Link to={ `movies/${id}` } className="movie-details">VER DETALHES</Link>
         </section>
       </div>
