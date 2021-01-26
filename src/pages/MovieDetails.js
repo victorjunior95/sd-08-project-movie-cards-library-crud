@@ -19,6 +19,10 @@ class MovieDetails extends Component {
     this.fetchMovie(movieAPI.getMovie(id));
   }
 
+  handleClick(deleteMovie) {
+    movieAPI.deleteMovie(deleteMovie);
+  }
+
   fetchMovie(result) {
     this.setState(
       { loading: true },
@@ -43,6 +47,7 @@ class MovieDetails extends Component {
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ () => this.handleClick(id) }>DELETAR</Link>
         <Link to="/">VOLTAR</Link>
       </div>
     );
