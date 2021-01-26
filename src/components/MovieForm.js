@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './MovieForm.css';
 
 class MovieForm extends React.Component {
   constructor(props) {
@@ -137,10 +138,7 @@ class MovieForm extends React.Component {
   renderSubmitButton() {
     return (
       <div>
-        <button
-          type="button"
-          onClick={ this.handleSubmit }
-        >
+        <button type="button" onClick={ this.handleSubmit }>
           Submit
         </button>
       </div>
@@ -163,5 +161,12 @@ class MovieForm extends React.Component {
     );
   }
 }
+MovieForm.propTypes = {
+  movie: PropTypes.objectOf(PropTypes.any),
+  onSubmit: PropTypes.func.isRequired,
+};
 
+MovieForm.defaultProps = {
+  movie: {},
+};
 export default MovieForm;

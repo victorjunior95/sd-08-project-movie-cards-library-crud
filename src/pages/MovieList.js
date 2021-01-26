@@ -40,7 +40,7 @@ class MovieList extends Component {
         ) : (
           movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)
         )}
-        {movies.length > 0 && <Link to="/movies/new">Adicionar</Link>}
+        {movies.length > 0 && <Link to="/movies/new">ADICIONAR CARTÃO</Link>}
       </div>
     );
   }
