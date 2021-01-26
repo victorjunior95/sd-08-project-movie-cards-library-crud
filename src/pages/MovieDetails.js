@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
-// import { Loading } from '../components';
+import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
@@ -30,10 +30,8 @@ class MovieDetails extends Component {
 
   render() {
     const { movie, isLoading } = this.state;
-    console.log(movie, isLoading);
-    // Change the condition to check the state
-    // if (true) return <Loading />;
     const { storyline, imagePath, genre, rating, subtitle } = { movie };
+    if (isLoading) return <Loading />;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
