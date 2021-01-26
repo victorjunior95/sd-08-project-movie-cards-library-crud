@@ -1,7 +1,13 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {
+  MovieList,
+  MovieDetails,
+  NewMovie,
+  EditMovie,
+  NotFound,
+} from './pages/index';
 import './App.css';
-import { MovieList, MovieDetails, NewMovie, EditMovie, NotFound } from './pages/index';
 
 function App() {
   return (
@@ -16,5 +22,4 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App;
