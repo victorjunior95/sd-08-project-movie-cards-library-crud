@@ -4,12 +4,12 @@ import MovieForm from '../components/MovieForm';
 // import * as movieAPI from '../services/movieAPI';
 
 class NewMovie extends Component {
-  constructor(props) {
+  /* constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  /* handleSubmit(newMovie) {
+   handleSubmit(newMovie) {
   } */
 
   render() {
