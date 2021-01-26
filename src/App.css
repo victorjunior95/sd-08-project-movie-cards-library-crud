@@ -13,11 +13,11 @@ body {
 }
 
 .page-title {
+  background-color: #343a40;
   color: #f8f9fa;
   font-size: 28px;
   font-weight: 500;
   text-align: center;
-  background-color: #343a40;
   padding: 50px 0px;
 }
 
@@ -29,9 +29,9 @@ body {
 .movie-card-list {
   display: flex;
   flex-flow: row wrap;
-  padding: 48px 30px;
   justify-content: space-around;
-  padding-bottom: 0px;
+  padding: 48px 30px;
+  padding-bottom: 0;
 }
 
 .movie-card {
@@ -48,31 +48,31 @@ body {
 }
 
 .movie-card-link {
-  display: flex;
-  padding: 3px 0px;
-  width: fit-content;
-  margin: 0px auto;
   background-color: #007bff;
   border-radius: 25px;
+  display: flex;
+  margin: 0 auto;
+  padding: 3px 0px;
+  width: fit-content;
 }
 
 .movie-card a {
-  padding: 6px 5px;
+  color: whitesmoke;
   display: inline-block;
   margin: auto;
+  padding: 6px 5px;
   text-decoration: none;
-  color: whitesmoke;
 }
 
 .movie-list-new-link {
-  padding: 6px 5px;
-  display: inline-block;
-  margin: auto;
-  text-decoration: none;
-  color: whitesmoke;
   background-color: #007bff;
   border-radius: 25px;
+  color: whitesmoke;
+  display: inline-block;
+  margin: auto;
   margin-bottom: 48px;
+  padding: 6px 5px;
+  text-decoration: none;
 }
 
 .movie-card-image {
@@ -108,9 +108,9 @@ body {
   color: white;
   font-size: 16px;
   font-weight: 700;
+  margin: 20px auto;
   padding: 3px 9px;
   width: fit-content;
-  margin: 20px auto;
 }
 
 .movie-card-rating {
@@ -123,23 +123,23 @@ body {
 
 .movie-details {
   background-color: #343a40;
-  border: 3px solid black ;
+  border: 3px solid black;
   border-radius: 3px;
   color: whitesmoke;
   display: flex;
   flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
   text-align: center;
   width: fit-content;
-  margin-left: auto;
-  margin-right:auto;
-  margin-top: 20px;
 }
 
 .movie-details img {
   display: block;
-  width: 500px;
   margin-left: auto;
   margin-right: auto;
+  width: 500px;
 }
 
 .movie-details a {
@@ -148,17 +148,17 @@ body {
   color: #343a40;
   font-size: 16px;
   font-weight: 700;
+  margin: 0 20px;
   padding: 3px 9px;
   width: fit-content;
-  margin: 0px 20px;
   text-decoration: none;
 }
 
 .movie-details-links {
   display: flex;
-  padding: 20px 0px;
+  padding: 20px 0;
+  margin: 0 auto;
   width: fit-content;
-  margin: 0px auto;
 }
 
 .movie-form {
@@ -172,9 +172,9 @@ body {
 }
 
 .movie-form textarea {
+  height: 90px;
   margin: 5px 10px;
   width: 25%;
-  height: 90px;
 }
 
 .movie-form select {
