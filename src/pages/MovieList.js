@@ -20,15 +20,6 @@ class MovieList extends Component {
     this.fetchMovies();
   }
 
-  // shouldComponentUpdate() {
-  //   const { movies } = this.state;
-  //   console.log(movies);
-  //   if (movies.length !== 0) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
-
   fetchMovies() {
     this.setState(
       { loading: true },

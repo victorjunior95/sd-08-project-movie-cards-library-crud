@@ -141,7 +141,7 @@ describe('2 - Faça uma requisição para buscar e mostrar a lista de filmes qua
   })
 });
 
-describe.skip('3 - Insira um link para a página de detalhes de um filme dentro de `MovieCard`', () => {
+describe('3 - Insira um link para a página de detalhes de um filme dentro de `MovieCard`', () => {
   test('deve exibir pelo menos o título e a sinopse de seu respectivo filme', async () => {
     const { unmount, getAllByText } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
@@ -162,7 +162,7 @@ describe.skip('3 - Insira um link para a página de detalhes de um filme dentro 
   })
 });
 
-describe.skip('4 - Faça uma requisição para buscar o filme que deverá ser renderizado dentro de `Movie Details`', () => {
+describe('4 - Faça uma requisição para buscar o filme que deverá ser renderizado dentro de `Movie Details`', () => {
 
   it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     for (const movie of readMovies()) {
@@ -209,7 +209,7 @@ describe.skip('4 - Faça uma requisição para buscar o filme que deverá ser re
   });
 });
 
-describe.skip('5 - Realize uma requisição para buscar o filme que será editado em `EditMovie`', () => {
+describe('5 - Realize uma requisição para buscar o filme que será editado em `EditMovie`', () => {
 
   it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     for (const movie of readMovies()) {
@@ -274,7 +274,7 @@ describe.skip('5 - Realize uma requisição para buscar o filme que será editad
 
 });
 
-describe.skip('6 - Insira um link na página inicial para `NewMovie` para criar novos cartões', () => {
+describe('6 - Insira um link na página inicial para `NewMovie` para criar novos cartões', () => {
   it('a página inicial deverá conter um link "ADICIONAR CARTÃO". Esse link deve redirecionar para a página de criação de filmes', async () => {
     const { unmount } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
@@ -315,7 +315,7 @@ describe.skip('6 - Insira um link na página inicial para `NewMovie` para criar 
   })
 });
 
-describe.skip('7 - Adicione um link para deletar um cartão em `MovieDetails`', () => {
+describe('7 - Adicione um link para deletar um cartão em `MovieDetails`', () => {
   it('"MovieDetails" deverá conter um botão com o texto "DELETAR"', async () => {
     for (const movie of readMovies()) {
       const { container, unmount, findByText } = renderPath('/movies/' + movie.id);
