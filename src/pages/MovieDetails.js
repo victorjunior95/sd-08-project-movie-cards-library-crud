@@ -48,7 +48,7 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <Link to={ () => this.deleteMovie(id) }>DELETAR</Link>
+        <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
         <Link to="/">VOLTAR</Link>
       </div>
     );
