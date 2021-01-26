@@ -1,17 +1,17 @@
 body {
   background-color: rgba(0, 0, 0, 0.535);
   box-sizing: border-box;
-  text-align: center;
   display: flex;
+  text-align: center;
   flex-direction: row;
   justify-content: space-around;
 }
 
 .CRUD {
-color: whitesmoke;
-font-size: 50px;
-margin: 20px;
-font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+  color: whitesmoke;
+  font-size: 50px;
+  font-family: Impact , Haettenschweiler , Arial Narrow Bold , sans-serif;
+  margin: 20px;
 }
 
 form {
@@ -19,4 +19,3 @@ form {
   flex-flow: row wrap;  
   justify-content: space-around;
 }
-
