@@ -3,11 +3,11 @@ body {
   box-sizing: border-box;
 }
 
-.movie-card{
+.movie-card {
   border: 2px black solid;
-  width: 400px;
-  
+  width: 400px; 
 }
-.movie-card-image{
+
+.movie-card-image {
   width: 350px;
 }
