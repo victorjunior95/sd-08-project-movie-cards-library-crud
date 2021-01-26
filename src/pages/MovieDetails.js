@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
-import { getMovie } from '../services/movieAPI';
+import { getMovie, deleteMovie } from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
@@ -15,6 +15,7 @@ class MovieDetails extends Component {
     };
 
     this.findMovie = this.findMovie.bind(this);
+    this.linkRemove = this.linkRemove.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +29,11 @@ class MovieDetails extends Component {
       movie: result,
       loading: false,
     });
+  }
+
+  linkRemove() {
+    const { movie: { id } } = this.state;
+    deleteMovie(id);
   }
 
   contentMovieDetails() {
@@ -44,6 +50,7 @@ class MovieDetails extends Component {
         <div>
           <Link to="/">VOLTAR</Link>
           <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+          <Link to="/" onClick={ this.linkRemove }>DELETAR</Link>
         </div>
       </div>
     );
