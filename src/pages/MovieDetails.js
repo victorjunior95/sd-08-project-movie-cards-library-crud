@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import { Link } from 'react-router-dom';
 
 class MovieDetails extends Component {
   constructor() {
@@ -11,14 +11,21 @@ class MovieDetails extends Component {
 
     this.state = {
       movies: [],
-    };
-    
+    };    
     this.hundleApi = this.hundleApi.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
     this.hundleApi();
+  }
+  
+  async handleDelete() {
+    const { match: { params: { id } } } = this.props;
+    await movieAPI.deleteMovie(id);
+      this.setState({
+      deleteMovie: true,
+    });
   }
 
   async hundleApi() {
@@ -27,14 +34,6 @@ class MovieDetails extends Component {
     
     this.setState({
       movies: result,
-    });
-  }
-
-  async handleDelete() {
-    const { match: { params: { id } } } = this.props;
-    await movieAPI.deleteMovie(id);
-      this.setState({
-      deleteMovie: true,
     });
   }
 
