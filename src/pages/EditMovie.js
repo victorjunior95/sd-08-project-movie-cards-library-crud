@@ -12,7 +12,7 @@ class EditMovie extends Component {
     this.state = {
       status: 'loading',
       shouldRedirect: false,
-      movie: [],
+      movie: {},
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fetchEditMovie = this.fetchEditMovie.bind(this);
@@ -31,14 +31,14 @@ class EditMovie extends Component {
     const { match: { params: { id } } } = this.props;
     const movie = await movieAPI.getMovie(id);
     this.setState({
-      status: '',
+      status: 'loaded',
       movie,
     });
   }
 
   render() {
     const { status, shouldRedirect, movie } = this.state;
-    if (shouldRedirect === true) {
+    if (shouldRedirect) {
       return <Redirect to="/" />;
     }
 

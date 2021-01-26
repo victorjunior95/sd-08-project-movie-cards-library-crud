@@ -6,18 +6,15 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      title: '',
-      storyline: '',
-      imagePath: '',
-      genre: '',
-      rating: '',
-      subtitle: '',
+      movie: {},
       loading: true,
     };
+    this.fetchMovieDetail = this.fetchMovieDetail.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
@@ -26,29 +23,19 @@ class MovieDetails extends Component {
   }
 
   async fetchMovieDetail(id) {
-    const { title,
-      storyline,
-      imagePath,
-      genre,
-      rating,
-      subtitle,
-    } = await movieAPI.getMovie(id);
-    this.setState({
-      title,
-      storyline,
-      imagePath,
-      genre,
-      rating,
-      subtitle,
-      loading: false,
-    });
+    const movie = await movieAPI.getMovie(id);
+    this.setState({ movie, loading: false });
+  }
+
+  async deleteMovie() {
+    const { movie: { id } } = this.state;
+    await movieAPI.deleteMovie(id);
   }
 
   render() {
-    const { match: { params: { id } } } = this.props;
-    const { loading } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state;
-    if (loading === true) return <Loading />;
+    const { loading, movie: { title, storyline, imagePath,
+      genre, rating, subtitle, id } } = this.state;
+    if (loading) return <Loading />;
 
     return (
       <div data-testid="movie-details">
@@ -59,7 +46,8 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
-        <Link to={ `/movies/${id}/edit ` }>EDITAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
       </div>
     );
   }
