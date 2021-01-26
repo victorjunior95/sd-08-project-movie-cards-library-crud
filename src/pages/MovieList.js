@@ -9,7 +9,20 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
+      movieList: false,
     };
+  }
+
+  componentDidMount() {
+    this.get();
+  }
+
+  async get() {
+    const movies = await movieAPI.getMovies();
+    this.setState({
+      movies,
+      movieList: true,
+    });
   }
 
   render() {
@@ -19,7 +32,7 @@ class MovieList extends Component {
 
     return (
       <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
       </div>
     );
   }
