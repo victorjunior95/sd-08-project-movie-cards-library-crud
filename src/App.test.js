@@ -162,7 +162,7 @@ describe('3 - Insira um link para a página de detalhes de um filme dentro de `M
   })
 });
 
-describe.only('4 - Faça uma requisição para buscar o filme que deverá ser renderizado dentro de `Movie Details`', () => {
+describe('4 - Faça uma requisição para buscar o filme que deverá ser renderizado dentro de `Movie Details`', () => {
 
   it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     for (const movie of readMovies()) {
@@ -209,7 +209,7 @@ describe.only('4 - Faça uma requisição para buscar o filme que deverá ser re
   });
 });
 
-describe('5 - Realize uma requisição para buscar o filme que será editado em `EditMovie`', () => {
+describe.only('5 - Realize uma requisição para buscar o filme que será editado em `EditMovie`', () => {
 
   it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     for (const movie of readMovies()) {
