@@ -10,7 +10,7 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <BrowserRouter>
-      <Route exact Path="/" component={ Movielist } />
+      <Route Path="/" component={ Movielist } />
       <Route path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
       <Route path="/movies/new" component={ NewMovie } />
       <Route path="/movies/:id/edit" render={ (props) => <EditMovie { ...props } /> } />
