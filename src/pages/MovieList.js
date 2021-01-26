@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { MovieCard, Loading } from '../components';
 
 import * as movieAPI from '../services/movieAPI';
@@ -8,7 +9,7 @@ class MovieList extends Component {
     super();
     this.state = {
       loading: true,
-      // movies,
+      // movies, will be set on mount
     };
   }
 
@@ -17,18 +18,19 @@ class MovieList extends Component {
       .then((resolve) => this.setState({ movies: resolve, loading: false }));
   }
 
-  render() {
-    const { movies, loading } = this.state;
-    console.log(movies);
-    // Render Loading here if the request is still happening
-
+  renderMovieListHome() {
+    const { movies } = this.state;
     return (
       <div data-testid="movie-list">
-        {loading
-          ? <Loading />
-          : movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
     );
+  }
+
+  render() {
+    const { loading } = this.state;
+    return loading ? <Loading /> : this.renderMovieListHome();
   }
 }
 
