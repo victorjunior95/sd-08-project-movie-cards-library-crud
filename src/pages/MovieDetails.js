@@ -21,14 +21,13 @@ class MovieDetails extends Component {
     const { match } = this.props;
     const { id } = match.params;
     const requestMovie = movieAPI.getMovie(id);
-    // console.log(requestMovies.then((data) => console.log(data)));
     const Movie = await requestMovie;
     this.setState({
       movie: Movie,
     });
   }
 
-  naoPodeDozeEspacos({ movie }) {
+  naoPodeDozeEspacosEmFuncaoPorIssoFizEssaFuncao({ movie }) {
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
     return (
       <div data-testid="movie-details">
@@ -50,14 +49,14 @@ class MovieDetails extends Component {
     return (
       <div>
         {(!title) ? <Loading />
-          : this.naoPodeDozeEspacos({ movie })}
+          : this.naoPodeDozeEspacosEmFuncaoPorIssoFizEssaFuncao({ movie })}
       </div>
     );
   }
 }
 
-// MovieDetails.propTypes = {
-//   match: PropTypes.object,
-// };
+MovieDetails.propTypes = {
+  match: PropTypes.string.isRequired,
+};
 
 export default MovieDetails;

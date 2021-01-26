@@ -11,6 +11,10 @@ class EditMovie extends Component {
   }
 
   handleSubmit(updatedMovie) {
+    const tramela = updatedMovie;
+    console.log(tramela);
+    const ops = movieAPI;
+    console.log(ops);
   }
 
   render() {

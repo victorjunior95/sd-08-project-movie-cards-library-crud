@@ -10,6 +10,9 @@ class NewMovie extends Component {
   }
 
   handleSubmit(newMovie) {
+    const opsu = movieAPI;
+    console.log(opsu);
+    console.log(newMovie);
   }
 
   render() {
