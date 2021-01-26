@@ -10,7 +10,7 @@ class MovieList extends Component {
     super();
 
     this.state = {
-      movies: [{}, {}],
+      movies: [],
       loading: true,
     };
 

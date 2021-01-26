@@ -29,7 +29,7 @@ class MovieDetails extends Component {
   }
 
   buscarMovie() {
-    const { match: { params: { id } } } = props;
+    const { match: { params: { id } } } = this.props;
     this.setState({ loading: true }, async () => {
       const movie = await movieAPI.getMovie(id);
       this.setState({ loading: false, movie });
@@ -41,8 +41,10 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { movie, loading, id } = this.state;
+    const { movie, loading } = this.state;
+    const { match: { params: { id } } } = this.props;
     if (loading) return <Loading />;
+    console.log(movie);
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
       <div data-testid="movie-details">
@@ -52,11 +54,9 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <div>
-          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-          <Link to="/">VOLTAR</Link>
-          <Link to="/" onClick={ () => this.apagarMovie(id) }>DELETAR</Link>
-        </div>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => this.apagarMovie(id) }>DELETAR</Link>
       </div>
     );
   }
@@ -65,7 +65,7 @@ class MovieDetails extends Component {
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };
