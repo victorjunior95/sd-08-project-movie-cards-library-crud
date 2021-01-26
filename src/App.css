@@ -2,15 +2,14 @@ body {
   background-color: rgba(0, 0, 0, 0.535);
   box-sizing: border-box;
   display: flex;
-  text-align: center;
   flex-direction: row;
   justify-content: space-around;
+  text-align: center;
 }
 
 .CRUD {
   color: whitesmoke;
   font-size: 50px;
-  font-family: Impact , Haettenschweiler , Arial Narrow Bold , sans-serif;
   margin: 20px;
 }
 
