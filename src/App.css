@@ -8,10 +8,30 @@ body {
   justify-content: space-around;
 }
 
+.form-label h4 {
+  width: 25%;
+}
+
 .form-control {
   width: 70%;
 }
 
 .form {
+  background-image: radial-gradient(ellipse farthest-corner at 45px 45px , #c4c4c4 2%, rgba(0, 0, 255, 0) 50%, #777796 95%);
+  border:rgb(201, 195, 195) 1px solid;
   padding: 30px;
+  margin: 10px
+}
+
+.submit-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.btn-primary {
+  box-shadow: blue 3px 3px 5px;
+  font-size: 20px;
+  width: 200px;
 }
