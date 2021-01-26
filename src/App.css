@@ -3,3 +3,38 @@ body {
   box-sizing: border-box;
 }
 
+.loading {
+  font-size: 50px;
+}
+
+.movie-card-body {
+  flex: 1 1 auto;
+  padding: 20px;
+}
+
+.movie-card-header {
+  align-items: center;
+  background-color: #356e44;
+  color: white;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+}
+
+.movie-card {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  margin: 5px;
+  overflow: hidden;
+  width: 300px;
+}
+
+.movie-list {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 48px 30px;
+}

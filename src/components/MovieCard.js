@@ -7,9 +7,10 @@ class MovieCard extends React.Component {
     const { movie } = this.props;
 
     return (
-      <div data-testid="movie-card">
+      <div className="movie-card" data-testid="movie-card">
         <h1>{movie.title}</h1>
         <p>{movie.storyline}</p>
+        <img src={ movie.imagePath } alt={ `${movie.title} scope` } />
         <Link to={ `/movies/${movie.id}` }>VER DETALHES</Link>
       </div>
     );
@@ -20,6 +21,7 @@ MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string,
     storyline: PropTypes.string,
+    imagePath: PropTypes.string,
     id: PropTypes.number,
   }).isRequired,
 };
