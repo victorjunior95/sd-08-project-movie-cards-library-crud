@@ -31,7 +31,6 @@ class MovieDetails extends Component {
   render() {
     const { movie, status, shouldRedirect } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
-
     if (shouldRedirect) { return <Redirect to="/" />; }
     if (status === 'loading') { return <Loading />; }
     return (
@@ -42,9 +41,9 @@ class MovieDetails extends Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
-        <Link to="/">VOLTAR</Link>
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <a href="/" onClick={ this.delete }>DELETAR</a>
+        <Link to="/" class="link1">VOLTAR</Link>
+        <Link to={ `/movies/${id}/edit` } class="link2">EDITAR</Link>
+        <Link to="/" onClick={ this.delete }>DELETAR</Link>
       </div>
     );
   }

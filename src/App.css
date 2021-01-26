@@ -18,3 +18,11 @@ form {
   flex-flow: row wrap;
   justify-content: space-around;
 }
+
+.link1 {
+  margin: 30px;
+}
+
+.link2 {
+  margin-right: 30px;
+}
