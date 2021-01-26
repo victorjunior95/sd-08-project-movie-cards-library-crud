@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import {
   MovieList,
   MovieDetails,
@@ -11,13 +11,15 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
-      <Route path="/" component={ MovieList } />
-      <Route path="/movies/:id" component={ MovieDetails } />
-      <Route path="/movies/new" component={ NewMovie } />
-      <Route path="/movies/:id/edit" component={ EditMovie } />
-      <Route component={ NotFound } />
-    </Router>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/movies/new" component={ NewMovie } />
+        <Route path="/movies/:id/edit" component={ EditMovie } />
+        <Route exact path="/" component={ MovieList } />
+        <Route path="/movies/:id" component={ MovieDetails } />
+        <Route component={ NotFound } />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
