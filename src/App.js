@@ -1,10 +1,17 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
-  return (
-    <div>Movie Card Library CRUD</div>
-  );
+import './App.css';
+import Index from './pages/Index';
+
+class App extends React.Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <Index />
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
-//
