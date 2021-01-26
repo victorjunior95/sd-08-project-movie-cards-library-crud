@@ -28,17 +28,9 @@ class EditMovie extends Component {
   }
 
   render() {
-    const { loading } = this.state;
+    const { loading, shouldRedirect, movie } = this.state;
+    if (shouldRedirect) return <Redirect to="/" />;
     if (loading) return <Loading />;
-
-    const { status, shouldRedirect, movie } = this.state;
-    if (shouldRedirect) {
-      return <Redirect to="/" />;
-    }
-
-    if (status === 'loading') {
-      // render Loading
-    }
 
     return (
       <div data-testid="edit-movie">
