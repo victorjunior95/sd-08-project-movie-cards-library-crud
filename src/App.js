@@ -12,7 +12,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={ MovieList } />
         <Route
-        exact
+          exact
           path="/movies/:id"
           render={ (props) => <MovieDetails { ...props } id /> }
         />
