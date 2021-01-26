@@ -10,7 +10,7 @@ import MovieDetails from './pages/MovieDetails';
 function App() {
   return (
     <Router>
-      <div>Movie Card Library CRUD</div>
+      <div className="CRUD">Movie Card Library CRUD</div>
       <Switch>
         <Route path="/movies/:id/edit" component={ EditMovie } />
         <Route path="/movies/new" component={ NewMovie } />

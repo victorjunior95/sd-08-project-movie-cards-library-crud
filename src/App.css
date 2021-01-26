@@ -1,13 +1,22 @@
 body {
-  background-color: whitesmoke;
+  background-color: rgba(0, 0, 0, 0.535);
   box-sizing: border-box;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.CRUD {
+color: whitesmoke;
+font-size: 50px;
+margin: 20px;
+font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
 form {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;  
   justify-content: space-around;
 }
 
