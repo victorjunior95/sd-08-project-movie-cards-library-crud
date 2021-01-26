@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -30,6 +30,7 @@ class MovieDetails extends Component {
         isLoadiang: false,
       });
     });
+    this.linkOnClick = this.linkOnClick.bind(this);
   }
 
   noLoadingRender(movie) {
@@ -43,11 +44,28 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+        {this.renderLinks(path)}
+      </div>
+    );
+  }
+
+  async linkOnClick() {
+    const { movie } = this.state;
+    await movieAPI.deleteMovie(movie.id);
+    return <Redirect to="/" />;
+  }
+
+  renderLinks(path) {
+    return (
+      <div>
         <Link to="/">
           VOLTAR
         </Link>
         <Link to={ path }>
           EDITAR
+        </Link>
+        <Link to="/" onClick={ this.linkOnClick }>
+          DELETAR
         </Link>
       </div>
     );
