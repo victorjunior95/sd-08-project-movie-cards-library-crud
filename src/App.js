@@ -12,7 +12,6 @@ function App() {
     <BrowserRouter>
       <div>Movie Card Library CRUD</div>
       <Switch>
-        <Route Path="/" component={ Movielist } />
         <Route path="/movies/:id" component={ MovieDetails } />
         <Route path="/movies/new" component={ NewMovie } />
         <Route path="/movies/:id/edit" component={ EditMovie } />
