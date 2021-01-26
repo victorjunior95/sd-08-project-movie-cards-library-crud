@@ -18,9 +18,9 @@ class MovieList extends Component {
   }
 
   async getMovies() {
-    const data = await movieAPI.getMovies();
+    const date = await movieAPI.getMovies();
     this.setState({
-      movies: data,
+      movies: date,
     });
   }
 
