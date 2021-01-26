@@ -9,11 +9,15 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
 
-    const { match: { params: { id } } } = props;
-
     this.state = {
-      id,
-      movie: {},
+      movie: {
+        title: '',
+        storyline: '',
+        imagePath: '',
+        genre: '',
+        rating: 0,
+        subtitle: '',
+      },
       loading: true,
     };
 
@@ -25,7 +29,7 @@ class MovieDetails extends Component {
   }
 
   buscarMovie() {
-    const { id } = this.state;
+    const { match: { params: { id } } } = props;
     this.setState({ loading: true }, async () => {
       const movie = await movieAPI.getMovie(id);
       this.setState({ loading: false, movie });
