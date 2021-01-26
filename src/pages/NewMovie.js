@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import MovieForm from '../components/MovieForm';
-// eslint-disable-next-line
 import * as movieAPI from '../services/movieAPI';
 
 class NewMovie extends Component {
@@ -10,7 +10,13 @@ class NewMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(newMovie) {}
+  async handleSubmit(newMovie) {
+    await movieAPI.createMovie(newMovie);
+    const {
+      history: { push },
+    } = this.props;
+    return push('/');
+  }
 
   render() {
     return (
@@ -20,4 +26,16 @@ class NewMovie extends Component {
     );
   }
 }
+
+NewMovie.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+};
+NewMovie.defaultProps = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+};
+
 export default NewMovie;
