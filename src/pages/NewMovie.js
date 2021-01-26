@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
+// import movies from '../services/movieData';
 
 class NewMovie extends Component {
   constructor(props) {
@@ -10,6 +11,8 @@ class NewMovie extends Component {
   }
 
   handleSubmit(newMovie) {
+    movieAPI.createMovie();
+    return newMovie;
   }
 
   render() {
