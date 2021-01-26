@@ -48,3 +48,6 @@ body {
   font-size: 14px;
   text-align: justify;
 }
+.movie-card a {
+  padding: 20px;
+}

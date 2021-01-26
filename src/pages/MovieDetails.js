@@ -1,22 +1,59 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import * as movieAPI from '../services/movieAPI';
 
 class MovieDetails extends Component {
-  render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
+  constructor() {
+    super();
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+    this.state = {
+      movie: [],
+      loading: true,
+    };
+  }
+
+  componentDidMount() {
+    const { match: { params: { id } } } = this.props;
+    this.fetchMovie(movieAPI.getMovie(id));
+  }
+
+  fetchMovie(result) {
+    this.setState(
+      { loading: true },
+      async () => {
+        this.setState({
+          movie: await result,
+          loading: false,
+        });
+      },
+    );
+  }
+
+  renderMovieDetails() {
+    const { movie } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
+    return (
+      <div className="movie-card-body">
+        <img alt="Movie Cover" className="movie-card-image" src={ `../${imagePath}` } />
+        <h4 data-testid="movie-card-title" className="movie-card-title">{ title }</h4>
+        <h5 className="movie-card-subtitle">{`Subtitle: ${subtitle}`}</h5>
+        <p className="movie-card-storyline">{`Storyline: ${storyline}`}</p>
+        <p>{`Genre: ${genre}`}</p>
+        <p>{`Rating: ${rating}`}</p>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
+      </div>
+    );
+  }
+
+  render() {
+    const { loading } = this.state;
 
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
+      <div className="movie-card" data-testid="movie-details">
+        {loading ? <Loading /> : this.renderMovieDetails()}
       </div>
     );
   }
