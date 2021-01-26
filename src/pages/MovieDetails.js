@@ -14,7 +14,7 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
+    const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id).then((movie) => this.setState({
       movie,
       loading: false,
@@ -22,7 +22,7 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { id } = this.props.match.params;
+    const { match: { params: { id } } } = this.props;
     const { movie, loading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     if (loading) return <Loading />;
