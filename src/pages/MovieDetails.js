@@ -15,6 +15,8 @@ class MovieDetails extends Component {
     };
 
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.verifyImagePath = this.verifyImagePath.bind(this);
+    this.deleteLink = this.deleteLink.bind(this);
   }
 
   componentDidMount() {
@@ -32,22 +34,37 @@ class MovieDetails extends Component {
     });
   }
 
+  verifyImagePath(path) {
+    if (path.includes('http')) {
+      return path;
+    }
+
+    return `../${path}`;
+  }
+
+  async deleteLink() {
+    const { match } = this.props;
+    const { id } = match.params;
+    const { deleteMovie } = movieAPI;
+    await deleteMovie(id);
+  }
+
   render() {
     const { movie, isLoaded } = this.state;
-    if (!isLoaded) {
-      return <Loading />;
-    }
+    if (!isLoaded) { return <Loading />; }
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
+    const path = imagePath;
     return (
       <div data-testid="movie-details">
         <h2>{ title }</h2>
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <img alt="Movie Cover" src={ this.verifyImagePath(path) } />
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ this.deleteLink }>DELETAR</Link>
       </div>
     );
   }

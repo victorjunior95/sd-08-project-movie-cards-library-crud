@@ -17,6 +17,7 @@ class NewMovie extends Component {
         storyline: '',
         subtitle: '',
         title: '',
+        id: '',
       },
       shouldRedirect: false,
     };

@@ -168,7 +168,10 @@ MovieForm.propTypes = {
   movie: PropTypes.shape({
     bookmarked: PropTypes.bool,
     genre: PropTypes.string,
-    id: PropTypes.number.isRequired,
+    id: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
     imagePath: PropTypes.string,
     rating: PropTypes.number,
     storyline: PropTypes.string,
