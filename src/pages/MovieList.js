@@ -19,7 +19,7 @@ class MovieList extends Component {
 
   render() {
     const { movies, loading } = this.state;
-    // console.log(movies);
+    console.log(movies);
     // Render Loading here if the request is still happening
 
     return (
