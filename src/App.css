@@ -3,3 +3,15 @@ body {
   box-sizing: border-box;
 }
 
+.form-label {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-control {
+  width: 70%;
+}
+
+.form {
+  padding: 30px;
+}
