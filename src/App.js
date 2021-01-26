@@ -11,18 +11,15 @@ import './App.css';
 
 function App() {
   return (
-    <div>
-      Movie Card Library CRUD
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/"><MovieList /></Route>
-          <Route exact path="/movies/new" component={ NewMovie } />
-          <Route exact path="/movies/:id" component={ MovieDetails } />
-          <Route exact path="/movies/:id/edit" component={ EditMovie } />
-          <Route path="*" component={ NotFound } />
-        </Switch>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/"><MovieList /></Route>
+        <Route exact path="/movies/new" component={ NewMovie } />
+        <Route exact path="/movies/:id" component={ MovieDetails } />
+        <Route exact path="/movies/:id/edit" component={ EditMovie } />
+        <Route path="*" component={ NotFound } />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
