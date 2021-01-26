@@ -34,7 +34,6 @@ class MovieList extends Component {
     const { movies, isLoading } = this.state;
 
     // Render Loading here if the request is still happening
-    console.log(isLoading);
     return (
       <div data-testid="movie-list">
         {isLoading ? (
