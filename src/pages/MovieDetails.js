@@ -6,8 +6,8 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       movie: {
@@ -20,18 +20,24 @@ class MovieDetails extends Component {
       },
       isLoading: true,
     };
+
+    this.buscarMovie = this.buscarMovie.bind(this);
   }
 
   componentDidMount() {
-    const { match: { params: { id } } } = this.props;
+    this.buscarMovie();
+  }
 
-    movieAPI.getMovie(id)
-      .then((response) => {
-        this.setState({
-          movie: response,
-          isLoading: false,
-        });
-      });
+  buscarMovie() {
+    const { match: { params: { id } } } = this.props;
+    this.setState({ isLoading: true }, async () => {
+      const movie = await movieAPI.getMovie(id);
+      this.setState({ isLoading: false, movie });
+    });
+  }
+
+  async apagarMovie(id) {
+    await movieAPI.deleteMovie(id);
   }
 
   render() {
@@ -47,6 +53,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+        {console.log(movie)}
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
         <Link to="/" onClick={ () => this.apagarMovie(id) }>DELETAR</Link>
