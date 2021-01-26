@@ -20,20 +20,17 @@ class MovieDetails extends Component {
       },
       isLoading: true,
     };
-
-    this.buscarMovie = this.buscarMovie.bind(this);
   }
 
   componentDidMount() {
-    this.buscarMovie();
-  }
-
-  buscarMovie() {
     const { match: { params: { id } } } = this.props;
-    this.setState({ isLoading: true }, async () => {
-      const movie = await movieAPI.getMovie(id);
-      this.setState({ isLoading: false, movie });
-    });
+    movieAPI.getMovie(id)
+      .then((response) => {
+        this.setState({
+          movie: response,
+          isLoading: false,
+        });
+      });
   }
 
   async apagarMovie(id) {
@@ -42,18 +39,16 @@ class MovieDetails extends Component {
 
   render() {
     const { movie, isLoading } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = { movie };
     const { match: { params: { id } } } = this.props;
     if (isLoading) return <Loading />;
     return (
       <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Title: ${title}` }</p>
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
-        {console.log(movie)}
+        <img alt="Movie Cover" src={ `../${movie.imagePath}` } />
+        <p>{ `Title: ${movie.title}` }</p>
+        <p>{`Subtitle: ${movie.subtitle}`}</p>
+        <p>{ `Storyline: ${movie.storyline}` }</p>
+        <p>{ `Genre: ${movie.genre}` }</p>
+        <p>{ `Rating: ${movie.rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
         <Link to="/" onClick={ () => this.apagarMovie(id) }>DELETAR</Link>
