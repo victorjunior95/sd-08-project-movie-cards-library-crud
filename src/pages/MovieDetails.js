@@ -36,18 +36,18 @@ class MovieDetails extends Component {
       storyline, imagePath, genre, rating, subtitle } } = this.state;
     const { match: { params: { id } } } = this.props;
     return (
-      <div>
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
+      <div className="movie-details">
+        <img className="" alt="Movie Cover" src={ `../${imagePath}` } />
         <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
-        <Link to="/">VOLTAR</Link>
-        <br />
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <br />
-        <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
+        <p className="rating">{ `Rating: ${rating}` }</p>
+        <div className="movie-details-links">
+          <Link to="/">VOLTAR</Link>
+          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+          <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
+        </div>
       </div>
     );
   }
