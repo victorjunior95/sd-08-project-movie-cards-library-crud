@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import './App.css';
 
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
@@ -11,7 +12,9 @@ function App() {
   return (
     <Router>
       <div>
-        Movie Card Library CRUD
+        <div className="app-header">
+          <h1 className="header-title">Movie Card Library CRUD Project</h1>
+        </div>
         <Switch>
           <Route exact path="/" component={ MovieList } />
           <Route exact path="/movies/new" component={ NewMovie } />
@@ -19,7 +22,7 @@ function App() {
           <Route exact path="/movies/:id/edit" component={ EditMovie } />
           <Route path="" exact component={ NotFound } />
         </Switch>
-        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+        <div className="new-movie"><Link to="/movies/new">ADICIONAR CARTÃO</Link></div>
       </div>
     </Router>
   );

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import './EditMovie.css';
 
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
@@ -36,7 +37,7 @@ class NewMovie extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <div data-testid="new-movie">
+      <div data-testid="new-movie" className="movie-form-container">
         <MovieForm onSubmit={ this.handleSubmit } movie={ movie } />
       </div>
     );

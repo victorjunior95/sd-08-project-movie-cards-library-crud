@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import './EditMovie.css';
 
 import { MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
@@ -52,7 +53,7 @@ class EditMovie extends Component {
     }
 
     return (
-      <div data-testid="edit-movie">
+      <div data-testid="edit-movie" className="movie-form-container">
         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
       </div>
     );

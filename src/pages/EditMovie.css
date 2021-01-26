@@ -1,0 +1,40 @@
+.movie-form-container {
+  align-content: center;
+  display: flex;
+  flex-flow: column wrap;
+  margin-top: 12px;
+}
+
+.form-input {
+  width: 600px;
+}
+
+.form-input input {
+  background-color: #d7d5d5;
+  border-radius: 5px;
+  height: 30px;
+  padding: 0 6px;
+  width: 100%;
+}
+
+.form-input textarea {
+  background-color: #d7d5d5;
+  border-radius: 5px;
+  height: 90px;
+  padding: 6px;
+  width: 100%;
+}
+
+.form-input select {
+  background-color: #d7d5d5;
+  border-radius: 5px;
+  height: 30px;
+  padding: 0 6px;
+  width: 100%;
+}
+
+.submit-btn {
+  background-color: #d7d5d5;
+  margin-top: 12px;
+  padding: 6px 20px;
+}

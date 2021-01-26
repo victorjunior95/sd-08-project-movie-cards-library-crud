@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import './MovieDetails.css';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import MovieDetailsInfo from './MovieDetailsInfo';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -51,20 +53,16 @@ class MovieDetails extends Component {
 
   render() {
     const { movie, isLoaded } = this.state;
+    const { id } = movie;
     if (!isLoaded) { return <Loading />; }
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
-    const path = imagePath;
     return (
-      <div data-testid="movie-details">
-        <h2>{ title }</h2>
-        <img alt="Movie Cover" src={ this.verifyImagePath(path) } />
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <Link to="/">VOLTAR</Link>
-        <Link to="/" onClick={ this.deleteLink }>DELETAR</Link>
+      <div data-testid="movie-details" className="movie-detail-container">
+        <MovieDetailsInfo movie={ movie } verifyImagePath={ this.verifyImagePath } />
+        <div className="detail-links-container">
+          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+          <Link to="/">VOLTAR</Link>
+          <Link to="/" onClick={ this.deleteLink }>DELETAR</Link>
+        </div>
       </div>
     );
   }
