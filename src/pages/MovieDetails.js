@@ -37,7 +37,7 @@ class MovieDetails extends Component {
 
   showMovieDetails() {
     const { movie } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
