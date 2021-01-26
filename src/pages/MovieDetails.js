@@ -14,6 +14,7 @@ class MovieDetails extends Component {
     };
 
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
     this.showMovieDetails = this.showMovieDetails.bind(this);
   }
 
@@ -35,6 +36,11 @@ class MovieDetails extends Component {
     );
   }
 
+  deleteMovie() {
+    const { movie: { id } } = this.state;
+    movieAPI.deleteMovie(id);
+  }
+
   showMovieDetails() {
     const { movie } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
@@ -49,6 +55,8 @@ class MovieDetails extends Component {
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <br />
         <Link to="/">VOLTAR</Link>
+        <br />
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
       </div>
     );
   }
