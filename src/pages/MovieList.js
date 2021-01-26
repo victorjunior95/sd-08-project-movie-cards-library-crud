@@ -21,9 +21,8 @@ class MovieList extends Component {
   }
 
   async attMovies() {
-    const { movies } = this.state;
     const requestMovie = await movieAPI.getMovies();
-    this.setState({ movies: requestMovie }, () => console.log(movies, requestMovie));
+    this.setState({ movies: requestMovie, status: false });
   }
 
   render() {
