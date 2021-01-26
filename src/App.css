@@ -4,3 +4,10 @@ body {
   text-align: center;
 }
 
+form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
