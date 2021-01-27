@@ -15,7 +15,10 @@ class PStrong extends Component {
 
 PStrong.propTypes = {
   title: PropTypes.string.isRequired,
-  descrip: PropTypes.string.isRequired,
+  descrip: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
 };
 
 export default PStrong;
