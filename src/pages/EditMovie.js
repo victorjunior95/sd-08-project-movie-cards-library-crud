@@ -21,7 +21,7 @@ class EditMovie extends Component {
   }
 
   componentDidMount() {
-    this.handleMovie;
+    this.handleMovie();
   }
 
   async handleMovie() {
@@ -41,14 +41,14 @@ class EditMovie extends Component {
   }
 
   render() {
-    const { status, shouldRedirect, movie } = this.state;    
+    const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
-      return <Redirect exact to="/" />
-    };
+      return <Redirect exact to="/" />;
+    }
 
     if (status === 'loading') {
-      return <Loading />
-    };
+      return <Loading />;
+    }
 
     return (
       <div data-testid="edit-movie">

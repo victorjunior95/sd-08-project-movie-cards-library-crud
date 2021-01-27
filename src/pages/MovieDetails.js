@@ -11,7 +11,7 @@ class MovieDetails extends Component {
 
     this.state = {
       movies: [],
-    };    
+    };
     this.hundleApi = this.hundleApi.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
@@ -19,13 +19,9 @@ class MovieDetails extends Component {
   componentDidMount() {
     this.hundleApi();
   }
-  
   async handleDelete() {
     const { match: { params: { id } } } = this.props;
     await movieAPI.deleteMovie(id);
-      this.setState({
-      deleteMovie: true,
-    });
   }
 
   async hundleApi() {
@@ -37,7 +33,7 @@ class MovieDetails extends Component {
     });
   }
 
-  render() {    
+  render() {
     const { movies } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movies;
  
@@ -50,7 +46,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to={`/movies/${movies.id}/edit`}>EDITAR</Link>
+        <Link to={ `/movies/${movies.id }/edit`}>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
         <Link to="/" onClick={ this.handleDelete }>DELETAR</Link>
       </div>
