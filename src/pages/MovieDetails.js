@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -12,20 +12,26 @@ class MovieDetails extends Component {
       movieID: id,
       movie: {},
       load: true,
+      shouldRedirect: false,
     };
 
-    this.fetchMovies = this.fetchMovies.bind(this);
+    this.fetchMovie = this.fetchMovie.bind(this);
     this.renderMovieCard = this.renderMovieCard.bind(this);
   }
 
   componentDidMount() {
-    this.fetchMovies();
+    this.fetchMovie();
   }
 
-  async fetchMovies() {
+  async fetchMovie() {
     const { movieID } = this.state;
     const getMovie = await movieAPI.getMovie(movieID);
     this.setState({ movie: getMovie, load: false });
+  }
+
+  delMovie(id) {
+    movieAPI.deleteMovie(id);
+    this.setState({ shouldRedirect: true });
   }
 
   renderMovieCard(movie) {
@@ -41,15 +47,20 @@ class MovieDetails extends Component {
           <p>{ `Rating: ${rating}` }</p>
         </section>
         <nav className="card-movie-link">
-          <Link to="/">VOLTAR</Link>
-          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+          <Link to="/" className="btn-back">VOLTAR</Link>
+          <Link to={ `/movies/${id}/edit` } className="btn-edit">EDITAR</Link>
+          <Link to="/" onClick={ () => this.delMovie(id) } className="del">DELETAR</Link>
         </nav>
       </section>
     );
   }
 
   render() {
-    const { load, movie } = this.state;
+    const { load, movie, shouldRedirect } = this.state;
+
+    if (shouldRedirect) {
+      return <Redirect to="/" />;
+    }
     if (load) {
       return <Loading />;
     }
