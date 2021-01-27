@@ -49,7 +49,7 @@ class MovieDetails extends Component {
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     if (deletedMovie) return <Redirect to="/" />;
     return (
-      <section>
+      <section data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
         <h2>{ `Title: ${title}` }</h2>
         <p>{ `Subtitle: ${subtitle}` }</p>
