@@ -45,11 +45,11 @@ class EditMovie extends Component {
 
     const { isLoading, movieF } = this.state;
     return (
-      isLoading
-        ? <div data-testid="edit-movie">
-          <MovieForm movie={ movieF } onSubmit={ this.handleSubmit } />
-          </div>
-        : <Loading />
+      <div data-testid="edit-movie">
+        {isLoading
+          ? <MovieForm movie={ movieF } onSubmit={ this.handleSubmit } />
+          : <Loading /> }
+      </div>
     );
   }
 }
