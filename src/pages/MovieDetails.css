@@ -1,6 +1,6 @@
 .cntnr {
-  display: flex;
   border: 1px solid grey;
+  display: flex;
   padding: 1%;
   width: fit-content;
 }
