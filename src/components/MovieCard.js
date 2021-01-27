@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect, Route } from 'react-router-dom';
 import MovieDetails from '../pages/MovieDetails';
+import './MovieCard.css';
 
 class MovieCard extends React.Component {
   render() {

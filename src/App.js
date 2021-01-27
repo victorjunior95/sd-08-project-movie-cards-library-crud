@@ -10,7 +10,7 @@ function App() {
       <h1 style={ { textAlign: 'center', color: 'grey' } }>Movie Card Library CRUD</h1>
       <nav className="navBar">
         <Link to="/">Home</Link>
-        <Link to="/movie/:id">Movie Details</Link>
+        {/* <Link to="/movie/:id">Movie Details</Link> */}
       </nav>
       <Switch>
         <Route exact path="/" component={ MovieList } />

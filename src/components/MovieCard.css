@@ -1,0 +1,11 @@
+.movie-card {
+  border: 1px solid black;
+  display: flex;
+  margin: 1%;
+  padding: 1%;
+}
+
+.movie-card-image {
+  border: 10px groove grey;
+  margin: 1%
+}
