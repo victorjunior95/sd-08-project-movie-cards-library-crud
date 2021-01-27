@@ -27,7 +27,7 @@ class MovieList extends Component {
   }
 
   render() {
-    const { movies } = this.state;
+    const { movies, movieList } = this.state;
 
     // Render Loading here if the request is still happening
 

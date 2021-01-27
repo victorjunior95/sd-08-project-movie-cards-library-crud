@@ -28,23 +28,36 @@ class MovieDetails extends Component {
     await movieAPI.deleteMovie(movieId);
   }
 
+
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
-
-    return (
+    const {
+      id,
+      title,
+      storyline,
+      imagePath,
+      genre,
+      rating,
+      subtitle,
+    } = this.state.movie;
+    const loading = this.state.loading;
+    return loading ? (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
+        <p>{`Title: ${title}`}</p>
         <p>{`Subtitle: ${subtitle}`}</p>
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
+        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
+        <button onClick={() => this.deleteMovie(id)}>
+          <Link to="/">DELETAR</Link>
+        </button>
       </div>
-    );
+    ) : (<Loading />);
   }
 }
+
 
 MovieDetails.propTypes = {
   match: PropTypes.shape({
