@@ -12,8 +12,7 @@ class MovieDetails extends Component {
       isLoading: true,
       movie: '',
     };
-    this.renderButton = this.renderButton.bind(this);
-    this.onDelete = this.onDelete.bind(this);
+    // this.renderButton = this.renderButton.bind(this);
   }
 
   componentDidMount() {
@@ -21,43 +20,34 @@ class MovieDetails extends Component {
     movieAPI.getMovie(id).then((movie) => this.setState({ movie, isLoading: false }));
   }
 
-  onDelete({ target }) {
-    movieAPI.deleteMovie(Number(target.value));
-  }
-
-  renderButton() {
-    const { movie: { id } } = this.state;
-    return (
-      <>
-        <button type="button"><Link to="/">VOLTAR</Link></button>
-        <button type="button"><Link to={ `/movies/${id}/edit` }>EDITAR</Link></button>
-        <button type="button" value={ id } onClick={ this.onDelete }>
-          <Link to="/">
-            DELETAR
-          </Link>
-        </button>
-      </>
-    );
-  }
+  // renderButton() {
+  //   const { movie: { id } } = this.state;
+  //   return (
+  //     <>
+  //       <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+  //       <Link to="/">VOLTAR</Link>
+  //       <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
+  //     </>
+  //   );
+  // }
 
   render() {
-    const {
-      movie: { title, subtitle, storyline, imagePath, genre, rating },
-      isLoading } = this.state;
-    if (!isLoading) {
-      return (
-        <div style={ { backgroundColor: 'white' } } data-testid="movie-details">
-          <img alt="Movie Cover" src={ `../${imagePath}` } />
-          <p>{ `Titulo: ${title}`}</p>
-          <p>{ `Subtitle: ${subtitle}` }</p>
-          <p>{ `Storyline: ${storyline}` }</p>
-          <p>{ `Genre: ${genre}` }</p>
-          <p>{ `Rating: ${rating}` }</p>
-          { this.renderButton() }
-        </div>
-      );
-    }
-    return <Loading />;
+    const { isLoading, movie } = this.state;
+    if (isLoading) return <Loading />;
+    const { id, title, subtitle, storyline, imagePath, genre, rating } = movie;
+    return (
+      <div style={ { backgroundColor: 'white' } } data-testid="movie-details">
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{ `Titulo: ${title}`}</p>
+        <p>{ `Subtitle: ${subtitle}` }</p>
+        <p>{ `Storyline: ${storyline}` }</p>
+        <p>{ `Genre: ${genre}` }</p>
+        <p>{ `Rating: ${rating}` }</p>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
+      </div>
+    );
   }
 }
 
