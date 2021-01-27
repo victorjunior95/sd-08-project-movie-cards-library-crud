@@ -31,6 +31,7 @@ class MovieDetails extends Component {
 
   handleDeleteMovie() {
     const { movie: { id } } = this.state;
+
     movieAPI.deleteMovie(id);
   }
 
