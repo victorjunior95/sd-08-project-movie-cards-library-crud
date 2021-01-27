@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import movies from '../services/movieData';
 import './MovieDetails.css';
 
 class MovieDetails extends Component {
