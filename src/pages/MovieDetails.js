@@ -17,6 +17,7 @@ class MovieDetails extends Component {
     };
 
     this.getMovie = this.getMovie.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +31,11 @@ class MovieDetails extends Component {
       loading: false,
       movie,
     });
+  }
+
+  async deleteMovie() {
+    const { match: { params: { id } } } = this.props;
+    await movieAPI.deleteMovie(id);
   }
 
   detailsImage() {
@@ -64,6 +70,7 @@ class MovieDetails extends Component {
           { this.detailsBody() }
           <section className="movie-details-learn-more">
             <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+            <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
             <Link to="/">VOLTAR</Link>
           </section>
         </section>
