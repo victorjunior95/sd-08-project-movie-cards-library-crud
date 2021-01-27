@@ -2,55 +2,59 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import '../css/MovieCard.css';
+import { Link } from 'react-router-dom';
 
 class MovieCard extends React.Component {
-  movieCarImg(imagePath, title) {
+  movieCardImg(imagePath, title) {
     return (
-      <div className="movie-car-img">
+      <div className="movie-card-img">
         <img className="movie-img" src={ imagePath } alt={ title } />
       </div>
     );
   }
 
-  movieCarInfo(title, subtitle, genre) {
+  movieCardInfo(title, genre) {
     const firstLetter = genre[0].toUpperCase();
     const genreUpper = genre.replace(genre[0], firstLetter);
     return (
-      <div className="movie-car-info">
-        <span className="movie-car-title">{title}</span>
-        <span className="movie-car-subtitle">{subtitle}</span>
-        <span className="movie-car-genre">{genreUpper}</span>
+      <div className="movie-card-info">
+        <span className="movie-card-title">{title}</span>
+        <span className="movie-card-genre">{genreUpper}</span>
       </div>
     );
   }
 
-  movieCarStoryline(storyline) {
+  movieCardStoryline(storyline) {
     return (
-      <div className="movie-car-storyline">
+      <div className="movie-card-storyline">
         <p>{storyline}</p>
       </div>
     );
   }
 
-  movieCarRatingBookmarked(rating, bookmarked) {
+  movieCardButton(id, name) {
     return (
-      <div className="movie-car-rating-bookmarked">
-        <span>{rating}</span>
-        <span>{bookmarked ? 'Favorito' : ''}</span>
+      <div className="movie-card-button-container">
+        <Link
+          className={ `movie-card-link-${name}` }
+          to={ `/movies/${id}` }
+        >
+          VER DETALHES
+        </Link>
       </div>
     );
   }
 
   render() {
     const {
-      movie: { title, subtitle, storyline, rating, imagePath, bookmarked, genre },
+      movie: { id, title, storyline, imagePath, genre },
     } = this.props;
     return (
       <div className="movie-card-content" data-testid="movie-card">
-        {this.movieCarImg(imagePath, title)}
-        {this.movieCarInfo(title, subtitle, genre)}
-        {this.movieCarStoryline(storyline)}
-        {this.movieCarRatingBookmarked(rating, bookmarked)}
+        {this.movieCardImg(imagePath, title)}
+        {this.movieCardInfo(title, genre)}
+        {this.movieCardStoryline(storyline)}
+        {this.movieCardButton(id, 'details')}
       </div>
     );
   }
@@ -58,6 +62,7 @@ class MovieCard extends React.Component {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
     storyline: PropTypes.string.isRequired,

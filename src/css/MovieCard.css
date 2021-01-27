@@ -1,28 +1,3 @@
-@font-face {
-  font-family: BlackOneRegular;
-  src: url('../font/black_ops_one//BlackOpsOne-Regular.ttf');
-}
-
-@font-face {
-  font-family: Alata;
-  src: url('../font//alata/Alata-Regular.ttf');
-}
-
-@font-face {
-  font-family: FiraMono;
-  src: url('../font/fira_mono/FiraMono-Regular.ttf');
-}
-
-@font-face {
-  font-family: SairaExtraMedium;
-  src: url('../font/saira_extra_condensed/SairaExtraCondensed-Medium.ttf');
-}
-
-@font-face {
-  font-family: Michroma;
-  src: url('../font//michroma/Michroma-Regular.ttf');
-}
-
 .movie-card-content {
   background-color: rgb(26, 24, 24);
   border-radius: 2px;
@@ -32,12 +7,20 @@
   flex-flow: column;
   font-size: 16px;
   height: calc(50vh + 200px);
+  justify-content: space-between;
   margin: 3px;
-  width: calc((100% / 5) + 60px);
+  transition: transform 400ms;
+  width: calc((100% / 5) + 80px);
 }
 
-.movie-car-img {
-  height: 50%;
+.movie-card-content:hover {
+  background-color: black;
+  border: 1px ridge silver;
+  cursor: pointer;
+}
+
+.movie-card-img {
+  height: 48%;
   width: 100%;
 }
 
@@ -48,51 +31,83 @@
   width: 100%;
 }
 
-.movie-car-info {
-  height: auto;
+.movie-card-info {
+  height: 12%;
   margin: 3px auto;
   padding: 3px;
   width: 98%;
 }
 
-.movie-car-title {
+.movie-card-title {
   display: block;
   font-family: Alata , sans-serif;
   font-size: calc(2vh + 1vw);
   letter-spacing: 5px;
   margin: 5px 0;
+  width: 100%;
 }
 
-.movie-car-subtitle {
-  font-family: FiraMono , sans-serif;
-  font-size: calc(0.8vh + 1vw);
-  margin-right: 10%;
-}
-
-.movie-car-genre {
+.movie-card-genre {
   font-size: calc(0.8vh + 0.8vw);
+  width: 30%;
 }
 
-.movie-car-storyline {
+.movie-card-storyline {
+  border-bottom: 1px outset rgb(36, 36, 36);
+  height: 30%;
+  padding: 1%;
+  width: 98%;
+}
+
+.movie-card-content:hover .movie-card-storyline {
+  border-bottom: 1px outset silver;
+}
+
+.movie-card-storyline p {
   font-family: Michroma , sans-serif;
-  font-size: calc(0.8vh + 0.6vw);
+  font-size: calc(0.7vh + 0.6vw);
   letter-spacing: 2px;
-  padding: 3px;
+  width: 100%;
+}
+
+.movie-card-button-container {
+  height: 8%;
+  width: 45%;
+}
+
+.movie-card-btn-details {
+  background-color: rgb(43, 40, 40);
+  color: azure;
+  margin: 2.5% 0 0 3%;
+  width: 100%;
+}
+
+.movie-card-content:hover .movie-card-btn-details {
+  background-color: rgb(5, 5, 5);
+  border: 2px inset silver;
+  border-radius: 0;
 }
 
 @media screen and ( max-width : 800px ) {
 
   .movie-card-content {
-    height: calc(15vh 120px);
-    width: calc(100% / 3);
+    height: calc(60vh + 120px);
+    width: calc((100% / 4) + 6%);
   }
 }
 
 @media screen and ( max-width : 600px ) {
 
   .movie-card-content {
-    border: none;
-    height: calc(10vh 80px);
-    width: calc(100% / 2);
+    height: calc(50vh + 80px);
+    width: calc((100% / 3) + 15%);
+  }
+}
+
+@media screen and ( max-width : 380px ) {
+
+  .movie-card-content {
+    height: calc(55vh + 50px);
+    width: calc((100% / 4) + 20%);
   }
 }

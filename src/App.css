@@ -2,3 +2,64 @@ body {
   background-color: black;
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: BlackOneRegular;
+  src: url('./font/black_ops_one//BlackOpsOne-Regular.ttf');
+}
+
+@font-face {
+  font-family: Alata;
+  src: url('./font//alata/Alata-Regular.ttf');
+}
+
+@font-face {
+  font-family: FiraMono;
+  src: url('./font/fira_mono/FiraMono-Regular.ttf');
+}
+
+@font-face {
+  font-family: SairaExtraMedium;
+  src: url('./font/saira_extra_condensed/SairaExtraCondensed-Medium.ttf');
+}
+
+@font-face {
+  font-family: Michroma;
+  src: url('./font//michroma/Michroma-Regular.ttf');
+}
+
+a:link {
+  text-decoration: none;
+}
+
+button {
+  background-color: rgba(236, 226, 226, 0.774);
+  border: none;
+  border-radius: 4px;
+  color: rgba(46, 46, 46, 0.904);
+  font-family: ' Oswald' , sans-serif;
+  font-size: calc(0.4vh + 0.8vw);
+  height: calc(1vh + 2vw);
+  margin: 5px;
+  width: calc(5vh + 5vw);
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  background-color: rgba(202, 177, 177, 0.774);
+  cursor: pointer;
+}
+
+input [ type = 'text' ], input [ type = 'email' ], input [ type = 'password' ] {
+  border: 1px solid rgb(187, 175, 175);
+  border-radius: 4px;
+  display: block;
+  height: 30px;
+  margin: 5px;
+  outline: none;
+  padding: 2px;
+  width: 50%;
+}

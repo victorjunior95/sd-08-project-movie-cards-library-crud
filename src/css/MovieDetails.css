@@ -1,0 +1,30 @@
+.movie-card-subtitle {
+  font-family: FiraMono , sans-serif;
+  font-size: calc(0.8vh + 1vw);
+  margin-right: 10%;
+  width: 70%;
+}
+
+.movie-card-rating-bookmarked {
+  align-items: flex-end;
+  align-self: start;
+  display: flex;
+  height: 5%;
+  margin-bottom: 2px;
+  width: 94%;
+}
+
+.movie-card-rating {
+  background-color: rgb(0, 255, 85);
+  border-radius: 2px;
+  font-size: calc(0.8vh + 0.8vw);
+  height: auto;
+  margin-left: 5%;
+  padding: 0 3%;
+}
+
+.movie-card-bookmarked {
+  font-size: calc(0.4vh + 0.6vw);
+  height: auto;
+  margin-left: 25%;
+}
