@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import './MovieDetails.css';
 
 class MovieDetails extends Component {
   constructor() {
@@ -30,19 +32,33 @@ class MovieDetails extends Component {
     });
   }
 
+  renderLinks() {
+    const { match: { params: { id } } } = this.props;
+    return (
+      <div>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
+      </div>
+    );
+  }
+
   render() {
     const { movie, loading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     if (loading) return <Loading />;
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{`Title: ${title}`}</p>
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
-      </div>
+      <section>
+        <div data-testid="movie-details">
+          <img alt="Movie Cover" src={ `../${imagePath}` } />
+          <p>{`Title: ${title}`}</p>
+          <p>{ `Subtitle: ${subtitle}` }</p>
+          <p>{ `Storyline: ${storyline}` }</p>
+          <p>{ `Genre: ${genre}` }</p>
+          <p>{ `Rating: ${rating}` }</p>
+        </div>
+        {this.renderLinks()}
+      </section>
+
     );
   }
 }
