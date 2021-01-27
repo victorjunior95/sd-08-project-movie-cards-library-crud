@@ -11,7 +11,7 @@ class EditMovie extends Component {
     this.state = {
       status: 'loading',
       shouldRedirect: false,
-      movie: {},
+      movie: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -21,8 +21,8 @@ class EditMovie extends Component {
   }
 
   handleSubmit(updatedMovie) {
-    movieAPI.updatedMovie(updatedMovie).then(() => {
-      this.state({
+    movieAPI.updateMovie(updatedMovie).then(() => {
+      this.setState({
         shouldRedirect: true,
       });
     });
