@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
+import './MovieList.css';
 
 import * as movieAPI from '../services/movieAPI';
 
@@ -36,7 +37,7 @@ class MovieList extends Component {
     const renderMovieCard = movies
       .map((movie) => <MovieCard key={ movie.title } movie={ movie } />);
     return (
-      <div data-testid="movie-list">
+      <div data-testid="movie-list" className="movie-list">
         {loading ? <Loading /> : renderMovieCard}
       </div>
     );
