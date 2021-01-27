@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
-
+import { Route, Redirect } from 'react-router-dom';
 import { Loading, MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
@@ -17,8 +17,10 @@ class EditMovie extends Component {
   }
 
   handleSubmit(updatedMovie) {
-    const tramela = updatedMovie;
-    console.log(tramela);
+    movieAPI.updateMovie(updatedMovie);
+    this.setState({
+      shouldRedirect: true,
+    });
   }
 
   async obtemFilme() {
@@ -29,7 +31,7 @@ class EditMovie extends Component {
     this.setState({
       movie: Movie,
       status: '',
-      shouldRedirect: true,
+      shouldRedirect: false,
     });
     console.log(Movie);
   }
@@ -40,16 +42,25 @@ class EditMovie extends Component {
     );
   }
 
+  renderRedirect() {
+    return (
+      <Route exact path="/">
+        <Redirect to="/" />
+      </Route>
+    );
+  }
+
   render() {
     const { status, shouldRedirect, movie } = this.state;
     console.log(status, shouldRedirect);
     if (shouldRedirect) {
-      // Redirect
+      return (
+        <Redirect to="/" />
+      );
     }
 
     if (status === 'loading') {
-      console.log('entrou loading');
-      this.renderLoading();
+      // Loading
     }
 
     return (
