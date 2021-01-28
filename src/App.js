@@ -14,13 +14,15 @@ class App extends React.Component {
         <div>Movie Card Library CRUD</div>
         <Switch>
           <Route exact path="/" component={ MovieList } />
-          <Route exact path="/movies/new" 
+          <Route exact 
+            path="/movies/new" 
             render={ (props) => 
-            <NewMovie { ...props } /> } 
+              <NewMovie { ...props } /> } 
           />
-          <Route path="/movies/:id/edit" 
+          <Route 
+            path="/movies/:id/edit" 
             render={ (props) => 
-            <EditMovie { ...props } /> } 
+              <EditMovie { ...props } /> } 
           />
           <Route path="/movies/:id" component={ MovieDetails } />
           <Route component={ NotFound } />

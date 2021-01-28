@@ -20,7 +20,6 @@ class MovieDetails extends Component {
     this.hundleApi();
   }
   async handleDelete() {
-
     const { match: { params: { id } } } = this.props;
     await movieAPI.deleteMovie(id);
   }
@@ -47,7 +46,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to={`/movies/${ movies.id }/edit`}>EDITAR</Link>
+        <Link to={`/movies/${movies.id }/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
         <Link to="/" onClick={ this.handleDelete }>DELETAR</Link>
       </div>
