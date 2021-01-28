@@ -20,6 +20,7 @@ MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string,
     storyline: PropTypes.string,
+    id: PropTypes.number,
   }).isRequired,
 };
 
