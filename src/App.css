@@ -1,5 +1,364 @@
 body {
-  background-color: whitesmoke;
+  background-color: #1a4;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='354' height='354' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%237F3' stroke-width='0.2' %3E%3Crect x='-40' y='40' width='75' height='75'/%3E%3Crect x='-35' y='45' width='65' height='65'/%3E%3Crect x='-30' y='50' width='55' height='55'/%3E%3Crect x='-25' y='55' width='45' height='45'/%3E%3Crect x='-20' y='60' width='35' height='35'/%3E%3Crect x='-15' y='65' width='25' height='25'/%3E%3Crect x='-10' y='70' width='15' height='15'/%3E%3Crect x='-5' y='75' width='5' height='5'/%3E%3Crect width='35' height='35'/%3E%3Crect x='5' y='5' width='25' height='25'/%3E%3Crect x='10' y='10' width='15' height='15'/%3E%3Crect x='15' y='15' width='5' height='5'/%3E%3Crect x='40' width='75' height='75'/%3E%3Crect x='45' y='5' width='65' height='65'/%3E%3Crect x='50' y='10' width='55' height='55'/%3E%3Crect x='55' y='15' width='45' height='45'/%3E%3Crect x='60' y='20' width='35' height='35'/%3E%3Crect x='65' y='25' width='25' height='25'/%3E%3Crect x='70' y='30' width='15' height='15'/%3E%3Crect x='75' y='35' width='5' height='5'/%3E%3Crect x='40' y='80' width='35' height='35'/%3E%3Crect x='45' y='85' width='25' height='25'/%3E%3Crect x='50' y='90' width='15' height='15'/%3E%3Crect x='55' y='95' width='5' height='5'/%3E%3Crect x='120' y='-40' width='75' height='75'/%3E%3Crect x='125' y='-35' width='65' height='65'/%3E%3Crect x='130' y='-30' width='55' height='55'/%3E%3Crect x='135' y='-25' width='45' height='45'/%3E%3Crect x='140' y='-20' width='35' height='35'/%3E%3Crect x='145' y='-15' width='25' height='25'/%3E%3Crect x='150' y='-10' width='15' height='15'/%3E%3Crect x='155' y='-5' width='5' height='5'/%3E%3Crect x='120' y='40' width='35' height='35'/%3E%3Crect x='125' y='45' width='25' height='25'/%3E%3Crect x='130' y='50' width='15' height='15'/%3E%3Crect x='135' y='55' width='5' height='5'/%3E%3Crect y='120' width='75' height='75'/%3E%3Crect x='5' y='125' width='65' height='65'/%3E%3Crect x='10' y='130' width='55' height='55'/%3E%3Crect x='15' y='135' width='45' height='45'/%3E%3Crect x='20' y='140' width='35' height='35'/%3E%3Crect x='25' y='145' width='25' height='25'/%3E%3Crect x='30' y='150' width='15' height='15'/%3E%3Crect x='35' y='155' width='5' height='5'/%3E%3Crect x='200' y='120' width='75' height='75'/%3E%3Crect x='40' y='200' width='75' height='75'/%3E%3Crect x='80' y='80' width='75' height='75'/%3E%3Crect x='85' y='85' width='65' height='65'/%3E%3Crect x='90' y='90' width='55' height='55'/%3E%3Crect x='95' y='95' width='45' height='45'/%3E%3Crect x='100' y='100' width='35' height='35'/%3E%3Crect x='105' y='105' width='25' height='25'/%3E%3Crect x='110' y='110' width='15' height='15'/%3E%3Crect x='115' y='115' width='5' height='5'/%3E%3Crect x='80' y='160' width='35' height='35'/%3E%3Crect x='85' y='165' width='25' height='25'/%3E%3Crect x='90' y='170' width='15' height='15'/%3E%3Crect x='95' y='175' width='5' height='5'/%3E%3Crect x='120' y='160' width='75' height='75'/%3E%3Crect x='125' y='165' width='65' height='65'/%3E%3Crect x='130' y='170' width='55' height='55'/%3E%3Crect x='135' y='175' width='45' height='45'/%3E%3Crect x='140' y='180' width='35' height='35'/%3E%3Crect x='145' y='185' width='25' height='25'/%3E%3Crect x='150' y='190' width='15' height='15'/%3E%3Crect x='155' y='195' width='5' height='5'/%3E%3Crect x='160' y='40' width='75' height='75'/%3E%3Crect x='165' y='45' width='65' height='65'/%3E%3Crect x='170' y='50' width='55' height='55'/%3E%3Crect x='175' y='55' width='45' height='45'/%3E%3Crect x='180' y='60' width='35' height='35'/%3E%3Crect x='185' y='65' width='25' height='25'/%3E%3Crect x='190' y='70' width='15' height='15'/%3E%3Crect x='195' y='75' width='5' height='5'/%3E%3Crect x='160' y='120' width='35' height='35'/%3E%3Crect x='165' y='125' width='25' height='25'/%3E%3Crect x='170' y='130' width='15' height='15'/%3E%3Crect x='175' y='135' width='5' height='5'/%3E%3Crect x='200' y='200' width='35' height='35'/%3E%3Crect x='200' width='35' height='35'/%3E%3Crect y='200' width='35' height='35'/%3E%3C/g%3E%3C/svg%3E");
   box-sizing: border-box;
+  font-size: 16px;
 }
 
+.movie-card-header {
+  align-items: center;
+  background-color: #131414;
+  box-shadow: rgba(153, 205, 50, 0.8) 0 1px 5px;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.movie-list-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.page-title {
+  background-color: #131414;
+  border-radius: 0 0 55px 55px;
+  bottom: 180px;
+  color: #f8f9fa;
+  font-size: 20px;
+  font-weight: 500;
+  height: 20px;
+  left: -145px;
+  margin: 0;
+  padding: 15px 20px 20px;
+  position: fixed;
+  text-align: center;
+  transform: rotate(270deg);
+  width: 300px;
+}
+
+.movie-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin: auto;
+  max-width: 1502px;
+  padding: 20px 30px 20px 60px;
+}
+
+.movie-card {
+  background-color: white;
+  border: none;
+  border-radius: 3px;
+  box-shadow: #003809b7 3px 3px 5px;
+  display: flex;
+  flex-direction: column;
+  height: 470px;
+  margin: 10px 2px;
+  overflow: hidden;
+  width: 330px;
+}
+
+.movie-card-detail {
+  background-color: white;
+  border: none;
+  border-radius: 3px;
+  box-shadow: #003809b7 3px 3px 5px;
+  display: flex;
+  flex-direction: row;
+  height: 350px;
+  margin: 50px auto;
+  overflow: hidden;
+  width: 900px;
+}
+
+.movie-card-detail img {
+  width: 500px;
+}
+
+.detail-container {
+  font-size: 18px;
+  padding: 25px 25px 10px;
+  width: 400px;
+}
+
+.movie-card:hover {
+  height: 500px;
+  transition: all 0.5s;
+  width: 350px;
+}
+
+.details-actions {
+  align-items: flex-end;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 5px;
+}
+
+.root {
+  position: relative;
+}
+
+
+.movie-card-image {
+  width: 100%;
+}
+
+.movie-card-body {
+  flex: 1 1 auto;
+  padding: 20px;
+}
+
+.movie-card-title {
+  color: #131414;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: #6c757d 2px 2px 3px;
+}
+
+.movie-card-subtitle {
+  color: #6c757d;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+
+.movie-card-storyline {
+  font-size: 16px;
+  margin-bottom: 0;
+  text-align: justify;
+}
+
+.rating {
+  align-self: flex-end;
+  border: #b4bfca solid 1px;
+  border-left: none;
+  border-radius: 0 25px 25px 0;
+  color: rgb(168, 135, 44);
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 3px;
+  padding: 10px 15px 8px;
+}
+
+.movie-card-rating {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px 20px 10px;
+}
+
+.movie-card-top {
+  position: relative;
+}
+
+.bookmarked {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 30px;
+}
+
+.star-max {
+  height: 45px;
+}
+
+.star {
+  height: 45px;
+}
+
+.genre {
+  color: rgb(90, 0, 0);
+  margin-bottom: 0;
+  text-align: right;
+}
+
+.loading {
+  color: #215524;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 200px;
+  text-align: center;
+}
+
+.loading img {
+  margin: auto;
+  width: 150px;
+}
+
+.details {
+  color: rgb(126, 107, 0);
+  margin: 0 15px 5px;
+  text-decoration: none;
+}
+
+.form-container {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  box-shadow: #003809b7 3px 3px 5px;
+  color: #131414;
+  display: flex;
+  height: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  width: 800px;
+}
+
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 10px auto;
+  width: 90%;
+}
+
+form div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+}
+
+form label {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 10px;
+  text-shadow: rgba(1, 43, 13, 0.6) 2px 2px 2px;
+  width: 80px;
+}
+
+form input {
+  border: #07520d solid 1px;
+  border-radius: 5px;
+  box-shadow: rgb(0, 82, 24) 2px 2px 3px;
+  font-size: 17px;
+  height: 26px;
+  margin: 10px;
+  padding: 2px 10px;
+  width: 250px;
+}
+
+form textarea {
+  border: #07520d solid 1px;
+  border-radius: 5px;
+  box-shadow: rgb(0, 82, 24) 2px 2px 3px;
+  font-size: 17px;
+  height: 150px;
+  margin: 10px;
+  padding: 5px 10px;
+  width: 300px;
+}
+
+form select {
+  border: #07520d solid 1px;
+  border-radius: 5px;
+  box-shadow: rgb(0, 82, 24) 2px 2px 3px;
+  font-size: 17px;
+  height: 32px;
+  margin: 10px;
+  padding: 2px 10px;
+  width: 150px;
+}
+
+.button-container {
+  width: 50%;
+}
+
+.green {
+  background-color: #ffffffd5;
+  border: #028a19c9 solid 5px;
+  border-radius: 5px;
+  color: #028a19c9;
+  font-size: 20px;
+  font-weight: 700;
+  margin: auto 5px 5px auto;
+  padding: 10px 25px;
+}
+
+.green:hover {
+  background-color: white;
+  border: #028a18 solid 5px;
+  color: #028a18;
+}
+
+.red {
+  background-color: #ffffffd5;
+  border: #8a0202c9 solid 5px;
+  border-radius: 5px;
+  color: #8a0202c9;
+  font-size: 20px;
+  font-weight: 700;
+  margin: auto 5px 5px auto;
+  padding: 10px 25px;
+  text-decoration: none;
+}
+
+.red:hover {
+  background-color: white;
+  border: #8a0202 solid 5px;
+  color: #8a0202;
+}
+
+.bookmarked-input {
+  border-radius: 15px;
+  width: 25px;
+}
+
+.rating-input {
+  width: 50px;
+}
+
+.handler-card {
+  background-color: #131414;
+  border-radius: 0 0 55px 55px;
+  bottom: 550px;
+  color: #f8f9fa;
+  font-size: 20px;
+  font-weight: 500;
+  height: 20px;
+  left: -120px;
+  margin: 0;
+  padding: 15px 20px 20px;
+  position: fixed;
+  text-align: center;
+  text-decoration: none;
+  transform: rotate(270deg);
+  width: 250px;
+}
+
+.delete {
+  bottom: 510px;
+  left: -100px;
+  width: 200px;
+}
+
+.error-404 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.error-404 p {
+  color: #09122e;
+  font-size: 1px;
+  position: relative;
+  top: -320px;
+}
+
+.error-404-img {
+  width: 45%;
+}
+
+.max-width-screen {
+  width: 100%;
+}
