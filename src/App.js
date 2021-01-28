@@ -14,7 +14,8 @@ class App extends React.Component {
         <div>Movie Card Library CRUD</div>
         <Switch>
           <Route exact path="/" component={ MovieList } />
-          <Route exact path="/movies/new"
+          <Route
+            path="/movies/new"
             render={ (props) => <NewMovie { ...props } /> }
           />
           <Route
