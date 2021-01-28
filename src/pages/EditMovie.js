@@ -6,7 +6,9 @@ import { MovieForm } from '../components';
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      // loading: true,
+    };
     // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
