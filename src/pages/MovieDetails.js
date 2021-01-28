@@ -20,6 +20,7 @@ class MovieDetails extends Component {
     this.hundleApi();
   }
   async handleDelete() {
+
     const { match: { params: { id } } } = this.props;
     await movieAPI.deleteMovie(id);
   }
@@ -27,7 +28,7 @@ class MovieDetails extends Component {
   async hundleApi() {
     const { match: { params: { id } } } = this.props;
     const result = await movieAPI.getMovie(id);
-    
+
     this.setState({
       movies: result,
     });
@@ -36,7 +37,7 @@ class MovieDetails extends Component {
   render() {
     const { movies } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movies;
- 
+
     return (
       <div data-testid="movie-details">
         <Loading />
@@ -46,7 +47,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to={ `/movies/${movies.id }/edit`}>EDITAR</Link>
+        <Link to={`/movies/${ movies.id }/edit`}>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
         <Link to="/" onClick={ this.handleDelete }>DELETAR</Link>
       </div>
