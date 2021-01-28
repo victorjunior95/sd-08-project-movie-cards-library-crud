@@ -1,0 +1,27 @@
+.loading{
+    animation: spin 1.5s ease-in infinite;
+    border: 16px solid #FFF;
+    border-radius: 50%;
+    border-top: 16px solid #4AF910;
+    border-bottom: 16px solid #4AF910;
+    height: 120px;
+    position: fixed;
+    top: 40vh;
+    right: 45vw;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    width: 120px;
+}
+/* Necessario para manter os testes rodando! */
+.loading-text{
+    display: none;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
