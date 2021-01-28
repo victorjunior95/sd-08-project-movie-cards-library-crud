@@ -17,7 +17,7 @@ class App extends React.Component {
           <Route exact 
             path="/movies/new" 
             render={ (props) => 
-              <NewMovie { ...props } /> } 
+              <NewMovie { ...props } /> }
           />
           <Route 
             path="/movies/:id/edit" 
