@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import * as movieAPI from '../services/movieAPI';
-import { Loading } from '../components';
+// import * as movieAPI from '../services/movieAPI';
+// import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  render() {
+  /* render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
 
@@ -18,6 +18,13 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
       </div>
+    );
+  } */
+  render() {
+    return (
+      <section data-testid="movie-details">
+        Teste do MovieDetails
+      </section>
     );
   }
 }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
 
-import * as movieAPI from '../services/movieAPI';
+// import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
-  constructor() {
+  /* constructor() {
     super();
 
     this.state = {
@@ -21,6 +21,13 @@ class MovieList extends Component {
       <div data-testid="movie-list">
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
+    );
+  } */
+  render() {
+    return (
+      <section data-testid="movie-list">
+        <MovieCard />
+      </section>
     );
   }
 }

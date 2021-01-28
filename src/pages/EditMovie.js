@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import { MovieForm } from '../components';
-import * as movieAPI from '../services/movieAPI';
+// import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
-  constructor(props) {
+  /* constructor(props) {
     super(props);
     this.state = {};
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,6 +27,14 @@ class EditMovie extends Component {
       <div data-testid="edit-movie">
         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
       </div>
+    );
+  } */
+  render() {
+    return (
+      <section data-testid="edit-movie">
+        Teste do EditMovie
+        <MovieForm />
+      </section>
     );
   }
 }
