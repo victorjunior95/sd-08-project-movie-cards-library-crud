@@ -4,7 +4,7 @@ import { MovieList, MovieDetails, NewMovie, EditMovie, NotFound } from './pages'
 
 function App() {
   return (
-    <>
+    <main>
       <div>Movie Card Library CRUD</div>
       <Router>
         <Switch>
@@ -15,7 +15,7 @@ function App() {
           <Route path="/" component={ NotFound } />
         </Switch>
       </Router>
-    </>
+    </main>
   );
 }
 
