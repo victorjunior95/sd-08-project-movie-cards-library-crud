@@ -10,12 +10,11 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <BrowserRouter>
-      <div>Movie Card Library CRUD</div>
       <Switch>
-        <Route path="/movies/:id" component={ MovieDetails } />
-        <Route path="/movies/new" component={ NewMovie } />
         <Route path="/movies/:id/edit" component={ EditMovie } />
-        <Route Path="/" exact component={ Movielist } />
+        <Route path="/movies/new" component={ NewMovie } />
+        <Route path="/movies/:id" component={ MovieDetails } />
+        <Route exact path="/" component={ Movielist } />
         <Route component={ NotFound } />
       </Switch>
     </BrowserRouter>
