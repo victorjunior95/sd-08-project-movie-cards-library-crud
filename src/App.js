@@ -12,13 +12,9 @@ function App() {
     <Router>
       <header className="movie-card-header">Movie Card Library CRUD</header>
       <Switch>
-        <Route exact path="/movies/new"><NewMovie /></Route>
-        <Route exact path="/movies/:id/edit"><EditMovie /></Route>
-        <Route
-          exact
-          path="/movies/:id"
-          render={ (props) => <MovieDetails { ...props } /> }
-        />
+        <Route path="/movies/new"><NewMovie /></Route>
+        <Route path="/movies/:id/edit" render={ (props) => <EditMovie { ...props } /> } />
+        <Route path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
         <Route exact path="/"><MovieList /></Route>
         <Route path="*"><NotFound /></Route>
       </Switch>

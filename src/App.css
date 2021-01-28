@@ -181,3 +181,42 @@ body {
   padding: 15px 30px;
   text-decoration: none;
 }
+
+.movie-forms-content {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-forms {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: 800px;
+}
+
+.movie-forms label {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.movie-forms input, select {
+  border-radius: 5px;
+  height: 30px;
+  margin-bottom: 10px;
+  width: auto;
+}
+
+.movie-forms textarea {
+  border-radius: 5px;
+  height: 60px;
+  margin-bottom: 10px;
+  width: auto;
+}
+
+.movie-forms button {
+  background-color: gold;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 15px 30px;
+
+}

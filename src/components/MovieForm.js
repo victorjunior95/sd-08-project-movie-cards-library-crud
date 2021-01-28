@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import '../App.css';
+
 class MovieForm extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +29,7 @@ class MovieForm extends React.Component {
             placeholder="Insira o título"
             id="movie_title"
             type="text"
-            className="validate"
+            className="movie-forms-input"
             value={ title }
             onChange={ (event) => this.updateMovie('title', event.target.value) }
           />
@@ -47,6 +49,7 @@ class MovieForm extends React.Component {
             placeholder="Insira o subtítulo"
             id="movie_subtitle"
             type="text"
+            className="movie-forms-input"
             value={ subtitle }
             onChange={ (event) => this.updateMovie('subtitle', event.target.value) }
           />
@@ -66,6 +69,7 @@ class MovieForm extends React.Component {
             placeholder="Insira o caminho da imagem"
             id="movie_image"
             type="text"
+            className="movie-forms-input"
             value={ imagePath }
             onChange={ (event) => this.updateMovie('imagePath', event.target.value) }
           />
@@ -84,6 +88,7 @@ class MovieForm extends React.Component {
           <textarea
             id="movie_storyline"
             value={ storyline }
+            className="movie-forms-input"
             onChange={ (event) => this.updateMovie('storyline', event.target.value) }
           />
           Sinopse
@@ -97,7 +102,6 @@ class MovieForm extends React.Component {
     return (
       <div>
         <label htmlFor="movie_genre">
-          Gênero
           <select
             id="movie_genre"
             value={ genre }
@@ -108,6 +112,7 @@ class MovieForm extends React.Component {
             <option value="thriller">Suspense</option>
             <option value="fantasy">Fantasia</option>
           </select>
+          Gênero
         </label>
       </div>
     );
@@ -149,8 +154,8 @@ class MovieForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form>
+      <div className="movie-forms-content">
+        <form className="movie-forms">
           {this.renderTitleInput()}
           {this.renderSubtitleInput()}
           {this.renderImagePathInput()}
