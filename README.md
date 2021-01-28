@@ -275,10 +275,10 @@ Os campos devem existir no cartão conforme ilustrado na imagem abaixo.
 
 #### O que será verificado:
 ```
-- `MovieDetails` deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição
-- `MovieDetails` deverá exibir o título, o subtítulo, a sinopse, a imagem e o gênero do filme
-- `MovieDetails` deverá conter um botão com o texto "VOLTAR" que redireciona para a página inicial
-- `MovieDetails` deverá conter um botão com o texto "EDITAR" que redireciona para a página de edição de filme
+- deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição
+- deverá exibir o título, o subtítulo, a sinopse, a imagem e o gênero do filme
+- deverá conter um botão com o texto "VOLTAR" que redireciona para a página inicial
+- deverá conter um botão com o texto "EDITAR" que redireciona para a página de edição de filme
 ```
 
 ![image](card-details.png)
@@ -298,6 +298,14 @@ Para correta avaliação, os campos do formulário devem possuir as seguintes ta
 - label: 'Avaliação', entrada: tag `<input>`, de tipo 'number' com valores que vão de 0 (mínimo) a 5 (máximo), com um step de 0.1.
 
 Obs: O conteúdo das tags `<label>` devem estar idênticos ao específicado acima. Importante associar corretamente todas as suas entradas e labels!
+
+#### O que será verificado:
+```
+- `MovieDetails` deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição
+- `MovieDetails` deverá exibir o título, o subtítulo, a sinopse, a imagem e o gênero do filme
+- `MovieDetails` deverá conter um botão com o texto "VOLTAR" que redireciona para a página inicial
+- `MovieDetails` deverá conter um botão com o texto "EDITAR" que redireciona para a página de edição de filme
+```
 
 ### 5 - Realize uma requisição para buscar o filme que será editado em `EditMovie`
 
