@@ -75,5 +75,11 @@ body {
 }
 
 .movie-card a:hover {
-  color:aquamarine;
+  color: rgb(250, 145, 60);
+}
+
+.loading {
+  color: #343a40;
+  font-size: 30px;
+  text-align: center;
 }
