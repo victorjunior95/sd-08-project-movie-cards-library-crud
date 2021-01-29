@@ -17,37 +17,36 @@ class MovieList extends Component {
     this.mapMovieElements = this.mapMovieElements.bind(this);
   }
 
-  async fetchMovieAPI() {
-    const movieData = await movieAPI.getMovies();
-    this.setState({
-      loading: false,
-      movies: movieData
-    })
-    console.log(movieData);
-  }
-
   componentDidMount() {
     this.fetchMovieAPI();
   }
 
+  async fetchMovieAPI() {
+    const movieData = await movieAPI.getMovies();
+    this.setState({
+      loading: false,
+      movies: movieData,
+    });
+    console.log(movieData);
+  }
+
   mapMovieElements() {
-    const {movies} = this.state;
+    const { movies } = this.state;
     return (
       <div>
-      {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
-    )
+    );
   }
 
   render() {
     const { loading } = this.state;
 
-    const loadingElement = <Loading />
+    const loadingElement = <Loading />;
 
     return (
       <div data-testid="movie-list">
         <div>{loading ? loadingElement : this.mapMovieElements()}</div>
-        
       </div>
     );
   }
