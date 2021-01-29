@@ -8,14 +8,18 @@ import * as movieAPI from '../services/movieAPI';
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
+
     const { match: { params: { id } } } = props;
+
     this.state = {
       id,
       loading: true,
       movie: {},
     };
+
     this.fetchMovie = this.fetchMovie.bind(this);
     this.deleteHandler = this.deleteHandler.bind(this);
+
   }
 
   componentDidMount() {
@@ -66,9 +70,9 @@ class MovieDetails extends Component {
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
         { this.movieInfo(movie) }
-        <Link to="/">Voltar</Link>
-        <Link to={ `/movies/${id}/edit` }>Editar</Link>
-        <Link to="/" onClick={ this.deleteHandler }>Apagar</Link>
+        <Link to="/">VOLTAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.deleteHandler }>DELETAR</Link>
       </div>
     );
   }
