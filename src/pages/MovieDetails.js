@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Proptypes from 'prop-types';
 
 import { Loading } from '../components';
@@ -42,20 +42,33 @@ class MovieDetails extends Component {
     );
   }
 
-  render() {
-    const { loading, movie } = this.state;
-    if (loading) return <Loading />;
-    if (!movie) return <Redirect to="/" />;
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
-
+  movieInfo(movie) {
+    const { title, storyline, genre, rating, subtitle } = movie;
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
+      <>
         <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+      </>
+    );
+  }
+
+  render() {
+    const { loading, movie } = this.state;
+    if (loading) return <Loading />;
+    if (!movie) return <Redirect to="/" />;
+
+    const { imagePath, id } = movie;
+
+    return (
+      <div data-testid="movie-details">
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        { this.movieInfo(movie) }
+        <Link to="/">Voltar</Link>
+        <Link to={ `/movies/${id}/edit` }>Editar</Link>
+        <Link to="/" onClick={ this.deleteHandler }>Apagar</Link>
       </div>
     );
   }
