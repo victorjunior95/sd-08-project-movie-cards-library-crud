@@ -17,7 +17,7 @@ body {
 
 .movie-card-header {
   align-items: center;
-  background-color: #000;
+  background-color: black;
   display: flex;
   height: 100px;
   justify-content: center;
