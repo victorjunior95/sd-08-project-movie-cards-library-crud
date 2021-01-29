@@ -9,7 +9,7 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
 
-    const { match: { params: { id } } } = props;
+    const { match: { params: { id } } } = this.props;
 
     this.state = {
       id,
@@ -77,9 +77,9 @@ class MovieDetails extends Component {
 }
 
 MovieDetails.propTypes = {
-  match: PropTypes.objectOf({
-    params: PropTypes.objectOf({
-      id: PropTypes.number.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };
