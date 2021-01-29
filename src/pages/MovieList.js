@@ -33,14 +33,6 @@ class MovieList extends Component {
       </div>
     );
   }
-
-  /* render() {
-    return (
-      <section data-testid="movie-list">
-        <MovieCard />
-      </section>
-    );
-  } */
 }
 
 export default MovieList;
