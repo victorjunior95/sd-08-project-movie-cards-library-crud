@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../netflix.jpg';
+import Logo from './pirata.jpeg';
 
 class Header extends React.Component {
   render() {
