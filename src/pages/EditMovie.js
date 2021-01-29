@@ -8,7 +8,7 @@ import * as movieAPI from '../services/movieAPI';
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-    const { match: { params: { id } } } = this.props;
+    const { match: { params: { id } } } = props;
     this.state = {
       id,
       status: 'loading',
@@ -41,7 +41,7 @@ class EditMovie extends Component {
       { status: 'loading' },
       async (previous) => {
         const { id } = this.state;
-        const movie = movieAPI.getMovie(id);
+        const movie = await movieAPI.getMovie(id);
         this.setState({
           ...previous,
           status: 'ready',
