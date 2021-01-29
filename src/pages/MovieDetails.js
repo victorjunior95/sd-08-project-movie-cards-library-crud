@@ -16,10 +16,8 @@ class MovieDetails extends Component {
       loading: true,
       movie: {},
     };
-
     this.fetchMovie = this.fetchMovie.bind(this);
     this.deleteHandler = this.deleteHandler.bind(this);
-
   }
 
   componentDidMount() {
