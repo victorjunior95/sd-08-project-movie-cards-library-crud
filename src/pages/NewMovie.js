@@ -13,17 +13,16 @@ class NewMovie extends Component {
     };
   }
 
-  handleSubmit(newMovie) {
-    movieAPI.createMovie(newMovie);
+  async handleSubmit(newMovie) {
+    await movieAPI.createMovie(newMovie);
+    this.setState({ redirect: true });
   }
 
   render() {
     const { redirect } = this.state;
 
     if (redirect) {
-      return (
-        <Redirect to="/" />
-      );
+      return <Redirect to="/" />;
     }
 
     return (
