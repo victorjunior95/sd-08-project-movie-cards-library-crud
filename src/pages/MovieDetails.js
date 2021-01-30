@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -13,22 +13,21 @@ class MovieDetails extends Component {
     };
   }
 
-    componentDidMount() {
-      const { match: {params: { id } } } = this.props;
-      movieAPI.getMovie(id).then((data) => {
-        this.setState({
-          movie: data,
-          loading: false,
-        });
+  componentDidMount() {
+    const { match: { params: { id } } } = this.props;
+    movieAPI.getMovie(id).then((data) => {
+      this.setState({
+        movie: data,
+        loading: false,
       });
-    }
+    });
+  }
 
   render() {
-
     const { movie: { title, storyline, imagePath, genre, rating, subtitle, id },
       loading } = this.state;
-    if (loading) return <Loading />
-    
+    if (loading) return <Loading />;
+
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
