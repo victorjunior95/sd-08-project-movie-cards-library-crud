@@ -14,10 +14,10 @@ class MovieDetails extends Component {
 
   componentDidMount() {
     movieAPI.getMovie(props.params.match.id)
-      .then((data) => this.setState({
+      .then((data) => this.setState(() => ({
         movie: data,
         loading: false,
-      }));
+      })));
   }
 
   render() {
