@@ -20,7 +20,7 @@ class MovieDetails extends Component {
   }
 
   async fetchMovie() {
-    const { id } = this.props.match.params;
+    const { match: { params: { id } } } = this.props;
     this.setState(
       { loading: true },
       async () => {
@@ -35,7 +35,7 @@ class MovieDetails extends Component {
   }
 
   async fetchDelete() {
-    const { id } = this.props.match.params;
+    const { match: { params: { id } } } = this.props;
     await movieAPI.deleteMovie(id);
     this.setState({
       shouldRedirect: true,
@@ -43,14 +43,15 @@ class MovieDetails extends Component {
   }
 
   renderLinks = () => {
-    const { id } = this.props.match.params;
+    const { match: { params: { id } } } = this.props;
+    const { movie } = this.state;
     return (
       <>
         <Link
           to={ {
             pathname: `/movies/${id}/edit`,
-            state: { updatedMovie: this.state.movie } } }
-          movie={ this.state.movie }
+            state: { updatedMovie: movie } } }
+          movie={ movie }
         >
           EDITAR
         </Link>
@@ -63,7 +64,8 @@ class MovieDetails extends Component {
   }
 
   renderMovie = () => {
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+    const { movie } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
 
     return (
       <>

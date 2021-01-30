@@ -11,12 +11,12 @@ class NewMovie extends Component {
 
   async handleSubmit(state) {
     await movieAPI.createMovie(state);
-}
+  }
 
   render() {
     return (
       <div data-testid="new-movie">
-        <MovieForm onSubmit={this.handleSubmit} />
+        <MovieForm onSubmit={ this.handleSubmit } />
       </div>
     );
   }
