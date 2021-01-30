@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import * as movieAPI from '../services/movieAPI';
 
 class MovieForm extends React.Component {
   constructor(props) {
@@ -21,31 +20,13 @@ class MovieForm extends React.Component {
     });
   }
 
-  // async fetchUpdatedMovie() {
-  //   this.setState(
-  //     {loading: true,
-  //     shoushouldRedirect: false},
-  //     async () => {
-  //       const updatedMovie = await movieAPI.updateMovie(this.state);
-  //       this.setState({
-  //         loading:false,
-  //         shouldRedirect: true,
-  //         updatedMovie: updatedMovie
-  //       })
-  //     }
-  //   )
-  // }
-
-  // handleSubmit() {
-  //   return this.fetchUpdatedMovie()
-  // }
-
   updateField(field, newValue) {
     this.setState({ [field]: newValue });
   }
 
   renderTitleInput() {
     const { title } = this.state;
+
     return (
       <div>
         <label htmlFor="movie_title">
@@ -65,8 +46,6 @@ class MovieForm extends React.Component {
 
   renderSubtitleInput() {
     const { subtitle } = this.state;
-    // const {updateField} = this.props.updateField;
-
     return (
       <div>
         <label htmlFor="movie_subtitle">
@@ -85,7 +64,6 @@ class MovieForm extends React.Component {
 
   renderImagePathInput() {
     const { imagePath } = this.state;
-    // const {updateField} = this.props.updateField;
 
     return (
       <div className="row">
@@ -105,7 +83,6 @@ class MovieForm extends React.Component {
 
   renderStorylineInput() {
     const { storyline } = this.state;
-    // const {updateField} = this.props.updateField;
 
     return (
       <div>
