@@ -2,7 +2,8 @@ import React from 'react';
 import {
   BrowserRouter,
   Switch,
-  Route
+  Route,
+  Link
 } from "react-router-dom";
 import {
   MovieList,
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/" component={ MovieList } />
         <Route path="*" component={ NotFound } />
       </Switch>
+      <Link to="/movies/new">ADICIONAR CARTÃO</Link>
     </BrowserRouter>
   );
 }
