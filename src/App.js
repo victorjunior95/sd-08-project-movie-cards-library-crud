@@ -1,25 +1,23 @@
 import React from 'react';
-import {BrowserRouter, Router, Switch ,Redirect} from 'react-router-dom'
-import MovieList from './src/pages/MovieList'
-import MovieDetails from './src/pages/MovieDetails'
-import EditMovie from './src/pages/EditMovie'
-import NewMovie from './src/pages/NewMovie'
-import NotFound from './src/pages/NotFound'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import MovieList from './pages/MovieList';
+import MovieDetails from './pages/MovieDetails';
+import EditMovie from './pages/EditMovie';
+import NewMovie from './pages/NewMovie';
+import NotFound from './pages/NotFound';
 
 // https://stackoverflow.com/questions/32128978/react-router-no-not-found-route
 function App() {
   return (
     <BrowserRouter>
+      <div>Movie Card Library CRUD</div>
       <Switch>
-        <Router exact path="/" component={MovieList} />
-        <Router path="/movies/">
-          <Router path="/movies/:id" component={MovieDetails} >
-            <Router path="/movies/:id/edit" component={EditMovie} />
-          </Router>
-          <Router path="/movies/new" component={NewMovie} />
-        </Router>
+        <Route path="/movies/new" component={ NewMovie } />
+        <Route path="/movies/:id/edit" component={ EditMovie } />
+        <Route path="/movies/:id" component={ MovieDetails } />
+        <Route exact path="/" component={ MovieList } />
+        <Route path="*" component={ NotFound } />
       </Switch>
-      <Redirect component={NotFound}/>
     </BrowserRouter>
   );
 }
