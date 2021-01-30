@@ -8,6 +8,7 @@ class MovieDetails extends Component {
     super();
     this.state = {
       loading: true,
+      movie: [],
     };
   }
 
