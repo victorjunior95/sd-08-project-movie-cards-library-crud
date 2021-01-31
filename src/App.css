@@ -3,3 +3,12 @@ body {
   box-sizing: border-box;
 }
 
+.movie-card {
+  border: 1px solid gray;
+  margin: 0 0 8px 8px;
+}
+
+.movie-card-container {
+  display: flex;
+  /* flex-direction: grid; */
+}
