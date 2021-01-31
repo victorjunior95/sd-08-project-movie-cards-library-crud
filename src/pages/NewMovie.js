@@ -15,13 +15,11 @@ class NewMovie extends Component {
   }
 
   render() {
-    return (
-      <div data-testid="new-movie">
-          NEW MOVIE
-        <Loading />
-        {/* <MovieForm onSubmit={ this.handleSubmit } /> */}
-      </div>
-    );
+    return <div data-testid="new-movie">
+        NEW MOVIE
+      <Loading />
+      <MovieForm onSubmit={ this.handleSubmit } />
+    </div>
   }
 }
 export default NewMovie;

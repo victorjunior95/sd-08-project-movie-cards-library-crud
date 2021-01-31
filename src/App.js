@@ -15,7 +15,8 @@ function App() {
           <Route exact path="/" component={ MovieList } />
           <Route exact path="/movies/new" component={ NewMovie } />
           <Route
-            exact path="/movies/:id"
+            exact
+            path="/movies/:id"
             render={ (movieId) => <MovieDetails { ...movieId } /> }
           />
           <Route exact path="/movies/:id/edit" component={ EditMovie } />
