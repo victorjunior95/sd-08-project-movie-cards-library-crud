@@ -15,7 +15,7 @@ function App() {
           <Route path="/movies/:id/edit" component={ EditMovie } />
           <Route
             path="/movies/:id"
-            render={(movieId) => <MovieDetails { ...movieId } />}
+            render={ (movieId) => <MovieDetails { ...movieId } /> }
           />
           <Route path="/movies/new" component={ NewMovie } />
           <Route path="/" component={ MovieList } />
