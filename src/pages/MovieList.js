@@ -10,6 +10,7 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
+      loading: true,
     };
   }
 
@@ -18,15 +19,14 @@ class MovieList extends Component {
   componentDidMount() {
     movieAPI.getMovies().then((list) => this.setState({
       movies: [...list],
+      loading: false,
     }));
   }
 
   render() {
-    const { movies } = this.state;
+    const { movies, loading } = this.state;
 
-    if (movies.length === 0) {
-      return <Loading />;
-    }
+    if (loading) return <Loading />
 
     return (
       <div data-testid="movie-list">

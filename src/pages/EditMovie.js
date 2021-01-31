@@ -1,34 +1,37 @@
-// import React, { Component } from 'react';
+import React, { Component } from 'react';
 
-// import { MovieForm } from '../components';
+import { Loading, MovieForm } from '../components';
 // import * as movieAPI from '../services/movieAPI';
 
-// class EditMovie extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {};
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//   }
+class EditMovie extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        loading: true,
+    };
+    // this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
 //   handleSubmit(updatedMovie) {
 //   }
 
-//   render() {
-//     const { status, shouldRedirect, movie } = this.state;
-//     if (shouldRedirect) {
-//       // Redirect
-//     }
+render() {
+    //   const { shouldRedirect, movie } = this.state;
+    const {loading} = this.state;
 
-//     if (status === 'loading') {
-//       // render Loading
-//     }
+    // if (shouldRedirect) {
+    //   // Redirect
+    // }
 
-//     return (
-//       <div data-testid="edit-movie">
-//         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
-//       </div>
-//     );
-//   }
-// }
+    if (loading) return <Loading />
 
-// export default EditMovie;
+    return (
+      <div data-testid="edit-movie">
+          EDIT MOVIE
+        {/* <MovieForm movie={ movie } onSubmit={ this.handleSubmit } /> */}
+      </div>
+    );
+  }
+}
+
+export default EditMovie;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import { Link } from 'react-router-dom';
 
 class MovieDetails extends Component {
   constructor() {
@@ -9,6 +10,7 @@ class MovieDetails extends Component {
 
     this.state = {
       movie: [],
+      loading: true,
     };
     this.movieRequest = this.movieRequest.bind(this);
     this.movieDetailsInfo = this.movieDetailsInfo.bind(this);
@@ -25,21 +27,15 @@ class MovieDetails extends Component {
       },
     } = this.props;
     const request = await movieAPI.getMovie(id);
-    console.log(request);
     this.setState({
       movie: request,
+      loading: false,
     });
   }
 
   movieDetailsInfo() {
-    const { movie: {
-      title,
-      storyline,
-      imagePath,
-      genre,
-      rating,
-      subtitle,
-    } } = this.state;
+    const { movie: { title, storyline, imagePath, genre,
+      rating, subtitle, id } } = this.state;
     return (
       <div data-testid="movie-details">
         <h1>{ title }</h1>
@@ -48,13 +44,16 @@ class MovieDetails extends Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
+        <Link to="/">VOLTAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
       </div>
     );
   }
 
   render() {
-    const { movie } = this.state;
-    if (movie.length === 0) return <Loading />;
+    const { movie, loading } = this.state;
+
+    if (loading) return <Loading />;
 
     return (
       <div>

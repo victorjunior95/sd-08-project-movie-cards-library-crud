@@ -12,14 +12,14 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route path="/movies/:id/edit" component={ EditMovie } />
+          <Route exact path="/" component={ MovieList } />
           <Route
             path="/movies/:id"
             render={ (movieId) => <MovieDetails { ...movieId } /> }
           />
-          <Route path="/movies/new" component={ NewMovie } />
-          <Route path="/" component={ MovieList } />
-          <Route component={ NotFound } />
+          <Route path="/movies/:id/edit" component={ EditMovie } />
+          <Route exact path="/movies/new" component={ NewMovie } />
+          <Route path="*" component={ NotFound } />
         </Switch>
       </BrowserRouter>
     </div>
