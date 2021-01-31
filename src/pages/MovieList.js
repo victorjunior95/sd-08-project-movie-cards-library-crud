@@ -16,9 +16,8 @@ class MovieList extends Component {
   // A ideia do setState abaixo para retornar todos os filmes e nao apenas o primeiro
   // consultei o código do github https://github.com/tryber/sd-08-project-movie-cards-library-crud/blob/df1d9fd3728ec7507603c8325cf9d7f61f5de280/src/pages/MovieList.js
   componentDidMount() {
-    movieAPI.getMovies().then((list) =>
-      this.setState({
-        movies: [...list],
+    movieAPI.getMovies().then((list) => this.setState({
+      movies: [...list],
       },)
     );
   }
