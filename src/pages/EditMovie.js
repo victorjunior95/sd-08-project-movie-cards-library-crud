@@ -9,25 +9,24 @@ class EditMovie extends Component {
     this.state = {
       loading: true,
     };
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  //   handleSubmit(updatedMovie) {
-  //   }
+    handleSubmit(updatedMovie) {
+    }
 
   render() {
-    //   const { shouldRedirect, movie } = this.state;
-    const { loading } = this.state;
+    const { shouldRedirect, movie, loading } = this.state;
 
-    // if (shouldRedirect) {
-    //   // Redirect
-    // }
+    if (shouldRedirect) {
+      // Redirect
+    }
 
-    if (loading) return <Loading />;
+    // if (loading) return <Loading />;
 
     return (
       <div data-testid="edit-movie">
-        EDIT MOVIE
+        <h1>EDIT MOVIE</h1>
         <MovieForm />
         {/* <MovieForm movie={ movie } onSubmit={ this.handleSubmit } /> */}
       </div>
