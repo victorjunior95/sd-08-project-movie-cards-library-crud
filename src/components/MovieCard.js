@@ -13,7 +13,7 @@ class MovieCard extends React.Component {
           <img alt="Movie Cover" className="movie-card-image" src={ imagePath } />
           <p className="movie-card-storyline">{storyline}</p>
         </div>
-        <Link to={ `/movies/${id}` }>VER DETALHES</Link>
+        <Link to={ `movies/${id}` }>VER DETALHES</Link>
       </div>
     );
   }
