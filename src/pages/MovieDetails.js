@@ -56,6 +56,6 @@ MovieDetails.propTypes = {
   movie: PropTypes.objectOf(PropTypes.object),
   match: PropTypes.objectOf(PropTypes.object),
 }.isRequired;
-// onClick={ movieAPI.deleteMovie(id) }
+// função não veio de movieAPI onClick={ movieAPI.deleteMovie(id) }
 
 export default MovieDetails;
