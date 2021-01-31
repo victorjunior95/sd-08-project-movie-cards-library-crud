@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import * as movieAPI from "../services/movieAPI";
-import { Loading } from "../components";
+import * as movieAPI from '../services/movieAPI';
+import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
@@ -12,6 +12,7 @@ class MovieDetails extends Component {
     };
     this.movieRequest = this.movieRequest.bind(this);
   }
+
   componentDidMount() {
     this.movieRequest();
   }
@@ -30,29 +31,38 @@ class MovieDetails extends Component {
   }
 
   render() {
-    if (this.state.movie.length === 0) return <Loading />;
+    const { movie } = this.state;
+    if (movie.length === 0) return <Loading />;
 
-    const {
+    const { movie: {
       title,
       storyline,
       imagePath,
       genre,
       rating,
       subtitle,
-    } = this.state.movie;
-    console.log(this.state);
-
+    }} = this.state;
+  
     return (
       <div data-testid="movie-details">
-        <h1>{title}</h1>
-        <img alt="Movie Cover" src={`../${imagePath}`} />
-        <p>{`Subtitle: ${subtitle}`}</p>
-        <p>{`Storyline: ${storyline}`}</p>
-        <p>{`Genre: ${genre}`}</p>
-        <p>{`Rating: ${rating}`}</p>
+        <h1>{ title }</h1>
+        <img alt="Movie Cover" src={ `../${ imagePath }` } />
+        <p>{`Subtitle: ${ subtitle }`}</p>
+        <p>{`Storyline: ${ storyline }`}</p>
+        <p>{`Genre: ${ genre }`}</p>
+        <p>{`Rating: ${ rating }`}</p>
       </div>
     );
   }
 }
+
+// Props Validation consultada no codigo https://github.com/tryber/sd-08-project-movie-cards-library-crud/blob/1848e366c44ac8dec81d5c4c58981b5d7f7d35aa/src/pages/MovieDetails.js
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default MovieDetails;

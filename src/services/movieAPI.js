@@ -1,13 +1,12 @@
-import data from "./movieData";
+import data from './movieData';
 
-localStorage.setItem("movies", JSON.stringify(data));
+localStorage.setItem('movies', JSON.stringify(data));
 
-const readMovies = () => JSON.parse(localStorage.getItem("movies"));
-const saveMovies = (movies) =>
-  localStorage.setItem("movies", JSON.stringify(movies));
+const readMovies = () => JSON.parse(localStorage.getItem('movies'));
+const saveMovies = (movies) => localStorage.setItem('movies', JSON.stringify(movies));
 
 const TIMEOUT = 2000;
-const SUCCESS_STATUS = "OK";
+const SUCCESS_STATUS = 'OK';
 
 // --------------------------------------------------------------------
 // A função simulateRequest simula uma requisição para uma API externa
@@ -22,11 +21,12 @@ const simulateRequest = (response) => (callback) => {
   }, TIMEOUT);
 };
 
-export const getMovies = () =>
+export const getMovies = () => (
   new Promise((resolve) => {
     const movies = readMovies();
     simulateRequest(movies)(resolve);
-  });
+  })
+);
 
 export const getMovie = (movieId) => {
   const movie = readMovies().find((mov) => mov.id === parseInt(movieId, 10));
@@ -35,7 +35,7 @@ export const getMovie = (movieId) => {
   });
 };
 
-export const updateMovie = (updatedMovie) =>
+export const updateMovie = (updatedMovie) => (
   new Promise((resolve) => {
     const movies = readMovies().map((movie) => {
       if (movie.id === parseInt(updatedMovie.id, 10)) {
@@ -45,9 +45,10 @@ export const updateMovie = (updatedMovie) =>
     });
     saveMovies(movies);
     simulateRequest(SUCCESS_STATUS)(resolve);
-  });
+  })
+);
 
-export const createMovie = (movieData) =>
+export const createMovie = (movieData) => (
   new Promise((resolve) => {
     let movies = readMovies();
     const nextId = movies[movies.length - 1].id + 1;
@@ -55,7 +56,8 @@ export const createMovie = (movieData) =>
     movies = [...movies, newMovie];
     saveMovies(movies);
     simulateRequest(SUCCESS_STATUS)(resolve);
-  });
+  })
+);
 
 export const deleteMovie = (movieId) => {
   let movies = readMovies();
