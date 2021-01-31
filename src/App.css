@@ -11,8 +11,8 @@ body {
 
 .edit-movie {
   align-items: center;
-  display: flex;
   align-content:center;
+  display: flex;
   background-color: #007bff;
 }
 
