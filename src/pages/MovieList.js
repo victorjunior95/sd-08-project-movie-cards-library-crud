@@ -11,7 +11,7 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-      loading: false,
+      loading: true,
     };
   }
 
@@ -19,6 +19,7 @@ class MovieList extends Component {
     movieAPI.getMovies().then((data) => {
       this.setState({
         movies: data,
+        loading: false,
       });
     });
   }
