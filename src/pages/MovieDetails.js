@@ -1,25 +1,81 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
+  constructor() {
+    super();
+    this.informount = this.informount.bind(this);
+    this.datamovie = this.datamovie.bind(this);
+    this.infomountaux = this.infomountaux.bind(this);
+    this.state = {
+      info: [],
+    };
+  }
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+  componentDidMount() {
+    this.datamovie();
+  }
 
-    return (
+  datamovie() {
+    const { match } = this.props;
+    const { params } = match;
+    const { id } = params;
+    movieAPI.getMovie(id)
+      .then((data) => (
+        this.setState({
+          info: data,
+        })
+      ));
+  }
+
+  infomountaux(useful) {
+    const component = (
       <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
+        <img alt="Movie Cover" src={ `../${useful[2]}` } />
+        <h2>{`${useful[0]}`}</h2>
+        <p>{ `Subtitle: ${useful[5]}` }</p>
+        <p>{ `Storyline: ${useful[1]}` }</p>
+        <p>{ `Genre: ${useful[3]}` }</p>
+        <p>{ `Rating: ${useful[4]}` }</p>
+        <Link to="/movies/:id/edit">EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
+      </div>
+    );
+    return component;
+  }
+
+  informount() {
+    const { info } = this.state;
+    let infomovie;
+    if (info.length === 0) {
+      infomovie = <Loading />;
+    } else {
+      const { title, storyline, imagePath, genre, rating, subtitle } = info;
+      const useful = [title, storyline, imagePath, genre, rating, subtitle];
+      infomovie = this.infomountaux(useful);
+    }
+    return infomovie;
+  }
+
+  render() {
+    const infomovie = this.informount();
+    return (
+      <div>
+        {infomovie}
       </div>
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default MovieDetails;

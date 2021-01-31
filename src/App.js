@@ -1,5 +1,6 @@
-import React from 'react';
-import { BrowserRouter, Router, Switch } from 'react-router-dom';
+// eslint-disable-next-line no-unused-vars
+import React, { component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
@@ -7,18 +8,17 @@ import NewMovie from './pages/NewMovie';
 import EditMovie from './pages/EditMovie';
 import NotFound from './pages/NotFound';
 
-
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Switch>
-        <Router path="/" component={MovieList} />
-        <Router path='/movies/:id' component={MovieDetails} />
-        <Router path="/movies/new" component={NewMovie} />
-        <Router path="/movies/:id/edit" component={EditMovie} />
-        <Router component={NotFound} />
+        <Route exact path="/" component={ MovieList } />
+        <Route exact path="/movies/:id" component={ MovieDetails } />
+        <Route exact path="/movies/new" component={ NewMovie } />
+        <Route exact path="/movies/:id/edit" component={ EditMovie } />
+        <Route component={ NotFound } />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 }
 
