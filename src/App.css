@@ -10,10 +10,10 @@ body {
 }
 
 .edit-movie {
+  align-content: center;
   align-items: center;
-  align-content:center;
+    background-color: #007bff;
   display: flex;
-  background-color: #007bff;
 }
 
 .header-logo {
