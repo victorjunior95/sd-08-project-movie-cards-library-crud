@@ -10,5 +10,4 @@ body {
 
 .movie-card-container {
   display: flex;
-  /* flex-direction: grid; */
 }
