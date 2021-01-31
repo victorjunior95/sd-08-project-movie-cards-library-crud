@@ -9,6 +9,13 @@ body {
   width: 8%;
 }
 
+.edit-movie {
+  align-items: center;
+  display: flex;
+  align-content:center;
+  background-color: #007bff;
+}
+
 .header-logo {
   display: flex;
   height: 100%;

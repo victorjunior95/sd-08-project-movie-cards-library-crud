@@ -1,34 +1,63 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import '../App.css';
 
-import { MovieForm } from '../components';
+import { Loading, MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+
+    this.state = {
+      shouldRedirect: true,
+      //  loadingMessenge: true,
+      movie: {},
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.fetchMovie = this.fetchMovie.bind(this);
   }
 
-  handleSubmit(updatedMovie) {
+  componentDidMount() {
+    this.fetchMovie();
+  }
+
+  async handleSubmit(updatedMovie) {
+    const { movie } = this.state;
+    await movieAPI.updateMovie(updatedMovie);
+    return ({ movie });
+  }
+
+  async fetchMovie() {
+    const { match: { params: { id } } } = this.props;
+    const data = [await movieAPI.getMovie(id)];
+    this.setState({
+      movie: data,
+    //  loadingMessenge: false,
+    });
   }
 
   render() {
-    const { status, shouldRedirect, movie } = this.state;
+    const { status, shouldRedirect } = this.state;
+    const { movie } = this.state;
     if (shouldRedirect) {
       // Redirect
     }
 
     if (status === 'loading') {
-      // render Loading
+      return (<Loading />);
     }
 
     return (
       <div data-testid="edit-movie">
-        <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
+        <MovieForm movie={ movie } match={ this.match } onSubmit={ this.handleSubmit } />
       </div>
     );
   }
 }
+
+EditMovie.propTypes = {
+  match: PropTypes.objectOf(PropTypes.object),
+}.isRequired;
 
 export default EditMovie;

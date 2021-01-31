@@ -1,16 +1,36 @@
 import React from 'react';
-import PropTypes, { string } from 'prop-types';
+import PropTypes from 'prop-types';
+
+import * as movieAPI from '../services/movieAPI';
+// import Loading from './Loading';
 
 class MovieForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...props.movie };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.fetchMovie = this.fetchMovie.bind(this);
+    this.setState({
+      movie: { ...props.movie },
+    });
+  }
+
+  componentDidMount() {
+    this.fetchMovie();
   }
 
   handleSubmit() {
     const { onSubmit } = this.props;
     onSubmit(this.state);
+  }
+
+  async fetchMovie() {
+    const { match: { params: { id } } } = this.props;
+    const data = [await movieAPI.getMovie(id)];
+    this.setState({
+      movie: data,
+      loadingMessenge: false,
+    });
   }
 
   updateMovie(field, newValue) {
@@ -165,10 +185,8 @@ class MovieForm extends React.Component {
 }
 
 MovieForm.propTypes = {
-  movie: PropTypes.shape({
-    title: string,
-    subtitle: string,
-  }),
+  movie: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   match: PropTypes.objectOf(PropTypes.object),
 }.isRequired;
 
