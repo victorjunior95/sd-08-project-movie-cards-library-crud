@@ -8,7 +8,7 @@ class NewMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      shouldRedirect: true,
+      shouldRedirect: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
