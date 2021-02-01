@@ -45,8 +45,8 @@ class MovieDetails extends Component {
   }
 }
 
-MovieDetails.defaultProps ={
-  match: "" 
+MovieDetails.defaultProps = {
+  match: '',
 };
 
 MovieDetails.propTypes = {
