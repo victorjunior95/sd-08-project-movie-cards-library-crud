@@ -11,11 +11,9 @@ class EditMovie extends Component {
 
     this.state = {
       shouldRedirect: true,
-      //  loadingMessenge: true,
       movie: {},
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.fetchMovie = this.fetchMovie.bind(this);
   }
 
   componentDidMount() {
@@ -33,18 +31,14 @@ class EditMovie extends Component {
     const data = [await movieAPI.getMovie(id)];
     this.setState({
       movie: data,
-    //  loadingMessenge: false,
+      shouldRedirect: false,
     });
   }
 
   render() {
-    const { status, shouldRedirect } = this.state;
-    const { movie } = this.state;
-    if (shouldRedirect) {
-      // Redirect
-    }
+    const { movie, shouldRedirect } = this.state;
 
-    if (status === 'loading') {
+    if (shouldRedirect === true) {
       return (<Loading />);
     }
 
