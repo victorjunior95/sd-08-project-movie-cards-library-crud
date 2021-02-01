@@ -45,6 +45,10 @@ class MovieDetails extends Component {
   }
 }
 
+MovieDetails.defaultProps ={
+  match: "" 
+};
+
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
