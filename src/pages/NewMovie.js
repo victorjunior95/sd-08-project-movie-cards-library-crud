@@ -15,7 +15,6 @@ class NewMovie extends Component {
 
   async handleSubmit(newMovie) {
     const status = await movieAPI.createMovie(newMovie);
-    console.log(typeof status);
     this.setState({
       status,
     });

@@ -14,6 +14,7 @@ class MovieDetails extends Component {
     this.fetchMovie = this.fetchMovie.bind(this);
     this.movieDetailsElement = this.movieDetailsElement.bind(this);
     this.buttonsElements = this.buttonsElements.bind(this);
+    this.handleFetchClick = this.handleFetchClick.bind(this);
 
     this.state = {
       movieDetails: [],
@@ -23,6 +24,10 @@ class MovieDetails extends Component {
 
   componentDidMount() {
     this.fetchMovie();
+  }
+
+  async handleFetchClick(id) {
+    await movieAPI.deleteMovie(id);
   }
 
   async fetchMovie() {
@@ -61,8 +66,15 @@ class MovieDetails extends Component {
     const { match: { params: { id } } } = this.props;
     return (
       <section className="button-content">
-        <Link className="button" to="/">VOLTAR</Link>
         <Link className="button" to={ `./${id}/edit` }>EDITAR</Link>
+        <Link className="button" to="/">VOLTAR</Link>
+        <Link
+          className="button"
+          to="/"
+          onClick={ () => this.handleFetchClick(id) }
+        >
+          DELETAR
+        </Link>
       </section>
     );
   }
@@ -70,6 +82,7 @@ class MovieDetails extends Component {
   render() {
     const { loadingDetails } = this.state;
     if (loadingDetails) return <Loading className="movie-list" />;
+
     return (
       <main className="movie-card-details" data-testid="movie-details">
         <this.movieDetailsElement />
