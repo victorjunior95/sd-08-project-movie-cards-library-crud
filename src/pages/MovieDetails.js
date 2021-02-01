@@ -38,7 +38,8 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { movie: { title, storyline, imagePath, genre, rating, subtitle, id }, loading, shouldRedirect, deleteMovie } = this.state;
+    const { movie: { title, storyline, imagePath, genre, rating, subtitle, id },
+    loading, shouldRedirect, deleteMovie } = this.state;
     if (loading) return <Loading />;
     if (shouldRedirect) return <Redirect exact to="/" />;
     if (deleteMovie) return <Redirect to="/" />;
