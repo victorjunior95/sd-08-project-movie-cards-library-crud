@@ -18,7 +18,6 @@ class MovieDetails extends Component {
 
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    console.log(id);
     this.fetchMovieAPI(id);
   }
 
@@ -28,7 +27,6 @@ class MovieDetails extends Component {
       loading: false,
       movie: movieData,
     });
-    console.log(movieData);
   }
 
   render() {
