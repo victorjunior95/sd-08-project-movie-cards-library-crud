@@ -26,7 +26,7 @@ class MovieDetails extends Component {
 
   render() {
     const { match: { params: { id } } } = this.props;
-    const { movie,isLoading } = this.state;
+    const { movie, isLoading } = this.state;
     if (isLoading) return <Loading />;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
@@ -49,8 +49,8 @@ MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.number.isRequired,
-    })
-  })
-}
+    }),
+  }),
+};
 
 export default MovieDetails;
