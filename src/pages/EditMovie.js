@@ -30,7 +30,7 @@ class EditMovie extends Component {
   }
 
   async movieFetch() {
-    const {match: { params: { id } } } = this.props;
+    const { match: { params: { id } } } = this.props;
     const data = await movieAPI.getMovie(id);
     this.setState({ movie: data,
       loading: false });
