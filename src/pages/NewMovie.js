@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import MovieList from './MovieList';
 
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
@@ -7,35 +8,27 @@ import * as movieAPI from '../services/movieAPI';
 class NewMovie extends Component {
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-
     this.state = {
-      shouldRedirect: false,
-      isLoading: true,
-      movie: [],
+      redirect: false,
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   async handleSubmit(newMovie) {
-    const myMovie = await movieAPI.createMovie(newMovie);
-    if (myMovie === 'OK') {
-      this.setState({
-        shouldRedirect: true,
-        isLoading: false,
-        movie: newMovie,
-      });
-    }
+    await movieAPI.createMovie(newMovie);
+    this.setState({
+      redirect: true,
+    });
   }
 
   render() {
-    const { shouldRedirect } = this.state;
-
-    if (shouldRedirect) return <Redirect to="/" />;
-
+    const { redirect } = this.state;
+    if (redirect === true) {
+      return <Redirect to={ MovieList } />;
+    }
     return (
-      <div data-testid="new-movie" className="form-body">
-        <MovieForm onSubmit={this.handleSubmit} />
-        <Link className="form-button-back" to="/">VOLTAR</Link>
+      <div data-testid="new-movie">
+        <MovieForm onSubmit={ this.handleSubmit } />
       </div>
     );
   }

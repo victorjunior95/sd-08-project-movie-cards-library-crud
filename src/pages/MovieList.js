@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { MovieCard, Loading } from '../components';
 
-
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
@@ -11,29 +10,32 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-      isLoading: true,
-    }
+      loading: false,
+    };
+    this.updateState = this.updateState.bind(this);
   }
 
   componentDidMount() {
-    movieAPI.getMovies().then((myFetchMovies) =>
+    this.updateState();
+  }
+
+  async updateState() {
+    const apiResult = await movieAPI.getMovies();
     this.setState({
-      movies: myFetchMovies,
-      isLoading: false,
-    }));
+      movies: [...apiResult],
+      loading: true,
+    });
   }
 
   render() {
-    const { movies, isLoading } = this.state;
-
-    if (isLoading) return <Loading />;
-
+    const { movies, loading } = this.state;
+    if (loading === false) {
+      return <Loading />;
+    }
     return (
-      <div className="teste">
-        <div data-testid="movie-list" className="movie-list">
-          {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
-        </div>
-        <Link className="add-movie" to="/movies/new">ADICIONAR CARTÃO</Link>
+      <div data-testid="movie-list">
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
     );
   }
