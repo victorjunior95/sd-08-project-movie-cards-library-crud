@@ -12,7 +12,7 @@ function App() {
     <Router>
       <header className="movie-card-header">Movie Card Library CRUD</header>
       <Switch>
-        <Route path="/movies/new"><NewMovie /></Route>
+        <Route path="/movies/new" component={ NewMovie } />
         <Route path="/movies/:id/edit" render={ (props) => <EditMovie { ...props } /> } />
         <Route path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
         <Route exact path="/"><MovieList /></Route>
