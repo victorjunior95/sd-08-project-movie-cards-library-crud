@@ -40,7 +40,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${useful[1]}` }</p>
         <p>{ `Genre: ${useful[3]}` }</p>
         <p>{ `Rating: ${useful[4]}` }</p>
-        <Link to="/movies/:id/edit">EDITAR</Link>
+        <Link to={ `/movies/${useful[6]}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
       </div>
     );
@@ -53,8 +53,8 @@ class MovieDetails extends Component {
     if (info.length === 0) {
       infomovie = <Loading />;
     } else {
-      const { title, storyline, imagePath, genre, rating, subtitle } = info;
-      const useful = [title, storyline, imagePath, genre, rating, subtitle];
+      const { title, storyline, imagePath, genre, rating, subtitle, id } = info;
+      const useful = [title, storyline, imagePath, genre, rating, subtitle, id];
       infomovie = this.infomountaux(useful);
     }
     return infomovie;
