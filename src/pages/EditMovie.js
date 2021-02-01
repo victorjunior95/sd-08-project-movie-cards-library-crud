@@ -72,4 +72,6 @@ EditMovie.propTypes = {
   }).isRequired,
 };
 
+// Utilizei a ajuda da aula do Paulo
+
 export default EditMovie;
