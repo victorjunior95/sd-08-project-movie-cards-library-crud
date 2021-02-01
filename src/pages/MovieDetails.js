@@ -23,7 +23,7 @@ class MovieDetails extends Component {
   handleDelete() {
     const { movie } = this.state;
     const { id } = movie;
-    movieAPI.deleteMovie(id).then(() =>{
+    movieAPI.deleteMovie(id).then(() => {
       this.setState({
         deleteMovie: true,
       });
@@ -39,7 +39,8 @@ class MovieDetails extends Component {
 
   render() {
     const { movie:
-      { title, storyline, imagePath, genre, rating, subtitle, id }, loading, shouldRedirect, deleteMovie } = this.state;
+      { title, storyline, imagePath, genre, rating, subtitle, id },
+      loading, shouldRedirect, deleteMovie } = this.state;
     if (loading) return <Loading />;
     if (shouldRedirect) return <Redirect exact to="/" />;
     if (deleteMovie) return <Redirect to="/" />;
