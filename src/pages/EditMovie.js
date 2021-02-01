@@ -9,9 +9,7 @@ import * as movieAPI from '../services/movieAPI';
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-    const { match: { params: { id } } } = props;
     this.state = {
-      id,
       loading: true,
       movie: {},
       shouldRedirect: false,
@@ -23,18 +21,19 @@ class EditMovie extends Component {
     this.movieFetch();
   }
 
-  async handleSubmit(updatedMovie) {
-    await movieAPI.updateMovie(updatedMovie);
-    this.setState({
-      shouldRedirect: false,
+  handleSubmit(updatedMovie) {
+    movieAPI.updateMovie(updatedMovie).then(() => {
+      this.setState({
+        shouldRedirect: true,
+      });
     });
   }
 
   async movieFetch() {
-    const { id } = this.state;
+    const {match: { params: { id } } } = this.props;
     const data = await movieAPI.getMovie(id);
-    this.setState({ movie: data });
-    this.setState({ loading: false });
+    this.setState({ movie: data,
+      loading: false });
   }
 
   render() {
