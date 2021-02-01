@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../App.css';
 
-import { Loading, MovieForm } from '../components';
+import { Loading, MovieFormEdit } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
@@ -44,7 +44,11 @@ class EditMovie extends Component {
 
     return (
       <div data-testid="edit-movie">
-        <MovieForm movie={ movie } match={ this.match } onSubmit={ this.handleSubmit } />
+        <MovieFormEdit
+          movie={ movie }
+          match={ this.match }
+          onSubmit={ this.handleSubmit }
+        />
       </div>
     );
   }
