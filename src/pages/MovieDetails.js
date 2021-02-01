@@ -31,10 +31,10 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { movie: { id } } = this.state;
+    // const { movie: { id } } = this.state;
     const { loadingMessenge } = this.state;
     if (loadingMessenge) return <Loading />;
-    const { movie: { title, storyline, imagePath, genre, rating, subtitle,
+    const { movie: { id, title, storyline, imagePath, genre, rating, subtitle,
     } } = this.state;
     return (
       <div data-testid="movie-details">
@@ -44,9 +44,9 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to="/"><button type="button">VOLTAR</button></Link>
-        <Link to={ `/movies/:${id}/edit` }><button type="button">EDITAR</button></Link>
-        <button href="http://localhost/" type="button" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</button>
+        <Link to="/">VOLTAR</Link>
+        <Link to={ `/movies/:${id}/edit` }>EDITAR</Link>
+        <button href="/" type="button" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</button>
       </div>
     );
   }
