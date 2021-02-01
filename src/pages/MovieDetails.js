@@ -9,7 +9,7 @@ class MovieDetails extends Component {
     super();
     this.state = {
       movie: {},
-      loading: false,
+      loading: true,
       shouldRedirect: false,
     };
     this.handleDelete = this.handleDelete.bind(this);
