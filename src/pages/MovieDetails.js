@@ -14,11 +14,11 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    const { match: { params: { id } } } = this.state;
+    const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id).then((data) => {
       this.setState({
-        loading: false,
         movie: data,
+        loading: false,
       });
     });
   }
@@ -50,4 +50,5 @@ MovieDetails.propTypes = {
     }),
   }).isRequired,
 };
+
 export default MovieDetails;
