@@ -21,7 +21,7 @@ class EditMovie extends Component {
 
   componentDidMount() {
     this.movieFetch();
-    }
+  }
 
   async handleSubmit(updatedMovie) {
     await movieAPI.updateMovie(updatedMovie);
@@ -34,7 +34,7 @@ class EditMovie extends Component {
     const { id } = this.state;
     const data = await movieAPI.getMovie(id);
     this.setState({ movie: data });
-    this.setState({ loading: false});
+    this.setState({ loading: false });
   }
 
   render() {
@@ -49,12 +49,12 @@ class EditMovie extends Component {
   }
 }
 
- EditMovie.propTypes = {
-   match: PropTypes.shape({
-     params: PropTypes.shape({
-       id: PropTypes.number,
-     }),
-   }).isRequired,
- };
+EditMovie.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
+};
 
 export default EditMovie;
