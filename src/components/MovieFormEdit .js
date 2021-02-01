@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes, { string } from 'prop-types';
+import * as movieAPI from '../services/movieAPI';
 
 class MovieFormEdit extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class MovieFormEdit extends React.Component {
       <div>
         <label htmlFor="movie_title">
           <input
-            placeholder="Insira o título"
+            placeholder={ title }
             id="movie_title"
             type="text"
             className="validate"
@@ -44,7 +45,7 @@ class MovieFormEdit extends React.Component {
       <div>
         <label htmlFor="movie_subtitle">
           <input
-            placeholder="Insira o subtítulo"
+            placeholder={ subtitle }
             id="movie_subtitle"
             type="text"
             value={ subtitle }
@@ -63,7 +64,7 @@ class MovieFormEdit extends React.Component {
       <div className="row">
         <label htmlFor="movie_image">
           <input
-            placeholder="Insira o caminho da imagem"
+            placeholder={ imagePath }
             id="movie_image"
             type="text"
             value={ imagePath }
@@ -83,6 +84,7 @@ class MovieFormEdit extends React.Component {
         <label htmlFor="movie_storyline">
           <textarea
             id="movie_storyline"
+            placeholder={ storyline }
             value={ storyline }
             onChange={ (event) => this.updateMovie('storyline', event.target.value) }
           />
@@ -119,7 +121,7 @@ class MovieFormEdit extends React.Component {
       <div>
         <label htmlFor="movie_rating">
           <input
-            placeholder="Dê a avaliação do filme"
+            placeholder={ rating }
             id="movie_rating"
             type="number"
             step={ 0.1 }
@@ -139,7 +141,7 @@ class MovieFormEdit extends React.Component {
       <div>
         <button
           type="button"
-          onClick={ this.handleSubmit }
+          onClick={ movieAPI.updateMovie() }
         >
           Submit
         </button>
