@@ -9,7 +9,7 @@ class MovieDetails extends Component {
     super();
     this.state = {
       movie: {},
-      isLoading: false,
+      isLoading: true,
     };
   }
 
@@ -17,7 +17,7 @@ class MovieDetails extends Component {
     const { match: { params: { id } } } = this.props;
     movieAPI
       .getMovie(id)
-      .then((element) => this.setState({ movie: element, isLoading: true }));
+      .then((element) => this.setState({ movie: element, isLoading: false }));
   }
 
   render() {
@@ -26,7 +26,7 @@ class MovieDetails extends Component {
       { title, storyline, imagePath, genre, rating, subtitle },
     isLoading } = this.state;
 
-    if (isLoading === false) return <Loading />;
+    if (isLoading) return <Loading />;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />

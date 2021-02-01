@@ -11,7 +11,7 @@ class EditMovie extends Component {
     this.state = {
       movie: {},
       isLoading: true,
-      shouldRedirect: true,
+      shouldRedirect: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -24,16 +24,14 @@ class EditMovie extends Component {
   }
 
   async handleSubmit(updatedMovie) {
-    await movieAPI.updateMovie(updatedMovie);
-    this.setState({
-      shouldRedirect: false,
-    });
+    await movieAPI.updateMovie(updatedMovie)
+      .then(this.setState({ shouldRedirect: true }));
   }
 
   render() {
     const { isLoading, shouldRedirect, movie } = this.state;
-    if (shouldRedirect) return <Redirect exact to="/" />;
     if (isLoading) return <Loading />;
+    if (shouldRedirect) return <Redirect to="/" />;
     return (
       <div data-testid="edit-movie">
         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
