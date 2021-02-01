@@ -1,6 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { MovieList, MovieDetails, EditMovie, NewMovie, NotFound } from './pages';
+
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+
+import { MovieList, MovieDetails, NewMovie, EditMovie, NotFound } from './pages';
+
 import './App.css';
 
 function App() {
@@ -12,7 +15,7 @@ function App() {
         <Route path="/movies/:id/edit" component={ EditMovie } />
         <Route path="/movies/:id" component={ MovieDetails } />
         <Route exact path="/" component={ MovieList } />
-        <Route path="*" component={ NotFound } />
+        <Route path="/" component={ NotFound } />
       </Switch>
     </Router>
   );
