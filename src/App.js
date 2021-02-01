@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { MovieList, MovieDetails, EditMovie, NewMovie, NotFound } from './pages';
 
-// Important note: This development has followed
+// Important note: this development has followed
 // the step by step tutorial  guide made in 27/01 at 20 o'clock.
 // For more details, look at the next link:
 // https://trybecourse.slack.com/archives/C01A9A2N93R/p1611772490267600
