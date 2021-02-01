@@ -5,6 +5,7 @@ import MovieList from './pages/MovieList';
 import MovieDatails from './pages/MovieDetails';
 import NewMovie from './pages/NewMovie';
 import EditMovie from './pages/EditMovie';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/movies/:id" render={ (props) => <MovieDatails { ...props } /> } />
         <Route path="/movies/new" component={ NewMovie } />
         <Route path="/movies/:id/edit" render={ (props) => <EditMovie { ...props } /> } />
+        <Route component={ NotFound } />
       </BrowserRouter>
     </div>
   );
