@@ -9,9 +9,9 @@ class EditMovie extends Component {
   constructor() {
     super();
     this.state = {
-      loading: true,
       movie: {},
-      shouldRedirect: false,
+      isLoading: true,
+      shouldRedirect: true,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -20,7 +20,7 @@ class EditMovie extends Component {
     const { match: { params: { id } } } = this.props;
     movieAPI
       .getMovie(id)
-      .then((element) => this.setState({ movie: element, loading: false }));
+      .then((element) => this.setState({ movie: element, isLoading: false }));
   }
 
   async handleSubmit(updatedMovie) {
@@ -31,9 +31,9 @@ class EditMovie extends Component {
   }
 
   render() {
-    const { loading, shouldRedirect, movie } = this.state;
+    const { isLoading, shouldRedirect, movie } = this.state;
     if (shouldRedirect) return <Redirect exact to="/" />;
-    if (loading) return <Loading />;
+    if (isLoading) return <Loading />;
     return (
       <div data-testid="edit-movie">
         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
