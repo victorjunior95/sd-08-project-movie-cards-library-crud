@@ -23,6 +23,7 @@ class EditMovie extends Component {
 
     if (status === 'loading') {
       // render Loading
+      // vai
     }
 
     return (
