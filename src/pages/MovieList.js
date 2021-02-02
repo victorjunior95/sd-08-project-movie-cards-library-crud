@@ -15,12 +15,13 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
-    movieAPI.getMovies().then((data) => {
-      this.setState({
-        movies: data,
-        loading: false,
+    movieAPI.getMovies()
+      .then((data) => {
+        this.setState({
+          movies: data,
+          loading: false,
+        });
       });
-    });
   }
 
   render() {
