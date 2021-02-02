@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './App.css';
 import { MovieList, MovieDetails, EditMovie, NotFound, NewMovie } from './pages';
 
@@ -23,5 +24,11 @@ function App() {
     </Router>
   );
 }
-
+App.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 export default App;
