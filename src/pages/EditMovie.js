@@ -1,26 +1,48 @@
 import React, { Component } from 'react';
-
-import { MovieForm } from '../components';
-// import * as movieAPI from '../services/movieAPI';
+import PropTypes from 'prop-types';
+import { Loading, MovieForm } from '../components';
+import { NotFound } from '.';
+import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      movie: {},
+      isLoading: true,
+      shouldRedirect: false,
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    const { match: { params: { id } } } = this.props;
+    movieAPI.getMovie(id).then((answer) => {
+      if (answer.lenght === 0) {
+        return (
+          this.setState({
+            shouldRedirect: true,
+          }));
+      } return (
+        this.setState({
+          movie: answer,
+          isLoading: false,
+          shouldRedirect: false,
+        }));
+    });
   }
 
   handleSubmit(/* updatedMovie */) {
   }
 
   render() {
-    const { status, shouldRedirect, movie } = this.state;
+    const { shouldRedirect, movie, isLoading } = this.state;
     if (shouldRedirect) {
-      // Redirect
+      return (<NotFound />);
     }
 
-    if (status === 'loading') {
-      // render Loading
+    if (isLoading) {
+      return (<Loading />);
     }
 
     return (
@@ -30,5 +52,16 @@ class EditMovie extends Component {
     );
   }
 }
+EditMovie.defaultProps = {
+  match: '',
+};
+
+EditMovie.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }),
+};
 
 export default EditMovie;
