@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import '../App.css';
 
 import Loading from '../components/Loading';
-import MovieFormEdit from '../components/MovieFormEdit ';
+import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
@@ -45,7 +45,7 @@ class EditMovie extends Component {
 
     return (
       <div data-testid="edit-movie">
-        <MovieFormEdit
+        <MovieForm
           movie={ movie }
           match={ this.match }
           onSubmit={ this.handleSubmit }
