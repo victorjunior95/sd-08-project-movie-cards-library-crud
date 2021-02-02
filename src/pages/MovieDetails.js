@@ -5,7 +5,6 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -15,7 +14,7 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id;
+    const { params: { match: { id } } } = this.props;
     this.get(id);
   }
 
@@ -28,36 +27,35 @@ class MovieDetails extends Component {
     await movieAPI.deleteMovie(movieId);
   }
 
+  renderbotao(id) {
+    return (
+
+      <button type="button" onClick={ () => this.deleteMovie(id) }>
+        <Link to="/">DELETAR</Link>
+      </button>
+    );
+  }
 
   render() {
-    const {
-      id,
-      title,
-      storyline,
-      imagePath,
-      genre,
-      rating,
-      subtitle,
+    const { id, title, storyline, imagePath, genre, rating, subtitle,
     } = this.state.movie;
-    const loading = this.state.loading;
+    const { loading } = this.state;
     return loading ? (
       <div data-testid="movie-details">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
         <p>{`Title: ${title}`}</p>
         <p>{`Subtitle: ${subtitle}`}</p>
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
-        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
-        <button onClick={() => this.deleteMovie(id)}>
-          <Link to="/">DELETAR</Link>
-        </button>
+        { this.renderbotao(id) }
+
       </div>
     ) : (<Loading />);
   }
 }
-
 
 MovieDetails.propTypes = {
   match: PropTypes.shape({

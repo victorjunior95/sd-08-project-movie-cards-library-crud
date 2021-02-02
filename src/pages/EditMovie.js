@@ -16,7 +16,7 @@ class EditMovie extends Component {
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id;
+    const { id } = this.props.match.params;
     this.get(id);
   }
 
@@ -42,7 +42,7 @@ class EditMovie extends Component {
 
     return (
       <div data-testid="edit-movie">
-        <MovieForm movie={movie} onSubmit={this.handleSubmit} />
+        <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
       </div>
     );
   }

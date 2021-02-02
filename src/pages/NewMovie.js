@@ -19,8 +19,9 @@ class NewMovie extends Component {
     return this.state.redirect ? (
       <Redirect to="/" />
     ) : (<div data-testid="new-movie">
-      <MovieForm onSubmit={this.handleSubmit} />
-    </div>);
+      {' '}
+      <MovieForm onSubmit={ this.handleSubmit } />
+         </div>);
   }
 }
 
