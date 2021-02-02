@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../App.css';
 
-import { Loading, MovieFormEdit } from '../components';
+import Loading from '../components/Loading';
+import MovieFormEdit from '../components/MovieFormEdit ';
 import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
