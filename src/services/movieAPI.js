@@ -3,61 +3,61 @@ import data from './movieData';
 localStorage.setItem('movies', JSON.stringify(data));
 
 const readMovies = () => JSON.parse(localStorage.getItem('movies'));
+
 const saveMovies = (movies) => localStorage.setItem('movies', JSON.stringify(movies));
-
-const TIMEOUT = 2000;
-const SUCCESS_STATUS = 'OK';
-
-// --------------------------------------------------------------------
-// A função simulateRequest simula uma requisição para uma API externa
-// Esse tipo de função que "chama outra função" é chamada de
-// "currying function" https://javascript.info/currying-partials
-// não se preocupe, estudaremos isso mais futuramente
-// --------------------------------------------------------------------
-
-const simulateRequest = (response) => (callback) => {
-  setTimeout(() => {
-    callback(response);
-  }, TIMEOUT);
-};
 
 export const getMovies = () => (
   new Promise((resolve) => {
-    const movies = readMovies();
-    simulateRequest(movies)(resolve);
+    const twothousand = 2000;
+    setTimeout(() => {
+      const movies = readMovies();
+      resolve(movies);
+    }, twothousand);
   })
 );
 
 export const getMovie = (movieId) => {
   const movie = readMovies().find((mov) => mov.id === parseInt(movieId, 10));
+
   return new Promise((resolve) => {
-    simulateRequest(movie)(resolve);
+    const twothousand = 2000;
+    setTimeout(() => {
+      resolve(movie);
+    }, twothousand);
   });
 };
 
-export const updateMovie = (updatedMovie) => (
-  new Promise((resolve) => {
-    const movies = readMovies().map((movie) => {
-      if (movie.id === parseInt(updatedMovie.id, 10)) {
-        return { ...movie, ...updatedMovie };
-      }
-      return movie;
-    });
-    saveMovies(movies);
-    simulateRequest(SUCCESS_STATUS)(resolve);
-  })
-);
+export const updateMovie = (updatedMovie) => {
+  const movies = readMovies().map((movie) => {
+    if (movie.id === parseInt(updatedMovie.id, 10)) {
+      return { ...movie, ...updatedMovie };
+    }
+    return movie;
+  });
+  saveMovies(movies);
 
-export const createMovie = (movieData) => (
-  new Promise((resolve) => {
-    let movies = readMovies();
-    const nextId = movies[movies.length - 1].id + 1;
-    const newMovie = { ...movieData, id: nextId };
-    movies = [...movies, newMovie];
-    saveMovies(movies);
-    simulateRequest(SUCCESS_STATUS)(resolve);
-  })
-);
+  return new Promise((resolve) => {
+    const thousand = 1000;
+    setTimeout(() => {
+      resolve('OK');
+    }, thousand);
+  });
+};
+
+export const createMovie = (movieData) => {
+  let movies = readMovies();
+  const nextId = movies[movies.length - 1].id + 1;
+  const newMovie = { ...movieData, id: nextId };
+  movies = [...movies, newMovie];
+  saveMovies(movies);
+
+  return new Promise((resolve) => {
+    const thousand = 1000;
+    setTimeout(() => {
+      resolve('OK');
+    }, thousand);
+  });
+};
 
 export const deleteMovie = (movieId) => {
   let movies = readMovies();
@@ -65,6 +65,9 @@ export const deleteMovie = (movieId) => {
   saveMovies(movies);
 
   return new Promise((resolve) => {
-    simulateRequest({ status: SUCCESS_STATUS })(resolve);
+    const thousand = 1000;
+    setTimeout(() => {
+      resolve({ status: 'OK' });
+    }, thousand);
   });
 };
