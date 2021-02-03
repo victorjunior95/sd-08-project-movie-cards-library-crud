@@ -1,13 +1,13 @@
 .edit-movie-container {
-    padding: 10px;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 10px;
 }
 .edit-movie-form {
-    padding: 40px;
-    border-radius: 10px;
-    background-color: darkmagenta;
-border:1px solid darkorange;
+  background-color: darkmagenta;
+  border: 1px solid darkorange;
+  border-radius: 10px;
+  padding: 40px;
 }
