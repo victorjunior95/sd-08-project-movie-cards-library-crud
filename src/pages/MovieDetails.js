@@ -48,11 +48,11 @@ export default class MovieDetails extends Component {
 
     return (
       <>
-        <p>{ `Title: ${title}` }</p>
-        <p>{ `Subtitle: ${subtitle}` }</p>
+        <h2>{ `Title: ${title}` }</h2>
+        <h3>{ `Subtitle: ${subtitle}` }</h3>
+        <h4>{ `Genre: ${genre}` }</h4>
+        <h5>{ `Rating: ${rating}` }</h5>
         <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
       </>
     );
   }
