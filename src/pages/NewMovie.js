@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-
+import "./NewMovie.css"
 import { MovieForm, Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
@@ -27,8 +27,10 @@ class NewMovie extends Component {
     const { loading, shouldRedirect } = this.state;
     if (shouldRedirect) return <Redirect to="/" />;
     return (
-      <div data-testid="new-movie">
+      <div className="edit-movie-container" data-testid="new-movie">
+        <div className="edit-movie-form">
         {loading ? <Loading /> : <MovieForm onSubmit={ this.handleSubmit } />}
+      </div>
       </div>
     );
   }
