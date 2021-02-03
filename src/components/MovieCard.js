@@ -11,7 +11,7 @@ class MovieCard extends React.Component {
         <img alt="imagem do filme" src={ imagePath } />
         <h1>{ title }</h1>
         <p>{ storyline }</p>
-        <Link to="/movies/:id">VER DETALHES</Link>
+        <Link to={ `/movies/${movie.id}` }>VER DETALHES</Link>
       </div>
     );
   }
@@ -20,8 +20,9 @@ class MovieCard extends React.Component {
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string,
-    storyline: PropTypes.string,
     imagePath: PropTypes.string,
+    storyline: PropTypes.string,
+    id: PropTypes.number,
   }).isRequired,
 };
 
