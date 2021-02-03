@@ -21,6 +21,7 @@
     "lint:styles": "npx stylelint '**/*.css'",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,.jsx"
   },
+  "linters": "npm run lint && npm lint:styles",
   "eslintConfig": {
     "extends": "react-app"
   },

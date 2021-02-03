@@ -8,35 +8,34 @@ class EditMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: 'loading',
+      loading: true,
       shouldRedirect: false,
-      movie: '',
+      movie: null,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-    this.get(id);
+    const { match: { params: { id } } } = this.props;
+    movieAPI.getMovie(id).then((movie) => this.setState({ movie, loading: false }));
   }
 
-  async get(id) {
-    const movie = await movieAPI.getMovie(id);
-    this.setState({ status: '', movie });
-  }
+  // async get(id) {
+  //   const movie = await movieAPI.getMovie(id);
+  //   this.setState({ status: '', movie });
+  // }
 
-  async handleSubmit(updatedMovie) {
-    await movieAPI.updateMovie(updatedMovie);
-    this.setState({ shouldRedirect: true });
+  handleSubmit(updatedMovie) {
+    movieAPI.updateMovie(updatedMovie).then(this.setState({ shouldRedirect: true }));
   }
 
   render() {
-    const { status, shouldRedirect, movie } = this.state;
+    const { loading, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
       return <Redirect to="/" />;
     }
 
-    if (status === 'loading') {
+    if (loading) {
       return <Loading />;
     }
 
