@@ -27,9 +27,6 @@ class MovieList extends Component {
 
   render() {
     const { movies, loading } = this.state;
-
-    // Render Loading here if the request is still happening
-
     return (
       <div className="movie-list" data-testid="movie-list">
         <Link className="add-movie" to="/movies/new">ADICIONAR CARTÃO</Link>

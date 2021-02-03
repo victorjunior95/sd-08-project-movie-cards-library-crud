@@ -97,45 +97,57 @@ class MovieForm extends React.Component {
     );
   }
 
-  renderGenreSelection() {
+  renderSelect() {
     const { genre } = this.state;
+    return (
+      <select
+        className="input-edit-movie"
+        id="movie_genre"
+        value={ genre }
+        onChange={ (event) => this.updateMovie('genre', event.target.value) }
+      >
+        <option value="action">Ação</option>
+        <option value="comedy">Comédia</option>
+        <option value="thriller">Suspense</option>
+        <option value="fantasy">Fantasia</option>
+      </select>
+    );
+  }
+
+  renderGenreSelection() {
     return (
       <div className="edit-movie">
         <label className="label-edit-movie-title" htmlFor="movie_genre">
           Gênero
-          <select
-            className="input-edit-movie"
-            id="movie_genre"
-            value={ genre }
-            onChange={ (event) => this.updateMovie('genre', event.target.value) }
-          >
-            <option value="action">Ação</option>
-            <option value="comedy">Comédia</option>
-            <option value="thriller">Suspense</option>
-            <option value="fantasy">Fantasia</option>
-          </select>
+          {this.renderSelect()}
         </label>
       </div>
     );
   }
 
-  renderRatingInput() {
+  renderOnleInputForRating() {
     const { rating } = this.state;
+    return (
+      <input
+        className="input-edit-movie"
+        placeholder="Dê a avaliação do filme"
+        id="movie_rating"
+        type="number"
+        step={ 0.1 }
+        min={ 0 }
+        max={ 5 }
+        value={ rating }
+        onChange={ (event) => this.updateMovie('rating', event.target.value) }
+      />
+    );
+  }
+
+  renderRatingInput() {
     return (
       <div className="edit-movie">
         <label className="label-edit-movie-title" htmlFor="movie_rating">
           Avaliação
-          <input
-            className="input-edit-movie"
-            placeholder="Dê a avaliação do filme"
-            id="movie_rating"
-            type="number"
-            step={ 0.1 }
-            min={ 0 }
-            max={ 5 }
-            value={ rating }
-            onChange={ (event) => this.updateMovie('rating', event.target.value) }
-          />
+          {this.renderOnleInputForRating()}
         </label>
       </div>
     );
@@ -167,17 +179,6 @@ class MovieForm extends React.Component {
     );
   }
 }
-
-MovieForm.defaultProps = {
-  movie: {
-    title: '',
-    subtitle: '',
-    storyline: '',
-    rating: 0,
-    imagePath: '',
-    genre: '',
-  },
-};
 
 MovieForm.propTypes = {
   movie: PropTypes.shape({

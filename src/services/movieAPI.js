@@ -52,10 +52,10 @@ export const createMovie = (movieData) => {
   saveMovies(movies);
 
   return new Promise((resolve) => {
-    const thousand = 1000;
+    const nineHundred = 900;
     setTimeout(() => {
       resolve('OK');
-    }, thousand);
+    }, nineHundred);
   });
 };
 
