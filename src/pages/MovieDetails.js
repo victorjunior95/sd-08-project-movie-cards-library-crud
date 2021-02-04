@@ -13,6 +13,7 @@ class MovieDetails extends Component {
     };
     this.spreadMovies = this.spreadMovies.bind(this);
     this.importMovies = this.importMovies.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   spreadMovies() {
@@ -32,11 +33,15 @@ class MovieDetails extends Component {
     );
   }
 
+  delete(movies) {
+    movieAPI.deleteMovie(movies);
+  }
+
   renderMovieDetails() {
     // Change the condition to check the state
     // if (true) return <Loading />;
     const { movie } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
 
     return (
       <div>
@@ -46,7 +51,8 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <p><Link to="/movies/:id/edit">EDITAR</Link></p>
+        <p><Link to={ `/movies/${id}/edit` }>EDITAR</Link></p>
+        <p><Link to="/" onClick={ () => this.delete(id) }>DELETAR</Link></p>
         <p><Link to="/">VOLTAR</Link></p>
       </div>
     );
