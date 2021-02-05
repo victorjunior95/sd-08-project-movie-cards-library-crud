@@ -25,7 +25,6 @@ class EditMovie extends Component {
   handleSubmit(updatedMovie) {
     const { history } = this.props;
     movieAPI.updateMovie(updatedMovie).then(() => history.push('/'));
-    // history.push('/');
   }
 
   editForm() {
