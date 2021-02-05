@@ -16,11 +16,10 @@ class MovieList extends Component {
       load: true,
     };
 
-    this.spreadMovies = this.spreadMovies.bind(this);
-    this.importMovies = this.importMovies.bind(this);
+    // this.importMovies = this.importMovies.bind(this);
   }
 
-  spreadMovies() {
+  componentDidMount() {
     this.importMovies(movieAPI.getMovies());
   }
 
@@ -43,8 +42,8 @@ class MovieList extends Component {
 
     return (
       <div>
-        <p><Link to="movies/:id">ADICIONAR CARTÃO</Link></p>
-        <div className="movie-list" data-testid="movie-list">
+        <p><Link to="movies/new">ADICIONAR CARTÃO</Link></p>
+        <div data-testid="movie-list">
           {load ? <Loading />
             : movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
         </div>

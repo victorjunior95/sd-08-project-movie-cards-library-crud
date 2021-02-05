@@ -16,16 +16,16 @@ class EditMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const { match: { params: { id } } } = this.props;
+    this.importMovies(movieAPI.getMovie(id));
+  }
+
   handleSubmit(updatedMovie) {
     movieAPI.updateMovie(updatedMovie);
     this.setState({
       shouldRedirect: true,
     });
-  }
-
-  spreadMovies() {
-    const { match: { params: { id } } } = this.props;
-    this.importMovies(movieAPI.getMovies(id));
   }
 
   importMovies(final) {

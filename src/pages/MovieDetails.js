@@ -11,14 +11,11 @@ class MovieDetails extends Component {
       load: true,
       movie: [],
     };
-    this.spreadMovies = this.spreadMovies.bind(this);
-    this.importMovies = this.importMovies.bind(this);
-    this.delete = this.delete.bind(this);
   }
 
-  spreadMovies() {
+  componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    this.importMovies(movieAPI.getMovies(id));
+    this.importMovies(movieAPI.getMovie(id));
   }
 
   importMovies(final) {
@@ -60,7 +57,7 @@ class MovieDetails extends Component {
 
   render() {
     const { load } = this.state;
-
+    console.log(this.state.movie);
     return (
       <div data-testid="movie-details">
         {load ? <Loading /> : this.renderMovieDetails()}
