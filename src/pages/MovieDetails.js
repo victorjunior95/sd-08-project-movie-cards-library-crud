@@ -14,6 +14,7 @@ class MovieDetails extends Component {
     };
 
     this.movieInfo = this.movieInfo.bind(this);
+    this.deleteCard = this.deleteCard.bind(this);
   }
 
   componentDidMount() {
@@ -21,11 +22,33 @@ class MovieDetails extends Component {
     movieAPI.getMovie(id).then((movie) => this.setState({ movie }));
   }
 
-  movieInfo() {
+  deleteCard() {
+    const { movie: { id } } = this.state;
+    const { history: { push } } = this.props;
+    movieAPI.deleteMovie(id).then(() => push('/'));
+  }
+
+  links() {
     const { match: { params: { id } } } = this.props;
+    return (
+      <section>
+        <button
+          type="button"
+          onClick={ this.deleteCard }
+          href="http://localhost/"
+        >
+          DELETAR
+        </button>
+        <Link to="/">VOLTAR</Link>
+        <br />
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+      </section>
+    );
+  }
+
+  movieInfo() {
     const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
-    const editPath = `/movies/${id}/edit`;
 
     return (
       <div>
@@ -35,8 +58,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to="/">VOLTAR</Link>
-        <Link to={ editPath }>EDITAR</Link>
+        { this.links() }
       </div>
     );
   }
@@ -61,6 +83,9 @@ MovieDetails.propTypes = {
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
     }).isRequired,
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }).isRequired,
 };
 
