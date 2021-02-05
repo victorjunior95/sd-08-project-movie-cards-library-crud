@@ -14,13 +14,13 @@ class MovieDetails extends Component {
     };
     this.loader = this.loader.bind(this);
     this.movieDetails = this.movieDetails.bind(this);
+    this.deleter = this.deleter.bind(this);
   }
 
   loader() {
     const { loading } = this.state;
     if (loading) {
       const { match: { params: { id } } } = this.props;
-      console.log(id);
       movieAPI.getMovie(id)
         .then((movie) => {
           console.log(id);
@@ -28,6 +28,11 @@ class MovieDetails extends Component {
         });
       return (<Loading />);
     }
+  }
+
+  deleter() {
+    const { movie: { id } } = this.state;
+    movieAPI.deleteMovie(id);
   }
 
   movieDetails() {
@@ -43,6 +48,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ this.deleter }>DELETAR</Link>
       </div>
     );
   }
