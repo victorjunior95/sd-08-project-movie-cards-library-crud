@@ -57,7 +57,6 @@ class MovieDetails extends Component {
 
   render() {
     const { load } = this.state;
-    console.log(this.state.movie);
     return (
       <div data-testid="movie-details">
         {load ? <Loading /> : this.renderMovieDetails()}
