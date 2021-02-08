@@ -32,13 +32,12 @@ class MovieDetails extends Component {
     const { match: { params: { id } } } = this.props;
     return (
       <section>
-        <button
-          type="button"
+        <Link
+          to="/"
           onClick={ this.deleteCard }
-          href="http://localhost/"
         >
           DELETAR
-        </button>
+        </Link>
         <Link to="/">VOLTAR</Link>
         <br />
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
