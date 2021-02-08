@@ -8,12 +8,24 @@ class MovieList extends Component {
     super();
 
     this.state = {
+      loading: true,
       movies: [],
     };
   }
 
+  componentDidMount() {
+    this.loadMovies();
+  }
+
+  async loadMovies() {
+    this.setState({
+      movies: [...await movieAPI.getMovies()],
+      loading: false,
+    });
+  }
+
   render() {
-    const { movies } = this.state;
+    const { loading, movies } = this.state;
 
     // Render Loading here if the request is still happening
 
