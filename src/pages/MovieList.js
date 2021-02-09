@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Loading from '../components/Loading';
 import MovieCard from '../components/MovieCard';
 
@@ -13,14 +14,14 @@ export default class MovieList extends Component {
       loading: false,
     };
 
-    this.showMovies = this.showMovies.bind(this);
+    this.moviesList = this.moviesList.bind(this);
   }
 
   componentDidMount() {
-    this.showMovies();
+    this.moviesList();
   }
 
-  showMovies() {
+  moviesList() {
     this.setState(
       () => ({ loading: true }),
       async () => {
@@ -40,11 +41,12 @@ export default class MovieList extends Component {
         {
           loading ? <Loading />
             : (
-              <div>
+              <div data-testid="movie-list">
                 {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
               </div>
             )
         }
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </div>
     );
   }

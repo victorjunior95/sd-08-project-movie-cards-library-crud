@@ -1,48 +1,89 @@
 import React, { Component } from 'react';
-import ProTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
-export default class MovieDetails extends Component {
-  constructor() {
-    super();
+class MovieDetails extends Component {
+  constructor(props) {
+    super(props);
 
+    const { match: { params: { id } } } = props;
     this.state = {
+      id,
+      loading: true,
       movie: {},
     };
+
+    this.fetchMovie = this.fetchMovie.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
-    const { match: { params: { id } } } = this.props;
-    movieAPI.getMovie(id)
-      .then((movie) => this.setState({ movie }));
+    this.fetchMovie();
+  }
+
+  handleDelete() {
+    const { id } = this.state;
+    movieAPI.deleteMovie(id);
+  }
+
+  fetchMovie() {
+    this.setState(
+      { loading: true },
+      async () => {
+        const { id } = this.state;
+        const movie = await movieAPI.getMovie(id);
+        this.setState({
+          loading: false,
+          movie,
+        });
+      },
+    );
+  }
+
+  renderMovieInfo(movie) {
+    const { title, storyline, genre, rating, subtitle } = movie;
+
+    return (
+      <>
+        <h2>{ `Title: ${title}` }</h2>
+        <h3>{ `Subtitle: ${subtitle}` }</h3>
+        <h4>{ `Genre: ${genre}` }</h4>
+        <h5>{ `Rating: ${rating}` }</h5>
+        <p>{ `Storyline: ${storyline}` }</p>
+      </>
+    );
   }
 
   render() {
-    const { movie } = this.state;
-    const { imagePath, title, subtitle, genre, rating, storyline, id } = movie;
-    if (!movie) return <Loading />;
+    const { loading, movie } = this.state;
+
+    if (loading) return <Loading />;
+
+    if (!movie) return <Redirect to="/" />;
+
+    const { imagePath, id } = movie;
+
     return (
-      <>
-        <img alt={ `${title}-movie-card` } src={ `${imagePath}` } />
-        <h3>{ `title:${title}` }</h3>
-        <h4>{ `Subtitle:${subtitle}` }</h4>
-        <h5>{ `Genre:${genre} `}</h5>
-        <p>{ `Rating:${rating} `}</p>
-        <p>{ `Storyline: ${storyline} `}</p>
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+      <div data-testid="movie-details">
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        {this.renderMovieInfo(movie)}
         <Link to="/">VOLTAR</Link>
-      </>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.handleDelete }>DELETAR</Link>
+      </div>
     );
   }
 }
 
 MovieDetails.propTypes = {
-  match: ProTypes.shape({
-    params: propTypes.shape({
-      id: propTypes.string.isRequired,
-    }),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
 };
+
+export default MovieDetails;
