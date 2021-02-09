@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import MovieForm from '../components/MovieForm';
+import * as movieAPI from '../services/movieAPI';
 
 class NewMovie extends Component {
   constructor(props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  async handleSubmit(newMovie) {
+    await movieAPI.createMovie(newMovie);
+    const {
+      history: { push },
+    } = this.props;
+    return push('/');
   }
 
   render() {
@@ -15,4 +26,3 @@ class NewMovie extends Component {
     );
   }
 }
-export default NewMovie;
