@@ -26,3 +26,16 @@ class NewMovie extends Component {
     );
   }
 }
+
+NewMovie.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+};
+NewMovie.defaultProps = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+};
+
+export default NewMovie;
