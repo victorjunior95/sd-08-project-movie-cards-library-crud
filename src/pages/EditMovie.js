@@ -61,3 +61,25 @@ class EditMovie extends Component {
     return <div data-testid="edit-movie">{!done ? <Loading /> : this.renderForm()}</div>;
   }
 }
+EditMovie.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+};
+EditMovie.defaultProps = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+};
+
+export default EditMovie;
