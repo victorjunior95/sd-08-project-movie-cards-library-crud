@@ -92,3 +92,26 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+};
+MovieDetails.defaultProps = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+};
+
+export default MovieDetails;
