@@ -11,13 +11,13 @@ class MovieDetails extends Component {
       movie: undefined,
       done: false,
     };
-    this.SrcMovie() = this.SrcMovie().bind(this);
+    this.Movie() = this.Movie().bind(this);
     this.remover = this.remover.bind(this);
     this.renderDetails = this.renderDetails.bind(this);
   }
 
   componentDidMount() {
-    this.SrcMovie();
+    this.Movie();
   }
 
   redirectNotFound() {
@@ -27,7 +27,7 @@ class MovieDetails extends Component {
     push('/notfound');
   }
 
-  async SrcMovie() {
+  async Movie() {
     const {
       match: {
         params: { id },
