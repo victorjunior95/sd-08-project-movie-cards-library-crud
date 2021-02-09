@@ -19,7 +19,7 @@ class MovieList extends Component {
 
   async requestData() {
     const value = await movieAPI.getMovies();
-    this.setState( {movies: value} );
+    this.setState({ movies: value });
   }
 
   render() {
