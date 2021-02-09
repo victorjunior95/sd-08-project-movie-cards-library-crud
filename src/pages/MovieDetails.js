@@ -29,7 +29,7 @@ class MovieDetails extends Component {
     const { movie, loading } = this.state;
     const { id, storyline, imagePath, genre, rating, subtitle, title } = movie;
     if (loading) return <Loading />;
-
+    // console.log(movie);
     return (
       <main data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -40,7 +40,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <section>
           <Link to="/">VOLTAR</Link>
-          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+          <Link to={ `/movies/${id}/edit` } movie={ movie }>EDITAR</Link>
         </section>
       </main>
     );

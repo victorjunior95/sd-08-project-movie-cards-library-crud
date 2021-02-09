@@ -91,7 +91,7 @@ const renderPath = (path) => {
   return { ...resources }
 };
 
-describe.only('1 - Renderize `BrowserRouter` no componente `App` usando rotas', () => {
+describe('1 - Renderize `BrowserRouter` no componente `App` usando rotas', () => {
   test('a rota "/" deve renderizar MovieList', async () => {
     const { unmount, getByTestId } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
@@ -126,7 +126,7 @@ describe.only('1 - Renderize `BrowserRouter` no componente `App` usando rotas', 
   })
 });
 
-describe.only('2 - Faça uma requisição para buscar e mostrar a lista de filmes quando `MovieList` for montado', () => {
+describe('2 - Faça uma requisição para buscar e mostrar a lista de filmes quando `MovieList` for montado', () => {
   test('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     const { container, unmount, getByText } = renderPath('/');
     expect(getByText('Carregando...'));
@@ -141,7 +141,7 @@ describe.only('2 - Faça uma requisição para buscar e mostrar a lista de filme
   })
 });
 
-describe.only('3 - Insira um link para a página de detalhes de um filme dentro de `MovieCard`', () => {
+describe('3 - Insira um link para a página de detalhes de um filme dentro de `MovieCard`', () => {
   test('deve exibir pelo menos o título e a sinopse de seu respectivo filme', async () => {
     const { unmount, getAllByText } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
@@ -162,7 +162,7 @@ describe.only('3 - Insira um link para a página de detalhes de um filme dentro 
   })
 });
 
-describe.only('4 - Faça uma requisição para buscar o filme que deverá ser renderizado dentro de `Movie Details`', () => {
+describe('4 - Faça uma requisição para buscar o filme que deverá ser renderizado dentro de `Movie Details`', () => {
 
   it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     for (const movie of readMovies()) {
@@ -315,7 +315,7 @@ describe('6 - Insira um link na página inicial para `NewMovie` para criar novos
   })
 });
 
-describe('7 - Adicione um link para deletar um cartão em `MovieDetails`', () => {
+describe.skip('7 - Adicione um link para deletar um cartão em `MovieDetails`', () => {
   it('"MovieDetails" deverá conter um botão com o texto "DELETAR"', async () => {
     for (const movie of readMovies()) {
       const { container, unmount, findByText } = renderPath('/movies/' + movie.id);
