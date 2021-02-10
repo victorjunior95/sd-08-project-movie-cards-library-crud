@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
-import { Loading } from '../components';
+import Loading  from '../components/Loading';
 
-class MovieDetails extends Component {
+class MovieDetails extends React.Component {
   constructor() {
     super();
     this.state = {
       movie: undefined,
       done: false,
     };
-    this.Movie() = this.Movie().bind(this);
+    this.DataMovie() = this.DataMovie().bind(this);
     this.remover = this.remover.bind(this);
     this.renderDetails = this.renderDetails.bind(this);
   }
 
   componentDidMount() {
-    this.Movie();
+    this.DataMovie();
   }
 
   redirectNotFound() {
@@ -27,7 +27,7 @@ class MovieDetails extends Component {
     push('/notfound');
   }
 
-  async Movie() {
+  async DataMovie() {
     const {
       match: {
         params: { id },
