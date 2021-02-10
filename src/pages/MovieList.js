@@ -11,6 +11,7 @@ class MovieList extends Component {
     this.state = {
       movies: [],
       loading: true,
+      newMovie: false,
     };
   }
 
@@ -19,17 +20,18 @@ class MovieList extends Component {
       this.setState({
         movies: data,
         loading: false,
+        newMovie: true,
       });
     });
   }
 
   render() {
-    const { movies, loading } = this.state;
+    const { movies, loading, newMovie } = this.state;
     // Render Loading here if the request is still happening
     return (
       <div data-testid="movie-list">
-        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
         { loading && <Loading /> }
+        {newMovie && <Link to="/movies/new">ADICIONAR CARTÃO</Link>}
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
     );

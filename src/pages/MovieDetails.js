@@ -9,6 +9,8 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
 
+    this.handleClick = this.handleClick.bind(this);
+
     this.state = {
       movie: {},
       loading: true,
@@ -25,11 +27,15 @@ class MovieDetails extends Component {
     });
   }
 
+  handleClick() {
+    const { movie: { id } } = this.state;
+    movieAPI.deleteMovie(id);
+  }
+
   render() {
     const { movie, loading } = this.state;
     const { id, storyline, imagePath, genre, rating, subtitle, title } = movie;
     if (loading) return <Loading />;
-    // console.log(movie);
     return (
       <main data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -41,6 +47,7 @@ class MovieDetails extends Component {
         <section>
           <Link to="/">VOLTAR</Link>
           <Link to={ `/movies/${id}/edit` } movie={ movie }>EDITAR</Link>
+          <Link to="/" onClick={ this.handleClick }>DELETAR</Link>
         </section>
       </main>
     );
