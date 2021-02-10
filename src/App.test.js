@@ -126,7 +126,7 @@ describe('1 - Renderize `BrowserRouter` no componente `App` usando rotas', () =>
   })
 });
 
-describe.only('2 - Faça uma requisição para buscar e mostrar a lista de filmes quando `MovieList` for montado', () => {
+describe('2 - Faça uma requisição para buscar e mostrar a lista de filmes quando `MovieList` for montado', () => {
   test('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     const { container, unmount, getByText } = renderPath('/');
     expect(getByText('Carregando...'));
@@ -162,7 +162,7 @@ describe('3 - Insira um link para a página de detalhes de um filme dentro de `M
   })
 });
 
-describe('4 - Faça uma requisição para buscar o filme que deverá ser renderizado dentro de `Movie Details`', () => {
+describe.only('4 - Faça uma requisição para buscar o filme que deverá ser renderizado dentro de `Movie Details`', () => {
 
   it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     for (const movie of readMovies()) {
