@@ -12,6 +12,7 @@ class MovieDetails extends Component {
       loading: true,
       movie: {},
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -25,8 +26,12 @@ class MovieDetails extends Component {
     });
   }
 
+  handleClick() {
+    const { movie: { id } } = this.state;
+    movieAPI.deleteMovie(id);
+  }
+
   render() {
-    // Change the condition to check the state
     const { movie: { title,
       storyline,
       imagePath,
@@ -42,6 +47,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.handleClick }>DELETAR</Link>
       </div>
     );
   }
