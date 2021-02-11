@@ -11,13 +11,13 @@ class MovieDetails extends Component {
       movie: undefined,
       done: false,
     };
-    this.Movie() = this.Movie().bind(this);
+    this.fetchMovie = this.fetchMovie.bind(this);
     this.remover = this.remover.bind(this);
     this.renderDetails = this.renderDetails.bind(this);
   }
 
   componentDidMount() {
-    this.Movie();
+    this.fetchMovie();
   }
 
   redirectNotFound() {
@@ -27,7 +27,7 @@ class MovieDetails extends Component {
     push('/notfound');
   }
 
-  async Movie() {
+  async fetchMovie() {
     const {
       match: {
         params: { id },
@@ -50,7 +50,7 @@ class MovieDetails extends Component {
     movieAPI.deleteMovie(id);
   }
 
-  LinksRender() {
+  renderLinks() {
     const {
       movie: { id },
     } = this.state;
@@ -80,7 +80,7 @@ class MovieDetails extends Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
-        {this.LinksRender()}
+        {this.renderLinks()}
       </>
     );
   }
