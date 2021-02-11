@@ -2,48 +2,93 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
-import Loading from '../components/Loading';
+import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
     super();
-
     this.state = {
-      loading: true,
-      movie: [],
+      movie: undefined,
+      done: false,
     };
-
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.remover = this.remover.bind(this);
+    this.renderDetails = this.renderDetails.bind(this);
   }
 
   componentDidMount() {
-    const { match: { params: { id } } } = this.props;
-    this.fetchMovie(id);
+    this.fetchMovie();
   }
 
-  async fetchMovie(id) {
-    const movie = await movieAPI.getMovie(id);
-    this.setState({ movie, loading: false });
+  redirectNotFound() {
+    const {
+      history: { push },
+    } = this.props;
+    push('/notfound');
+  }
+
+  async fetchMovie() {
+    const {
+      match: {
+        params: { id },
+      },
+    } = this.props;
+    const data = await movieAPI.getMovie(id);
+
+    this.setState({ movie: data });
+
+    if (!data) {
+      return this.redirectNotFound();
+    }
+    this.setState({ done: true });
+  }
+
+  remover() {
+    const {
+      movie: { id },
+    } = this.state;
+    movieAPI.deleteMovie(id);
+  }
+
+  renderLinks() {
+    const {
+      movie: { id },
+    } = this.state;
+    return (
+      <>
+        <Link to="/" onClick={ this.remover }>
+          {' '}
+          DELETAR
+        </Link>
+        <br />
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <br />
+        <Link to="/">VOLTAR</Link>
+      </>
+    );
+  }
+
+  renderDetails() {
+    const {
+      movie: { title, storyline, imagePath, genre, rating, subtitle },
+    } = this.state;
+    return (
+      <>
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{`Title: ${title}`}</p>
+        <p>{`Subtitle: ${subtitle}`}</p>
+        <p>{`Storyline: ${storyline}`}</p>
+        <p>{`Genre: ${genre}`}</p>
+        <p>{`Rating: ${rating}`}</p>
+        {this.renderLinks()}
+      </>
+    );
   }
 
   render() {
-    const { loading } = this.state;
-    if (loading) return <Loading />;
-    const { movie:
-      { id, title, storyline, imagePath, genre, rating, subtitle } } = this.state;
-
+    const { done } = this.state;
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Title: ${title}` }</p>
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <Link to="/">VOLTAR</Link>
-        <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
-      </div>
+      <div data-testid="movie-details">{!done ? <Loading /> : this.renderDetails()}</div>
     );
   }
 }
@@ -51,9 +96,22 @@ class MovieDetails extends Component {
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
+      id: PropTypes.string,
+    }),
+  }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+};
+MovieDetails.defaultProps = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
 };
 
 export default MovieDetails;
