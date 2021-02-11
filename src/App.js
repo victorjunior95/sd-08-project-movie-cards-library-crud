@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router,
+import { BrowserRouter,
   Switch, Route } from 'react-router-dom';
 import './App.css';
 import { MovieList, MovieDetails, NewMovie, EditMovie, NotFound } from './pages/index';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Switch>
         <Route exact path="/" component={ MovieList } />
         <Route path="/movies/:id" component={ MovieDetails } />
@@ -14,7 +14,7 @@ function App() {
         <Route path="/movie/:id/edit" component={ EditMovie } />
         <Route path="" component={ NotFound } />
       </Switch>
-    </Router>
+    </BrowserRouter>
   );
 }
 
