@@ -18,7 +18,6 @@ function App() {
 
         <Route path="/" component={ NotFound } />
         <Route path="/notfound" exact component={ NotFound } />
-        {/* <Redirect from="*" component={ NotFound } /> */}
       </Switch>
     </Router>
   );
