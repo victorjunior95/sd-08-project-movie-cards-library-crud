@@ -31,6 +31,16 @@ class MovieDetails extends Component {
     this._isMounted = false;
   }
 
+  async onDeleteMovie(id) {
+    if (this._isMounted) this.setState({ loading: true });
+    await movieAPI.deleteMovie(id);
+    if (this._isMounted) {
+      this.setState({
+        loading: false,
+      });
+    }
+  }
+
   async populateDetails(id) {
     const response = await movieAPI.getMovie(id);
     if (this._isMounted) {
@@ -41,23 +51,56 @@ class MovieDetails extends Component {
     }
   }
 
+  renderCardImg() {
+    const {
+      movie: { imagePath },
+    } = this.state;
+    return (
+      <img
+        alt="Movie Cover"
+        className="movie-card-image"
+        src={ `../${imagePath}` }
+      />
+    );
+  }
+
+  renderButtons() {
+    const { movie: { id, rating },
+    } = this.state;
+    return (
+      <>
+        <Link className="details-button" to={ `/movies/${id}/edit` }>
+          EDITAR
+        </Link>
+        <Link className="details-button" to="/">VOLTAR</Link>
+        <Link
+          className="details-button"
+          onClick={ () => this.onDeleteMovie(id) }
+          to="/"
+        >
+          DELETAR
+        </Link>
+        <Rating rating={ rating } />
+      </>
+    );
+  }
+
   renderMovieCard() {
-    const { movie } = this.state;
-    const { storyline, imagePath, genre, rating, subtitle, title, id } = movie;
+    const {
+      movie: { storyline, genre, subtitle, title },
+    } = this.state;
     return (
       <div className="movie-card-details" data-testid="movie-details">
-        <img alt="Movie Cover" className="movie-card-image" src={ `../${imagePath}` } />
+        {this.renderCardImg()}
         <div className="movie-card-body">
-          <h4 data-testid="movie-card-title" className="movie-card-title">{title}</h4>
+          <h4 data-testid="movie-card-title" className="movie-card-title">
+            {title}
+          </h4>
           <h5 className="movie-card-subtitle">{subtitle}</h5>
           <p className="movie-card-storyline">{storyline}</p>
           <p className="movie-card-genre">{`Genre: ${genre}`}</p>
         </div>
-        <div className="movie-card-rating">
-          <Link className="details-button" to={ `/movies/${id}/edit` }>EDITAR</Link>
-          <Link className="details-button" to="/">VOLTAR</Link>
-          <Rating rating={ rating } />
-        </div>
+        <div className="movie-card-rating">{this.renderButtons()}</div>
       </div>
     );
   }
@@ -66,9 +109,7 @@ class MovieDetails extends Component {
     const { loading } = this.state;
     if (!loading) {
       return (
-        <div className="movie-details-container">
-          {this.renderMovieCard()}
-        </div>
+        <div className="movie-details-container">{this.renderMovieCard()}</div>
       );
     }
     return <Loading />;
