@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
@@ -15,28 +16,38 @@ class MovieDetails extends Component {
 
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
+    this._isMounted = true;
     this.populateDetails(id);
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   async populateDetails(id) {
     const response = await movieAPI.getMovie(id);
-    this.setState({
-      movie: response,
-      loading: false,
-    });
+    if (this._isMounted) {
+      this.setState({
+        loading: false,
+        movie: response,
+      });
+    }
   }
 
   render() {
     const { loading, movie } = this.state;
     if (!loading) {
-      const { storyline, imagePath, genre, rating, subtitle } = movie;
+      const { storyline, imagePath, genre, rating, subtitle, title, id } = movie;
       return (
         <div data-testid="movie-details">
           <img alt="Movie Cover" src={ `../${imagePath}` } />
+          <p>{`Title: ${title}`}</p>
           <p>{`Subtitle: ${subtitle}`}</p>
           <p>{`Storyline: ${storyline}`}</p>
           <p>{`Genre: ${genre}`}</p>
           <p>{`Rating: ${rating}`}</p>
+          <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+          <Link to="/">VOLTAR</Link>
         </div>
       );
     }
