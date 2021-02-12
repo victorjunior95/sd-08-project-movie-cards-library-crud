@@ -67,7 +67,7 @@ body {
 }
 
 .rating {
-  color:darkblue;
+  color: darkblue;
   font-size: 16px;
   font-weight: 700;
   padding: 3px 9px;
@@ -82,11 +82,11 @@ body {
 }
 
 .detailsBtn {
-  text-decoration: none;
-  color: black;
-  border: 1px black solid;
-  padding: 5px;
   background-color: cadetblue;
+  border: 1px black solid;
+  color: black;
+  padding: 5px;
+  text-decoration: none;
 }
 
 .library {
