@@ -3,3 +3,8 @@ body {
   box-sizing: border-box;
 }
 
+.movie-list {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 48px 30px;
+}

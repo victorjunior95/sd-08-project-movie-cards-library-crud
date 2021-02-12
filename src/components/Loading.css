@@ -1,0 +1,13 @@
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.loading-msg {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 20px;
+  text-align: center;
+  text-justify: center;
+}
