@@ -27,7 +27,7 @@ class MovieList extends Component {
     const { movies } = this.state;
     return (
       <div data-testid="movie-list">
-        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+        <Link className="link" to="/movies/new">ADICIONAR CARTÃO</Link>
         <div className="flex-on">
           {movies.length > 0 ? movies.map((movie) => (<MovieCard
             key={ movie.title }

@@ -24,3 +24,17 @@ body {
   border-radius: 5px;
   max-width: 250px;
 }
+
+.link {
+  background-color: wheat;
+  border-radius: 3px;
+  color: brown;
+  margin: 5px;
+  padding: 5px 8px;
+  text-decoration: none;
+}
+
+.red {
+  background-color: brown;
+  color: white;
+}
