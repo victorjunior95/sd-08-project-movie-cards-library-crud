@@ -139,7 +139,7 @@ class MovieForm extends React.Component {
       <div>
         <button
           type="button"
-          onClick={ this.handleSubmit }
+          onClick={ () => this.handleSubmit(this.state) }
         >
           Submit
         </button>
@@ -165,7 +165,9 @@ class MovieForm extends React.Component {
 }
 
 MovieForm.propTypes = {
-  movie: PropTypes.string.isRequired,
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+  }).isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
