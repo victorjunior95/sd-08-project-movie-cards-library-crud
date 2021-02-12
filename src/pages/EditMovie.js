@@ -37,7 +37,7 @@ class EditMovie extends Component {
     }
 
     if (status === 'loading') {
-      return <div data-testid="edit-movie"><Loading /></div>;
+      return <Loading />;
     }
 
     return (
