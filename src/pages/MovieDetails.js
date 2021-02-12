@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import Rating from '../components/Rating';
+
+import './MovieDetails.css';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -15,7 +18,11 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    const { match: { params: { id } } } = this.props;
+    const {
+      match: {
+        params: { id },
+      },
+    } = this.props;
     this._isMounted = true;
     this.populateDetails(id);
   }
@@ -34,20 +41,33 @@ class MovieDetails extends Component {
     }
   }
 
+  renderMovieCard() {
+    const { movie } = this.state;
+    const { storyline, imagePath, genre, rating, subtitle, title, id } = movie;
+    return (
+      <div className="movie-card-details" data-testid="movie-details">
+        <img alt="Movie Cover" className="movie-card-image" src={`../${imagePath}`} />
+        <div className="movie-card-body">
+          <h4 data-testid="movie-card-title" className="movie-card-title">{title}</h4>
+          <h5 className="movie-card-subtitle">{subtitle}</h5>
+          <p className="movie-card-storyline">{storyline}</p>
+          <p className="movie-card-genre">{`Genre: ${genre}`}</p>
+        </div>
+        <div className="movie-card-rating">
+          <Link className="details-button" to={ `/movies/${id}/edit` }>EDITAR</Link>
+          <Link className="details-button" to="/">VOLTAR</Link>
+          <Rating rating={ rating } />
+        </div>
+      </div>
+    );
+  }
+
   render() {
-    const { loading, movie } = this.state;
+    const { loading } = this.state;
     if (!loading) {
-      const { storyline, imagePath, genre, rating, subtitle, title, id } = movie;
       return (
-        <div data-testid="movie-details">
-          <img alt="Movie Cover" src={ `../${imagePath}` } />
-          <p>{`Title: ${title}`}</p>
-          <p>{`Subtitle: ${subtitle}`}</p>
-          <p>{`Storyline: ${storyline}`}</p>
-          <p>{`Genre: ${genre}`}</p>
-          <p>{`Rating: ${rating}`}</p>
-          <Link to={`/movies/${id}/edit`}>EDITAR</Link>
-          <Link to="/">VOLTAR</Link>
+        <div className="movie-details-container">
+          {this.renderMovieCard()}
         </div>
       );
     }
