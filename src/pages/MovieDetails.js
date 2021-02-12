@@ -46,7 +46,7 @@ class MovieDetails extends Component {
     const { storyline, imagePath, genre, rating, subtitle, title, id } = movie;
     return (
       <div className="movie-card-details" data-testid="movie-details">
-        <img alt="Movie Cover" className="movie-card-image" src={`../${imagePath}`} />
+        <img alt="Movie Cover" className="movie-card-image" src={ `../${imagePath}` } />
         <div className="movie-card-body">
           <h4 data-testid="movie-card-title" className="movie-card-title">{title}</h4>
           <h5 className="movie-card-subtitle">{subtitle}</h5>
