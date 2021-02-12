@@ -9,7 +9,7 @@ class MovieDetails extends Component {
     super();
     this.fetchcMovie = this.fetchMovie.bind(this);
     this.state = {
-      movie: undefined,
+      movie: [],
       loading: true,
     };
   }
