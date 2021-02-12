@@ -21,7 +21,6 @@ class MovieList extends Component {
 
   async populateMovies() {
     const response = await movieAPI.getMovies();
-    console.log(response);
     this.setState({
       movies: response,
       loading: false,
