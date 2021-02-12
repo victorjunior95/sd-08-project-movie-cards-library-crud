@@ -8,3 +8,13 @@ body {
   flex-flow: row wrap;
   padding: 48px 30px;
 }
+
+.details-button {
+  align-self: center;
+  background-color: rgb(165, 100, 15);
+  border-radius: 30px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  width: 50%;
+}
