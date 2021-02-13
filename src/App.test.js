@@ -91,7 +91,7 @@ const renderPath = (path) => {
   return { ...resources }
 };
 
-describe('1 - Renderize `BrowserRouter` no componente `App` usando rotas', () => {
+describe.only('1 - Renderize `BrowserRouter` no componente `App` usando rotas', () => {
   test('a rota "/" deve renderizar MovieList', async () => {
     const { unmount, getByTestId } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
