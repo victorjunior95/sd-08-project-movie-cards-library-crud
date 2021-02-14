@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import PropTypes from 'prop-types';
 
 class MovieDetails extends Component {
   constructor() {
@@ -10,11 +11,11 @@ class MovieDetails extends Component {
     this.state = {
       movie: {},
       loading: true,
-    }
+    };
   }
-  
+
   componentDidMount() {
-    const { match: {params: {id }}} = this.props;
+    const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id).then((data) => {
       this.setState({
         movie: data,
@@ -49,5 +50,6 @@ MovieDetails.propTypes = {
       id: PropTypes.string,
     }),
   }).isRequired,
-}
+};
+
 export default MovieDetails;
