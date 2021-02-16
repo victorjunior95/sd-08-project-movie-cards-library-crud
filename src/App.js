@@ -1,8 +1,12 @@
 import React from 'react';
+import Routes from './pages';
 
 function App() {
   return (
-    <div>Movie Card Library CRUD</div>
+    <main>
+      <div>Movie Card Library CRUD</div>
+      <Routes />
+    </main>
   );
 }
 
