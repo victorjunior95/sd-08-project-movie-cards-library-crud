@@ -1,26 +1,50 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
-import { Loading } from '../components';
 
 class MovieDetails extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      movies: [],
+    };
+  }
+
+  componentDidMount() {
+    this.getMoviesAPI();
+  }
+
+  async getMoviesAPI() {
+    const { match: { params } } = this.props;
+    const data = await movieAPI.getMovie(params.id);
+    this.setState({
+      movies: data,
+    });
+  }
+
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
-
+    const { movies } = this.state;
+    const { imagePath, title, subtitle, genre, rating } = movies;
     return (
       <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{`Title: ${title}`}</p>
+        <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
+        <p>{`Storyline: ${movies.storyline}`}</p>
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+        <Link to={ `/movies/${movies.id}/edit` }>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
       </div>
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.string.isRequired,
+};
 
 export default MovieDetails;

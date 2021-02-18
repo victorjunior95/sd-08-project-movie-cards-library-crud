@@ -14,8 +14,8 @@ class MovieList extends Component {
     };
   }
 
-  async componentDidMount() {
-    await this.getPosts();
+  componentDidMount() {
+    this.getPosts();
   }
 
   async getPosts() {
