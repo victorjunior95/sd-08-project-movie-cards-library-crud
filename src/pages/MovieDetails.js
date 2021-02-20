@@ -1,39 +1,49 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import Loading from '../components/Loading';
 
 class MovieDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    this.deleteMovieInfo = this.deleteMovieInfo.bind(this);
 
     this.state = {
+      ...props.match.params,
       loading: true,
       movie: [],
-    }
-  }
-
-  async fetchMovie() {
-    const movieID = this.props.match.params.id;
-    this.setState(
-      { loading: true },
-      async () => {
-        const getMovieInfo = await movieAPI.getMovie(movieID);
-        this.setState({
-          movie: getMovieInfo,
-          loading: false,
-        })
-      }
-    )
+    };
   }
 
   componentDidMount() {
     this.fetchMovie();
   }
 
+  deleteMovieInfo() {
+    const { id } = this.state;
+    movieAPI.deleteMovie(id);
+  }
+
+  async fetchMovie() {
+    const { id } = this.state;
+    this.setState(
+      { loading: true },
+      async () => {
+        const getMovie = await movieAPI.getMovie(id);
+        this.setState({
+          movie: getMovie,
+          loading: false,
+        });
+      },
+    );
+  }
+
   renderInfo() {
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+    const { movie } = this.state;
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
 
     return (
       <div data-testid="movie-details">
@@ -43,22 +53,27 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.deleteMovieInfo }>DELETAR</Link>
+        <Link to="/">VOLTAR</Link>
       </div>
     );
   }
 
   render() {
-    const { loading, movie } = this.state;
-    const editMovie = `/movies/${movie.id}/edit`;
+    const { loading } = this.state;
 
     return (
       <div>
         <span>{ loading ? <Loading /> : this.renderInfo() }</span>
-        <Link to={ editMovie } >EDITAR</Link>
-        <Link to="/">VOLTAR</Link>
       </div>
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.objectOf(PropTypes.string).isRequired,
+};
 
 export default MovieDetails;
