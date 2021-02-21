@@ -39,17 +39,17 @@ class MovieDetails extends Component {
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
 
     return (
-      <div data-testid="movie-details">
+      <div data-testid="movie-details" className="movie-details">
         <div>{ loading ? <Loading /> : null }</div>
-        <div>
+        <div className="details-card">
           <img alt="Movie Cover" src={ `../${imagePath}` } />
           <h2>{ `Title: ${title}` }</h2>
           <p>{ `Subtitle: ${subtitle}` }</p>
           <p>{ `Storyline: ${storyline}` }</p>
           <p>{ `Genre: ${genre}` }</p>
           <p>{ `Rating: ${rating}` }</p>
-          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-          <Link to="/">VOLTAR</Link>
+          <Link className="link" to={ `/movies/${id}/edit` }>EDITAR</Link>
+          <Link className="link" to="/">VOLTAR</Link>
         </div>
       </div>
     );

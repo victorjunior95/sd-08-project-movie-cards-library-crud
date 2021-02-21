@@ -71,6 +71,7 @@ body {
   color: white;
   font-size: 16px;
   font-weight: 700;
+  margin-bottom: 10px;
   padding: 3px 9px;
 }
 
@@ -82,12 +83,37 @@ body {
   padding: 12px 20px;
 }
 
-.datails-link {
+.link {
   background-color: #007bff;
   border-radius: 20px;
   color: white;
   font-size: 16px;
   font-weight: 500;
+  margin-bottom: 10px;
   padding: 3px 9px;
+  text-align: center;
   text-decoration: none;
+}
+
+.movie-details {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+}
+
+.details-card {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 750px;
+  margin: 5px;
+  overflow: hidden;
+  padding: 20px;
+  width: 800px;
 }
