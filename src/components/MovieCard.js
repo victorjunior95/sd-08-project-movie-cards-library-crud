@@ -1,31 +1,37 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class MovieCard extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { ...props.movie };
-  }
-
   render() {
-    const { id, title, subtitle, storyline, imagePath } = this.state;
+    const { movie: { title, subtitle, storyline, imagePath, rating, id } } = this.props;
     const movieId = `movies/${id}`;
     return (
-      <div data-testid="movie-card">
-        <img src={ imagePath } alt="Movie Cover" />
-        <h1>{ title }</h1>
-        <h4>{ subtitle }</h4>
-        <p>{ storyline }</p>
-        <Link to={ movieId }>VER DETALHES</Link>
+      <div className="movie-card" data-testid="movie-card">
+        <img className="movie-card-image" src={ imagePath } alt="Movie Cover" />
+        <div className="movie-card-body">
+          <h4 data-testid="movie-card-title" className="movie-card-title">{ title }</h4>
+          <h5 className="movie-card-subtitle">{ subtitle }</h5>
+          <p className="movie-card-storyline">{ storyline }</p>
+        </div>
+        <div className="movie-card-rating" data-testid="rating">
+          <Link className="datails-link" to={ movieId }>VER DETALHES</Link>
+          <span className="rating">{rating}</span>
+        </div>
       </div>
     );
   }
 }
 
 MovieCard.propTypes = {
-  movie: PropTypes.arrayOf(PropTypes.object).isRequired,
+  movie: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    imagePath: PropTypes.string,
+    rating: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default MovieCard;
