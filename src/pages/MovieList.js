@@ -26,9 +26,9 @@ class MovieList extends Component {
         this.setState({
           movies: getMovies,
           loading: false,
-        })
-      }
-    )
+        });
+      },
+    );
   }
 
   render() {

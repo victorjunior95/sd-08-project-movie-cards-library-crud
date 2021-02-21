@@ -14,19 +14,16 @@ class MovieDetails extends Component {
       loading: true,
       movie: [],
     };
-
-    this.handleDeleteMovie = this.handleDeleteMovie.bind(this);
   }
 
-  handleDeleteMovie() {
-    const { id } = this.state;
-    movieAPI.deleteMovie(id);
+  componentDidMount() {
+    this.fetchMovie();
   }
 
   async fetchMovie() {
     const { id } = this.state;
     this.setState(
-      { loading:true },
+      { loading: true },
       async () => {
         const getMovie = await movieAPI.getMovie(id);
         this.setState({
@@ -35,10 +32,6 @@ class MovieDetails extends Component {
         });
       },
     );
-  }
-
-  componentDidMount() {
-    this.fetchMovie();
   }
 
   render() {
@@ -56,7 +49,6 @@ class MovieDetails extends Component {
           <p>{ `Genre: ${genre}` }</p>
           <p>{ `Rating: ${rating}` }</p>
           <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-          <Link to="/" onClick={ this.handleDeleteMovie }>DELETAR</Link>
           <Link to="/">VOLTAR</Link>
         </div>
       </div>
