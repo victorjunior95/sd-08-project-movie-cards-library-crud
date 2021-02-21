@@ -7,7 +7,7 @@ header {
   font-size: 50px;
   text-align: center;
   color: #130101;
-  background-color: #d696bb;
+  background-color: #7d9bdb;
 }
 
 .around {
@@ -15,3 +15,53 @@ header {
   font-size: 20px;
   padding-right: 20px;
 }
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 250px;
+  height: 250px;
+  background: transparent;
+  border: transparent;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 250px;
+  font-family: sans-serif;
+  font-size: 20px;
+  color: #181707;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px #fff000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.loading:before
+{
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 100%;
+  height: 100%;
+  border: 5px solid transparent;
+  border-top: 5px solid #7d9bdb;
+  border-right: 5px solid #7d9bdb;
+  border-radius: 50%;
+  animation: animateLoading 2s linear infinite;
+}
+
+@keyframes animateLoading
+{
+  0%
+  {
+    transform: rotate(0deg);
+  }
+
+  100%
+  {
+    transform: rotate(360deg);
+  }
+}
+

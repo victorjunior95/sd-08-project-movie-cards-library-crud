@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { MovieCard, Loading } from '../components/index';
 import * as movieAPI from '../services/movieAPI';
 
-class MovieList extends Component {
+export default class MovieList extends Component {
   constructor() {
     super();
     this.state = {
@@ -43,4 +43,3 @@ class MovieList extends Component {
     );
   }
 }
-export default MovieList;
