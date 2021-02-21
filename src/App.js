@@ -15,7 +15,7 @@ function App() {
         <Route path="*" component={ NotFound } />
       </Switch>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App;
