@@ -1,15 +1,33 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
+  constructor() {
+    super();
+    this.state = {
+      movie: undefined,
+    };
+  }
+
+  componentDidMount() {
+    const { match: { params } } = this.props;
+    this.fetchGetMovie(params.id);
+  }
+
+  async fetchGetMovie(id) {
+    const request = await movieAPI.getMovie(id);
+    this.setState({
+      movie: request,
+    });
+  }
+
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
-
+    const { movie } = this.state;
+    if (movie === undefined) return <Loading />;
+    const { storyline, imagePath, genre, rating, subtitle } = movie;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -21,5 +39,9 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  id: PropTypes.number,
+}.isRequired;
 
 export default MovieDetails;
