@@ -52,10 +52,7 @@ export default class MovieDetails extends Component {
   }
 
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
     const { movie } = this.state;
-
     return (
       <div>
         { movie ? this.renderMovieDetails() : this.renderLoading() }
