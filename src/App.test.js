@@ -179,7 +179,7 @@ describe('4 - Faça uma requisição para buscar o filme que deverá ser renderi
       expect(screen.getAllByText(readMovies()[movie.id - 1].title, { exact: false }).length).toBeGreaterThanOrEqual(1);
       expect(screen.getAllByText(readMovies()[movie.id - 1].subtitle, { exact: false }).length)
         .toBeGreaterThanOrEqual(1);
-      expect(screen.getAllByText(readMovies()[movie.id - 1].storyline, { exact: false })).toBeTruthy;
+      expect(screen.getByText(readMovies()[movie.id - 1].storyline, { exact: false })).toBeTruthy;
 
       let image = screen.getByAltText('Movie Cover').src.split('/').slice(-2).join('/')
       expect(image).toEqual(readMovies()[movie.id - 1].imagePath);
@@ -209,7 +209,7 @@ describe('4 - Faça uma requisição para buscar o filme que deverá ser renderi
   });
 });
 
-/* describe('5 - Realize uma requisição para buscar o filme que será editado em `EditMovie`', () => {
+describe('5 - Realize uma requisição para buscar o filme que será editado em `EditMovie`', () => {
 
   it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     for (const movie of readMovies()) {
@@ -340,4 +340,4 @@ describe('7 - Adicione um link para deletar um cartão em `MovieDetails`', () =>
     expect(screen.getAllByTestId('movie-card').length).toBe(4);
     expect(screen.queryByText(deletedMovie.title)).toBeNull();
   })
-}); */
+});

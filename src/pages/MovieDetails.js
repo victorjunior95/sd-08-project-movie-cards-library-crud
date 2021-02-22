@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
+import Loading from '../components/Loading';
 
 class MovieDetails extends Component {
   constructor() {
@@ -10,7 +11,9 @@ class MovieDetails extends Component {
 
     this.state = {
       movies: [],
+      loading: true,
     };
+    this.renderDiv = this.renderDiv.bind(this);
   }
 
   componentDidMount() {
@@ -22,14 +25,15 @@ class MovieDetails extends Component {
     const data = await movieAPI.getMovie(params.id);
     this.setState({
       movies: data,
+      loading: false,
     });
   }
 
-  render() {
+  renderDiv() {
     const { movies } = this.state;
     const { imagePath, title, subtitle, genre, rating } = movies;
     return (
-      <div data-testid="movie-details">
+      <div>
         <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{`Storyline: ${movies.storyline}`}</p>
@@ -38,6 +42,15 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${movies.id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+      </div>
+    );
+  }
+
+  render() {
+    const { loading } = this.state;
+    return (
+      <div data-testid="movie-details">
+        { loading ? <Loading /> : this.renderDiv() }
       </div>
     );
   }

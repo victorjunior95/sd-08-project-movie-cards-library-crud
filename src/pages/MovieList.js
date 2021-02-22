@@ -12,6 +12,7 @@ class MovieList extends Component {
       movies: [],
       loading: true,
     };
+    this.getPosts = this.getPosts.bind(this);
   }
 
   componentDidMount() {
