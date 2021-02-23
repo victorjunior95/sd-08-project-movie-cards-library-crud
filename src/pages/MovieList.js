@@ -12,6 +12,8 @@ class MovieList extends Component {
       movies: [],
       loading: true,
     };
+    this.getPosts = this.getPosts.bind(this);
+    this.renderMovies = this.renderMovies.bind(this);
   }
 
   async componentDidMount() {
@@ -26,16 +28,25 @@ class MovieList extends Component {
     });
   }
 
-  render() {
-    const { movies, loading } = this.state;
+  renderMovies() {
+    const { movies } = this.state;
 
     // Render Loading here if the request is still happening
 
     return (
-      <div data-testid="movie-list">
+      <div
+        data-testid="movie-list"
+      >
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
-        {loading ? <Loading />
-          : movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+      </div>
+    );
+  }
+
+  render() {
+    const { loading } = this.state;
+    return (
+      <div>
+        { loading ? <Loading /> : this.renderMovies() }
       </div>
     );
   }
