@@ -44,7 +44,7 @@ class MovieList extends Component {
 }
 
 MovieList.propTypes = {
-  location: PropTypes.string.isRequired,
+  location: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 export default MovieList;

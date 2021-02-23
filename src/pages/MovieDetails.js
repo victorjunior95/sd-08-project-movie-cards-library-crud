@@ -15,6 +15,7 @@ class MovieDetails extends Component {
     };
     this.renderDiv = this.renderDiv.bind(this);
     this.getMoviesAPI = this.getMoviesAPI.bind(this);
+    this.removeMovie = this.removeMovie.bind(this);
   }
 
   componentDidMount() {
@@ -27,6 +28,14 @@ class MovieDetails extends Component {
     this.setState({
       movies: { ...data },
       loading: false,
+    });
+  }
+
+  async removeMovie() {
+    const { match: { params } } = this.props;
+    const removedMovie = await movieAPI.deleteMovie(params.id);
+    this.setState({
+      movies: { ...removedMovie },
     });
   }
 
@@ -46,6 +55,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${movies.id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ this.removeMovie }>DELETAR</Link>
       </div>
     );
   }
@@ -61,7 +71,7 @@ class MovieDetails extends Component {
 }
 
 MovieDetails.propTypes = {
-  match: PropTypes.string.isRequired,
+  match: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 export default MovieDetails;
