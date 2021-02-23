@@ -47,7 +47,7 @@ class EditMovie extends Component {
           to={ {
             pathname: '/',
             state: movie,
-            qualquerCoisa: params.id - 1,
+            index: params.id - 1,
           } }
         />);
     }

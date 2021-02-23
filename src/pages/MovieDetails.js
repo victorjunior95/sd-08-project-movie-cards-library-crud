@@ -10,10 +10,11 @@ class MovieDetails extends Component {
     super();
 
     this.state = {
-      movies: [],
+      movies: {},
       loading: true,
     };
     this.renderDiv = this.renderDiv.bind(this);
+    this.getMoviesAPI = this.getMoviesAPI.bind(this);
   }
 
   componentDidMount() {
@@ -24,7 +25,7 @@ class MovieDetails extends Component {
     const { match: { params } } = this.props;
     const data = await movieAPI.getMovie(params.id);
     this.setState({
-      movies: data,
+      movies: { ...data },
       loading: false,
     });
   }
@@ -37,7 +38,10 @@ class MovieDetails extends Component {
         <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{`Storyline: ${movies.storyline}`}</p>
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <img
+          alt="Movie Cover"
+          src={ imagePath.includes('https') ? imagePath : `../${imagePath}` }
+        />
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${movies.id}/edit` }>EDITAR</Link>
