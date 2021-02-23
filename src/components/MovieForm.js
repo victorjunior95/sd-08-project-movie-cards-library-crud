@@ -158,10 +158,20 @@ class MovieForm extends React.Component {
           {this.renderGenreSelection()}
           {this.renderRatingInput()}
           {this.renderSubmitButton()}
+          { this.renderTitleInput() }
+          { this.renderSubtitleInput() }
+          { this.renderImagePathInput() }
+          { this.renderStorylineInput() }
+          { this.renderGenreSelection() }
+          { this.renderRatingInput() }
+          { this.renderSubmitButton() }
         </form>
       </div>
     );
   }
 }
-
+MovieForm.propTypes = {
+  movie: PropTypes.objectOf(PropTypes.string).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 export default MovieForm;
