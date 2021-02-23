@@ -51,7 +51,7 @@ class MovieDetails extends Component {
     return (
       <section>
         {loading
-          ? Loading
+          ? <Loading />
           : this.movieDetailsElement()}
         <div>
           <Link to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
