@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import MovieCard from '../components/MovieCard';
 
 import * as movieAPI from '../services/movieAPI';
@@ -13,19 +14,37 @@ class MovieList extends Component {
       loading: true,
     };
     this.getPosts = this.getPosts.bind(this);
+    // this.updateData = this.updateData.bind(this);
   }
 
   componentDidMount() {
     this.getPosts();
   }
 
+  // componentDidUpdate() {
+  //   this.updateData();
+  // }
+
   async getPosts() {
+    const { location: { qualquerCoisa } } = this.props;
+    const { location: { state } } = this.props;
     const data = await movieAPI.getMovies();
+    data[qualquerCoisa] = { ...data[qualquerCoisa], ...state };
     this.setState({
-      movies: data,
+      movies: [...data],
       loading: false,
     });
   }
+
+  // updateData() {
+  //   const { movies } = this.state;
+  //   const { location: { qualquerCoisa } } = this.props;
+  //   const { location: { state } } = this.props;
+  //   const newInfo = { ...movies[qualquerCoisa], ...state };
+  //   this.setState({
+  //     movies: [...movies, newInfo],
+  //   });
+  // }
 
   render() {
     const { movies, loading } = this.state;
@@ -38,5 +57,9 @@ class MovieList extends Component {
     );
   }
 }
+
+MovieList.propTypes = {
+  location: PropTypes.string.isRequired,
+};
 
 export default MovieList;
