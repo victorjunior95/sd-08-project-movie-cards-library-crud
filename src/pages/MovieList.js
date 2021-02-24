@@ -48,6 +48,7 @@ class MovieList extends Component {
     return (
       <div>
         { loading ? <Loading /> : this.renderMovies() }
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </div>
     );
   }
