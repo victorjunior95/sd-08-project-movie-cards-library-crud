@@ -1,9 +1,12 @@
 import React from 'react';
 
-function App() {
+import MovieList from './pages/MovieList';
+
+export default function App() {
   return (
-    <div>Movie Card Library CRUD</div>
+    <div>
+      <div>Movie Card Library CRUD</div>
+      <MovieList />
+    </div>
   );
 }
-
-export default App;
