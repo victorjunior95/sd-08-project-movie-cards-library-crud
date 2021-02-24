@@ -19,11 +19,9 @@ class MovieDetails extends Component {
 
   async obtemFilme() {
     const { match } = this.props;
-    console.log(typeof match);
     const { id } = match.params;
     const requestMovie = movieAPI.getMovie(id);
     const Movie = await requestMovie;
-    console.log(Movie);
     this.setState({
       movie: Movie,
     });
@@ -47,7 +45,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link movie={ movie } to="/">VOLTAR</Link>
-        <Link onClick={ () => this.deleteMovie(id) } movie={ movie } to="/">DELETAR</Link>
+        <Link onClick={ () => this.deleteMovie(id) } to="/">DELETAR</Link>
       </div>
     );
   }

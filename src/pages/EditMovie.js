@@ -25,7 +25,6 @@ class EditMovie extends Component {
 
   async obtemFilme() {
     const { match } = this.props;
-    console.log(typeof match);
     const { id } = match.params;
     const requestMovie = movieAPI.getMovie(id);
     const Movie = await requestMovie;
@@ -34,7 +33,6 @@ class EditMovie extends Component {
       status: '',
       shouldRedirect: false,
     });
-    console.log(Movie);
   }
 
   renderLoading() {
@@ -53,7 +51,6 @@ class EditMovie extends Component {
 
   render() {
     const { status, shouldRedirect, movie } = this.state;
-    console.log(status, shouldRedirect);
     if (shouldRedirect) {
       return (
         <Redirect to="/" />
