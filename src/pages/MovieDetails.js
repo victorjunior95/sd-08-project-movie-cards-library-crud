@@ -8,45 +8,45 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movie: {},
-      isLoading: true,
-      id: 0,
+      movie: {
+        imagePath: '',
+        title: '',
+        subtitle: '',
+        storyline: '',
+        genre: '',
+        rating: 0,
+        id: 0 },
     };
     this.deleteCard = this.deleteCard.bind(this);
   }
 
   componentDidMount() {
-    movieAPI.getMovie(this.props.match.params.id).then((movie) =>
-      this.setState({
-        movie,
-        isLoading: false,
-        id: this.props.match.params.id,
-      }));
+    const { match: { params: { id } } } = this.props;
+    movieAPI.getMovie(id).then((movie) => {
+      this.setState(() => ({ movie }));
+    });
   }
 
   deleteCard() {
-    const { id } = this.state;
+    const { match: { params: { id } } } = this.props;
     movieAPI.deleteMovie(id);
   }
 
   render() {
-    const { movie, isLoading } = this.state;
-
-    if (isLoading) return <Loading />;
-
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
-
+    const { movie } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
+    if (title === '') { return <Loading />; }
     return (
       <div data-testid="movie-details">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
         <p>{`Title: ${title}`}</p>
         <p>{`Subtitle: ${subtitle}`}</p>
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
-        <Link to={`/movies/${this.props.match.params.id}/edit`}>EDITAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
-        <Link to="/" onClick={this.deleteCard}>
+        <Link to="/" onClick={ this.deleteCard }>
           DELETAR
         </Link>
       </div>

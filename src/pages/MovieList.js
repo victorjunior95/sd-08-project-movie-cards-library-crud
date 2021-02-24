@@ -13,11 +13,7 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
-    movieAPI.getMovies().then((movies) =>
-      this.setState({
-        movies,
-        isLoading: false,
-      }));
+    movieAPI.getMovies().then((movies) => this.setState({ movies, isLoading: false }));
   }
 
   render() {
@@ -28,7 +24,7 @@ class MovieList extends Component {
     return (
       <div data-testid="movie-list" className="movie-list">
         {movies.map((movie) => (
-          <MovieCard key={movie.title} movie={movie} />
+          <MovieCard key={ movie.title } movie={ movie } />
         ))}
       </div>
     );

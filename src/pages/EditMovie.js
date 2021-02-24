@@ -17,12 +17,11 @@ class EditMovie extends Component {
   }
 
   componentDidMount() {
-    const { match } = this.props;
-    movieAPI.getMovie(match.params.id).then((res) =>
-      this.setState({
-        movie: res,
-        status: 'notLoading',
-      }));
+    const { match: { params: { id } } } = this.props;
+    movieAPI.getMovie(id).then((movie) => {
+      this.setState(() => ({ movie }));
+      this.setState(() => ({ status: '' }));
+    });
   }
 
   handleSubmit(updatedMovie) {
@@ -31,14 +30,15 @@ class EditMovie extends Component {
       this.setState({
         shouldRedirect: true,
         route: history.push('/'),
-      }));
+      }),
+    );
   }
 
   render() {
     const { status, shouldRedirect, movie, route } = this.state;
     if (shouldRedirect) {
       // Redirect
-      return <Redirect to={route} />;
+      return <Redirect to={ route } />;
     }
 
     if (status === 'loading') {
@@ -47,7 +47,7 @@ class EditMovie extends Component {
 
     return (
       <div data-testid="edit-movie">
-        <MovieForm movie={movie} onSubmit={this.handleSubmit} />
+        <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
       </div>
     );
   }
