@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       movie: [],
       loading: true,
     };
+
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
-    const { match: { parans: { id } } } = this.props;
+    const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id).then((movie) => {
       this.setState({
         movie,
@@ -24,12 +27,13 @@ class MovieDetails extends Component {
     });
   }
 
-  render() {
-    // Change the condition to check the state
-    const { loading, movie } = this.state;
-    if (loading) return <Loading />;
+  deleteMovie(id) {
+    movieAPI.deleteMovie(id);
+  }
 
+  renderMovieDetails(movie) {
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { match: { params: { id } } } = this.props;
 
     return (
       <div data-testid="movie-details">
@@ -39,15 +43,28 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+        <div>
+          <Link to="/">VOLTAR</Link>
+          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+          <Link to="/" onClick={ this.deleteMovie(id) }>DELETAR</Link>
+        </div>
       </div>
     );
+  }
+
+  render() {
+    // Change the condition to check the state
+    const { loading, movie } = this.state;
+    if (loading) return <Loading />;
+
+    return this.renderMovieDetails(movie);
   }
 }
 
 MovieDetails.propTypes = {
   match: PropTypes.shape({
-    parans: PropTypes.shape({
-      id: PropTypes.number.isRequired,
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };
