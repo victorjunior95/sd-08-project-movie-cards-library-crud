@@ -1,17 +1,20 @@
+// Bibliotecas React
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
+// API
 import * as movieAPI from '../services/movieAPI';
 
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
 
-    const { match: { params: { id } } } = props;
+    // const { match: { params: { id } } } = props;
 
     this.state = {
       movies: [],
       loading: true,
-      id,
+      ...props.match.params,
+      // id,
     };
 
     this.fetchData = this.fetchData.bind(this);
@@ -53,5 +56,9 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.string.isRequired,
+};
 
 export default MovieDetails;
