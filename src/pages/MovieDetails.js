@@ -54,7 +54,6 @@ class MovieDetails extends Component {
   }
 
   render() {
-    // Change the condition to check the state
     const { loading, movie } = this.state;
     if (loading) return <Loading />;
 
