@@ -29,23 +29,25 @@ class MovieDetails extends Component {
     });
   }
 
+  deleteMovie(id) {
+    movieAPI.deleteMovie(id);
+  }
+
   render() {
     const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
-    console.log(title);
     if (!title) return <Loading />;
     return (
-      <div>
-        <div data-testid="movie-details">
-          <p>{ `title: ${title}` }</p>
-          <img alt="Movie Cover" src={ `../${imagePath}` } />
-          <p>{ `Subtitle: ${subtitle}` }</p>
-          <p>{ `Storyline: ${storyline}` }</p>
-          <p>{ `Genre: ${genre}` }</p>
-          <p>{ `Rating: ${rating}` }</p>
-          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-          <Link movie={ movie } to="/">VOLTAR</Link>
-        </div>
+      <div data-testid="movie-details">
+        <p>{ `title: ${title}` }</p>
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{ `Subtitle: ${subtitle}` }</p>
+        <p>{ `Storyline: ${storyline}` }</p>
+        <p>{ `Genre: ${genre}` }</p>
+        <p>{ `Rating: ${rating}` }</p>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link movie={ movie } to="/">VOLTAR</Link>
+        <Link onClick={ () => this.deleteMovie(id) } movie={ movie } to="/">DELETAR</Link>
       </div>
     );
   }
