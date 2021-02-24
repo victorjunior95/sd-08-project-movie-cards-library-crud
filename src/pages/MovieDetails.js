@@ -19,44 +19,44 @@ class MovieDetails extends Component {
 
   async obtemFilme() {
     const { match } = this.props;
+    console.log(typeof match);
     const { id } = match.params;
     const requestMovie = movieAPI.getMovie(id);
     const Movie = await requestMovie;
+    console.log(Movie);
     this.setState({
       movie: Movie,
     });
   }
 
-  naoPodeDozeEspacosEmFuncaoPorIssoFizEssaFuncao({ movie }) {
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
-    return (
-      <div data-testid="movie-details">
-        <p>{ `title: ${title}` }</p>
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <Link movie={ movie } to="/">VOLTAR</Link>
-      </div>
-    );
-  }
-
   render() {
     const { movie } = this.state;
-    const { title } = movie;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
+    console.log(title);
+    if (!title) return <Loading />;
     return (
       <div>
-        {(!title) ? <Loading />
-          : this.naoPodeDozeEspacosEmFuncaoPorIssoFizEssaFuncao({ movie })}
+        <div data-testid="movie-details">
+          <p>{ `title: ${title}` }</p>
+          <img alt="Movie Cover" src={ `../${imagePath}` } />
+          <p>{ `Subtitle: ${subtitle}` }</p>
+          <p>{ `Storyline: ${storyline}` }</p>
+          <p>{ `Genre: ${genre}` }</p>
+          <p>{ `Rating: ${rating}` }</p>
+          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+          <Link movie={ movie } to="/">VOLTAR</Link>
+        </div>
       </div>
     );
   }
 }
 
 MovieDetails.propTypes = {
-  match: PropTypes.string.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default MovieDetails;

@@ -25,6 +25,7 @@ class EditMovie extends Component {
 
   async obtemFilme() {
     const { match } = this.props;
+    console.log(typeof match);
     const { id } = match.params;
     const requestMovie = movieAPI.getMovie(id);
     const Movie = await requestMovie;
@@ -58,15 +59,14 @@ class EditMovie extends Component {
         <Redirect to="/" />
       );
     }
-
     if (status === 'loading') {
-      // Loading
+      return (
+        <Loading />
+      );
     }
-
     return (
       <div data-testid="edit-movie">
-        {(status === 'loading') ? this.renderLoading()
-          : <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />}
+        <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
       </div>
     );
   }
