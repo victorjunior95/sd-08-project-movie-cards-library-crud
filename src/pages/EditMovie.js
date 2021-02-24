@@ -15,6 +15,7 @@ class EditMovie extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getMovieInfo = this.getMovieInfo.bind(this);
+    this.updateMovieRequest = this.updateMovieRequest.bind(this);
   }
 
   componentDidMount() {
@@ -22,10 +23,11 @@ class EditMovie extends Component {
   }
 
   handleSubmit(updatedMovie) {
+    console.log(updatedMovie);
+    this.updateMovieRequest(updatedMovie);
     this.setState({
       shouldRedirect: true,
     });
-    console.log(updatedMovie);
   }
 
   async getMovieInfo() {
@@ -34,7 +36,6 @@ class EditMovie extends Component {
         params: { id },
       },
     } = this.props;
-    console.log(this.state);
     const request = await movieAPI.getMovie(id);
     this.setState({
       movie: request,
@@ -42,8 +43,11 @@ class EditMovie extends Component {
     });
   }
 
+  async updateMovieRequest(updatedMovie) {
+    await movieAPI.updateMovie(updatedMovie);
+  }
+
   render() {
-    // this.getMovieInfo();
     const { shouldRedirect, movie, loading } = this.state;
     if (shouldRedirect) {
       return <Redirect to="/" />;
