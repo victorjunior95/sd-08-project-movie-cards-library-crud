@@ -3,13 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom";
 // Components
-import AppRouters from './AppRouters';
+import App from './App';
 // Style
 import './index.css';
 
 ReactDOM.render(
   <Router>
-    <AppRouters />
+    <App />
   </Router>, 
   document.getElementById('root'));
 
