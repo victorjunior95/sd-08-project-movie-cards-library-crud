@@ -36,13 +36,4 @@ class MovieList extends Component {
   }
 }
 
-// função de ciclo de vida, componentDidMount e dentro a gnt faz a requisição
-// para API, acessamos a getMovie, q retorna uma promisse, e atraves do
-// .then e pegamos o retorno dela (data).
-// alterei o texto no componente loading para carregando
-// import do loading. cria o state, p verificar o loading
-// if(loading), retorna o component loading.
-// qdo terminar o loading, ocorre o .then, e set do loading p false
-// que vai trazer e renderizar todos movies, movie card.
-
 export default MovieList;
