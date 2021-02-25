@@ -11,13 +11,12 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
 
-    // const { match: { params: { id } } } = props;
+    const { match: { params: { id } } } = props;
 
     this.state = {
       movies: [],
       loading: true,
-      ...props.match.params,
-      // id,
+      id,
     };
 
     // this.fetchData = this.fetchData.bind(this);
@@ -62,7 +61,11 @@ class MovieDetails extends Component {
 }
 
 MovieDetails.propTypes = {
-  match: PropTypes.string.isRequired,
+  match: PropTypes.objectOf({
+    params: PropTypes.objectOf({
+      id: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default MovieDetails;
