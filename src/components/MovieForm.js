@@ -19,7 +19,6 @@ class MovieForm extends React.Component {
 
   renderTitleInput() {
     const { title } = this.state;
-
     return (
       <div>
         <label htmlFor="movie_title">
@@ -39,7 +38,6 @@ class MovieForm extends React.Component {
 
   renderSubtitleInput() {
     const { subtitle } = this.state;
-
     return (
       <div>
         <label htmlFor="movie_subtitle">
@@ -58,7 +56,6 @@ class MovieForm extends React.Component {
 
   renderImagePathInput() {
     const { imagePath } = this.state;
-
     return (
       <div className="row">
         <label htmlFor="movie_image">
@@ -77,7 +74,6 @@ class MovieForm extends React.Component {
 
   renderStorylineInput() {
     const { storyline } = this.state;
-
     return (
       <div>
         <label htmlFor="movie_storyline">
@@ -164,4 +160,17 @@ class MovieForm extends React.Component {
   }
 }
 
+MovieForm.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    imagePath: PropTypes.string,
+    rating: PropTypes.number,
+    bookmarked: PropTypes.bool,
+    genre: PropTypes.string,
+  }).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 export default MovieForm;
