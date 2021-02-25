@@ -1,8 +1,11 @@
 // Bibliotecas React
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 // API
 import * as movieAPI from '../services/movieAPI';
+// Components
+import Loading from '../components/Loading';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -17,7 +20,7 @@ class MovieDetails extends Component {
       // id,
     };
 
-    this.fetchData = this.fetchData.bind(this);
+    // this.fetchData = this.fetchData.bind(this);
   }
 
   async componentDidMount() {
@@ -38,19 +41,21 @@ class MovieDetails extends Component {
 
   render() {
     const { movies, loading } = this.state;
-    const { storyline, imagePath, genre, rating, subtitle } = movies;
-
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movies;
     if (loading) {
-      return <div>Carregando ...</div>;
+      return <div><Loading /></div>;
     }
 
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
       </div>
     );
   }
