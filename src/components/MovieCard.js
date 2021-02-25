@@ -24,6 +24,6 @@ MovieCard.propTypes = {
   }).isRequired,
 };
 
-// shape - https://pt-br.reactjs.org/docs/typechecking-with-proptypes.html
+// shape -https://pt-br.reactjs.org/docs/typechecking-with-proptypes.html
 
 export default MovieCard;
