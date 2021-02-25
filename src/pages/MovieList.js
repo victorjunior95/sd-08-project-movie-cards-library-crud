@@ -1,5 +1,6 @@
 // Bibliotecas React
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 // Components
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
@@ -35,7 +36,7 @@ class MovieList extends Component {
     const { movies, loading } = this.state;
 
     if (loading) {
-      return <div><Loading /></div>;
+      return <Loading />;
     }
     return (
       <div data-testid="movie-list">
@@ -46,6 +47,7 @@ class MovieList extends Component {
             />
           </div>
         ))}
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 // Bibliotecas React
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 // API
 import * as movieAPI from '../services/movieAPI';
 // Components
@@ -19,11 +19,17 @@ class MovieDetails extends Component {
       id,
     };
 
-    // this.fetchData = this.fetchData.bind(this);
+    this.fetchData = this.fetchData.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   async componentDidMount() {
     await this.fetchData();
+  }
+
+  async deleteMovie() {
+    const { id } = this.state;
+    await movieAPI.deleteMovie(id);
   }
 
   async fetchData() {
@@ -44,7 +50,6 @@ class MovieDetails extends Component {
     if (loading) {
       return <div><Loading /></div>;
     }
-
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -55,6 +60,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
       </div>
     );
   }
