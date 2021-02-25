@@ -6,22 +6,18 @@ class MovieForm extends React.Component {
     this.state = { ...props.movie };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
   handleSubmit() {
     const { onSubmit } = this.props;
     onSubmit(this.state);
   }
-
   updateMovie(field, newValue) {
     this.setState({ [field]: newValue });
   }
-
   renderTitleInput() {
     const { title } = this.state;
     return (
       <div>
-                <label htmlFor="movie_title">
-          Título
+        <label htmlFor="movie_title">
           <input
             placeholder="Insira o título"
             id="movie_title"
@@ -30,17 +26,16 @@ class MovieForm extends React.Component {
             value={ title }
             onChange={ (event) => this.updateMovie('title', event.target.value) }
           />
+          Título
         </label>
       </div>
     );
   }
-
   renderSubtitleInput() {
     const { subtitle } = this.state;
     return (
       <div>
-                <label htmlFor="movie_subtitle">
-          Subtítulo
+        <label htmlFor="movie_subtitle">
           <input
             placeholder="Insira o subtítulo"
             id="movie_subtitle"
@@ -48,17 +43,16 @@ class MovieForm extends React.Component {
             value={ subtitle }
             onChange={ (event) => this.updateMovie('subtitle', event.target.value) }
           />
+          Subtítulo
         </label>
       </div>
     );
   }
-
   renderImagePathInput() {
     const { imagePath } = this.state;
     return (
       <div className="row">
         <label htmlFor="movie_image">
-          Imagem
           <input
             placeholder="Insira o caminho da imagem"
             id="movie_image"
@@ -66,13 +60,28 @@ class MovieForm extends React.Component {
             value={ imagePath }
             onChange={ (event) => this.updateMovie('imagePath', event.target.value) }
           />
+          Imagem
         </label>
       </div>
     );
   }
-
   renderStorylineInput() {
     const { storyline } = this.state;
+    return (
+      <div>
+        <label htmlFor="movie_storyline">
+          <textarea
+            id="movie_storyline"
+            value={ storyline }
+            onChange={ (event) => this.updateMovie('storyline', event.target.value) }
+          />
+          Sinopse
+        </label>
+      </div>
+    );
+  }
+  renderGenreSelection() {
+    const { genre } = this.state;
     return (
       <div>
         <label htmlFor="movie_genre">
@@ -91,13 +100,11 @@ class MovieForm extends React.Component {
       </div>
     );
   }
-
   renderRatingInput() {
     const { rating } = this.state;
     return (
       <div>
-                <label htmlFor="movie_rating">
-          Avaliação
+        <label htmlFor="movie_rating">
           <input
             placeholder="Dê a avaliação do filme"
             id="movie_rating"
@@ -108,21 +115,23 @@ class MovieForm extends React.Component {
             value={ rating }
             onChange={ (event) => this.updateMovie('rating', event.target.value) }
           />
+          Avaliação
         </label>
       </div>
     );
   }
-
   renderSubmitButton() {
     return (
       <div>
-                <button type="button" onClick={ this.handleSubmit }>
+        <button
+          type="button"
+          onClick={ this.handleSubmit }
+        >
           Submit
         </button>
       </div>
     );
   }
-
   render() {
     return (
       <div>
@@ -139,15 +148,17 @@ class MovieForm extends React.Component {
     );
   }
 }
+
 MovieForm.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-    storyline: PropTypes.string,
-    rating: PropTypes.number,
-    imagePath: PropTypes.string,
-    genre: PropTypes.string,
-  }).isRequired,
   onSubmit: PropTypes.func.isRequired,
+  movie: PropTypes.objectOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    imagePath: PropTypes.string.isRequired,
+    storyline: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+  })).isRequired,
 };
+
 export default MovieForm;

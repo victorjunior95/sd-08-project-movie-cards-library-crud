@@ -4,60 +4,59 @@ import PropTypes from 'prop-types';
 import { MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
 import Loading from '../components/Loading';
+
 class EditMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movie: {},
       status: 'loading',
-      shouldRedirect: false,
+      redirect: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    movieAPI.getMovie(id).then((movie) => {
-      this.setState(() => ({ movie }));
-      this.setState(() => ({ status: '' }));
+    movieAPI.getMovie(id).then((data) => {
+      this.setState({
+        status: 'loaded',
+        movie: data,
+      });
     });
   }
 
   handleSubmit(updatedMovie) {
-    const { history } = this.props;
-    movieAPI.updateMovie(updatedMovie).then(
+    movieAPI.updateMovie(updatedMovie).then(() => {
       this.setState({
-        shouldRedirect: true,
-        route: history.push('/'),
-      }),
-      );
+        redirect: true,
+      });
+    });
+  }
+
+  render() {
+    const { status, redirect, movie } = this.state;
+    if (redirect) {
+      return <Redirect to="/" />;
     }
-  
-    render() {
-      const { status, shouldRedirect, movie, route } = this.state;
-      if (shouldRedirect) {
-        return <Redirect to={ route } />;
-      }
-  
-      if (status === 'loading') {
-        return <Loading />;
-      }
-  
-      return (
-        <div data-testid="edit-movie">
-                  <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
+
+    if (status === 'loading') {
+      return <Loading />;
+    }
+
+    return (
+      <div data-testid="edit-movie">
+        <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
       </div>
     );
   }
 }
+
 EditMovie.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
     }),
   }).isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
 };
+
 export default EditMovie;
