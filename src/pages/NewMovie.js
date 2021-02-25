@@ -9,6 +9,9 @@ class NewMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // handleSubmit(newMovie) {
+  // }
+
   render() {
     return (
       <div data-testid="new-movie">
