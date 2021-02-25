@@ -106,3 +106,13 @@ body {
   border: 2px ridge rgba(0, 0, 0);
   border-radius: 5px;
 }
+
+.buttons {
+  background-color:darkgrey;
+  padding: 5px;
+  border: 2px ridge black;
+  border-radius: 5px;
+  margin: 10px;
+  text-decoration: none;
+  color: black;
+}
