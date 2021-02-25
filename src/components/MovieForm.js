@@ -141,7 +141,7 @@ class MovieForm extends React.Component {
         </button>
       </div>
     );
-    }
+  }
 
   render() {
     return (
