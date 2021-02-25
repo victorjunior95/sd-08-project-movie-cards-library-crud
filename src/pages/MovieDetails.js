@@ -11,6 +11,7 @@ export default class MovieDetails extends Component {
 
     this.renderLoading = this.renderLoading.bind(this);
     this.renderMovieDetails = this.renderMovieDetails.bind(this);
+    this.deleteFilm = this.deleteFilm.bind(this);
 
     this.state = {
       movie: undefined,
@@ -23,6 +24,12 @@ export default class MovieDetails extends Component {
     const { id } = params;
     console.log(id);
     movieAPI.getMovie(id).then((movie) => this.setState({ movie }));
+  }
+
+  deleteFilm() {
+    const { movie } = this.state;
+    const { id } = movie;
+    movieAPI.deleteMovie(id);
   }
 
   renderLoading() {
@@ -45,6 +52,7 @@ export default class MovieDetails extends Component {
         <p>
           <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
           <Link to="/">VOLTAR</Link>
+          <Link to="/" onClick={ this.deleteFilm() }>DELETAR</Link>
         </p>
         <span>MovieDetails</span>
       </div>
