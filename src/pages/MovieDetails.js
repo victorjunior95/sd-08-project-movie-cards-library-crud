@@ -15,6 +15,7 @@ export default class MovieDetails extends Component {
 
     this.state = {
       movie: undefined,
+      delet: undefined,
     };
   }
 
@@ -52,7 +53,7 @@ export default class MovieDetails extends Component {
         <p>
           <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
           <Link to="/">VOLTAR</Link>
-          <Link to="/" onClick={ this.deleteFilm() }>DELETAR</Link>
+          <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
         </p>
         <span>MovieDetails</span>
       </div>
