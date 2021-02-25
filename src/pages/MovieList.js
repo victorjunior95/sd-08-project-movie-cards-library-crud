@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 
 import Loading from '../components/Loading';
@@ -41,10 +42,11 @@ class MovieList extends Component {
   render() {
     const { movies } = this.state;
     return (
-      <div>
+      <>
         <h1>MOVIELIST</h1>
         { movies ? this.renderMovies() : this.renderLoading() }
-      </div>
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+      </>
     );
   }
 }
