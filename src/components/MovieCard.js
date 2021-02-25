@@ -6,7 +6,6 @@ class MovieCard extends React.Component {
   render() {
     const { movie } = this.props;
     const { id, title, storyline } = movie;
-    console.log(movie);
     return (
       <div data-testid="movie-card">
         <div>{title}</div>
