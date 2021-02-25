@@ -71,6 +71,7 @@ class MovieForm extends React.Component {
       </div>
     );
   }
+
   renderStorylineInput() {
     const { storyline } = this.state;
     return (
@@ -140,8 +141,8 @@ class MovieForm extends React.Component {
         </button>
       </div>
     );
-  }
-  
+    }
+
   render() {
     return (
       <div>
