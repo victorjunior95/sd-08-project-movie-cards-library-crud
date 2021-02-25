@@ -1,7 +1,7 @@
 // Bibliotecas React
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // API
 import * as movieAPI from '../services/movieAPI';
 // Components
