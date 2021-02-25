@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const MovieCard = ({ movie }) => {
   const { id, title, subtitle, storyline, rating, imagePath } = movie;
   return (
-    <div>
+    <div data-testid="movie-card">
       <img src={ imagePath } alt="Movie Cover" />
       <div>
         <h2>{ title }</h2>

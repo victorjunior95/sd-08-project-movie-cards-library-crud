@@ -18,7 +18,6 @@ class MovieDetails extends Component {
     };
 
     this.fetchData = this.fetchData.bind(this);
-    console.log('teste');
   }
 
   async componentDidMount() {

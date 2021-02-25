@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 // Components
 import MovieCard from '../components/MovieCard';
+import Loading from '../components/Loading';
 // Functions API
 import * as movieAPI from '../services/movieAPI';
 
@@ -34,7 +35,7 @@ class MovieList extends Component {
     const { movies, loading } = this.state;
 
     if (loading) {
-      return <div>Carregando ...</div>;
+      return <div><Loading /></div>;
     }
     return (
       <div data-testid="movie-list">
