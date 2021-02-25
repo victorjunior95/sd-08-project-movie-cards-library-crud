@@ -15,7 +15,6 @@ export default class MovieDetails extends Component {
 
     this.state = {
       movie: undefined,
-      delet: undefined,
     };
   }
 
