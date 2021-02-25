@@ -12,6 +12,7 @@ class MovieDetails extends Component {
     this.renderMovie = this.renderMovie.bind(this);
     this.state = {
       movie: [],
+      loading: false,
     };
   }
 
@@ -22,16 +23,26 @@ class MovieDetails extends Component {
   callMovie() {
     const { match: { params: { id } },
     } = this.props;
-    movieAPI.getMovie(id).then((result) => this.setState({ movie: result }));
+    console.log(id);
+    this.setState({
+      loading: true,
+    }, async () => {
+      await movieAPI.getMovie(id)
+        .then((response) => this.setState({
+          movie: response,
+          loading: false,
+        }));
+    });
   }
 
   renderMovie() {
-    const { movie } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
+    const { movie: {
+      storyline, imagePath, genre, rating, subtitle, title } } = this.state;
+    const { match: { params: { id } } } = this.props;
     return (
-      <div>
+      <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Subtitle: ${title}` }</p>
+        <p>{`title: ${title}`}</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
@@ -44,10 +55,10 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { movie } = this.state;
+    const { loading } = this.state;
     return (
       <div data-testid="movie-details">
-        { !movie ? <Loading />
+        { loading ? <Loading />
           : this.renderMovie()}
       </div>
     );
