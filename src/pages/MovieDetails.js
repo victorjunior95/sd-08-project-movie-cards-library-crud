@@ -11,31 +11,35 @@ class MovieDetails extends Component {
     this.state = {
       movie: {},
       loading: true,
-      shouldRedirect: false,
+      redirectToMovieList: false,
     };
-    this.handleDelete = this.handleDelete.bind(this);
+    this.linkDeleteMovie = this.linkDeleteMovie.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    movieAPI.getMovie(id).then((data) => {
-      this.setState({
-        movie: data,
-        loading: false,
-      });
+    const dataMovieById = await movieAPI.getMovie(id);
+    this.defineStateMovie(dataMovieById);
+  }
+
+  async linkDeleteMovie() {
+    const { movie } = this.state;
+    await movieAPI.deleteMovie(movie.id);
+    this.setState({ redirectToMovieList: true });
+  }
+
+  defineStateMovie(dataMovieById) {
+    this.setState({
+      movie: dataMovieById,
+      loading: false,
     });
   }
 
-  handleDelete() {
-    const { movie: { id } } = this.state;
-    movieAPI.deleteMovie(id).then(() => this.setState({ shouldRedirect: true }));
-  }
-
   render() {
-    const { movie: { title, storyline, imagePath, genre, rating, subtitle, id },
-      loading, shouldRedirect } = this.state;
+    const { movie, loading, redirectToMovieList } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
     if (loading) return <Loading />;
-    if (shouldRedirect) return <Redirect to="/" />;
+    if (redirectToMovieList) return <Redirect to="/" />;
 
     return (
       <div data-testid="movie-details">
@@ -47,7 +51,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
-        <Link onClick={ this.handleDelete } to="/">DELETAR</Link>
+        <Link onClick={ this.linkDeleteMovie } to="/">DELETAR</Link>
       </div>
     );
   }

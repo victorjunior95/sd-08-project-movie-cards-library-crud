@@ -9,32 +9,41 @@ class EditMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      shouldRedirect: false,
+      redirectToMovieList: false,
       loading: true,
       movie: null,
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.btnMovieChange = this.btnMovieChange.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    movieAPI.getMovie(id).then((movie) => this.setState({ movie, loading: false }));
+    const dataMovieById = await movieAPI.getMovie(id);
+    this.defineStateMovie(dataMovieById);
   }
 
-  handleSubmit(updatedMovie) {
-    movieAPI.updateMovie(updatedMovie).then(this.setState({ shouldRedirect: true }));
+  defineStateMovie(dataMovieById) {
+    this.setState({
+      movie: dataMovieById,
+      loading: false,
+    });
+  }
+
+  async btnMovieChange(MovieChanged) {
+    await movieAPI.updateMovie(MovieChanged);
+    this.setState({ redirectToMovieList: true });
   }
 
   render() {
-    const { loading, shouldRedirect, movie } = this.state;
+    const { loading, redirectToMovieList, movie } = this.state;
 
-    if (shouldRedirect) return <Redirect to="/" />;
+    if (redirectToMovieList) return <Redirect to="/" />;
 
     if (loading) return <Loading />;
 
     return (
       <div data-testid="edit-movie">
-        <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
+        <MovieForm movie={ movie } onSubmit={ this.btnMovieChange } />
       </div>
     );
   }

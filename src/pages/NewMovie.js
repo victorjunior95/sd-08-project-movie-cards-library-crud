@@ -8,26 +8,25 @@ class NewMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      shouldRedirect: false,
+      redirectToMovieList: false,
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.btnAddNewMovie = this.btnAddNewMovie.bind(this);
   }
 
-  handleSubmit(newMovie) {
-    movieAPI.createMovie(newMovie).then(() => {
-      this.setState({
-        shouldRedirect: true,
-      });
+  async btnAddNewMovie(newMovie) {
+    movieAPI.createMovie(newMovie);
+    this.setState({
+      redirectToMovieList: true,
     });
   }
 
   render() {
-    const { shouldRedirect } = this.state;
-    if (shouldRedirect) return (<Redirect to="/" />);
+    const { redirectToMovieList } = this.state;
+    if (redirectToMovieList) return (<Redirect to="/" />);
     return (
       <div data-testid="new-movie">
-        <MovieForm onSubmit={ this.handleSubmit } />
+        <MovieForm onSubmit={ this.btnAddNewMovie } />
       </div>
     );
   }
