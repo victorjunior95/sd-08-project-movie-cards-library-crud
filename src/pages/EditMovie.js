@@ -11,7 +11,7 @@ class EditMovie extends Component {
     this.state = {
       redirectToMovieList: false,
       loading: true,
-      movie: null,
+      movie: {},
     };
     this.btnMovieChange = this.btnMovieChange.bind(this);
   }
