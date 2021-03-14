@@ -18,6 +18,7 @@ body {
 a {
   margin: 1%, 1%;
   text-decoration: none;
+  padding: 5px;
 }
 
 img {
@@ -35,3 +36,32 @@ img:hover {
   flex: space-between;
 }
 
+#ad-card {
+  border: solid;
+  height: 20px;
+  margin: 1%;
+  color: green;
+}
+
+#ad-card:hover {
+  color: saddlebrown;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 20px;
+}
+
+#details {
+  border: solid;
+  text-align: center;
+  margin: 50px;
+  padding: 15px;
+}

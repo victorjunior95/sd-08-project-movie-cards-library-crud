@@ -35,10 +35,10 @@ class MovieDetails extends Component {
     if (loading) return <Loading />;
     if (shouldRedirect) return <Redirect to="/" />;
     return (
-      <div data-testid="movie-details">
+      <div data-testid="movie-details" id="details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Title: ${title}` }</p>
-        <p>{ `Subtitle: ${subtitle}` }</p>
+        <h1>{ `Title: ${title}` }</h1>
+        <h2>{ `Subtitle: ${subtitle}` }</h2>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>

@@ -26,9 +26,12 @@ class MovieList extends Component {
     const { movies, loading } = this.state;
     if (loading) return <Loading />;
     return (
-      <div data-testid="movie-list" id="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
-        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+      <div>
+        <h1>Movie Cards CRUD</h1>
+        <section data-testid="movie-list" id="movie-list">
+          {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+          <Link to="/movies/new" id="ad-card">ADICIONAR CARTÃO</Link>
+        </section>
       </div>
     );
   }
