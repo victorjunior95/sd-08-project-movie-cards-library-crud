@@ -1,5 +1,37 @@
 body {
-  background-color: whitesmoke;
+  background-color: grey;
   box-sizing: border-box;
+}
+
+#carregando {
+  font-size: large;
+  color: black;
+}
+
+.movie-card {
+  border: solid;
+  margin: 1%;
+  padding: 1%;
+  width: 350px;
+}
+
+a {
+  margin: 1%, 1%;
+  text-decoration: none;
+}
+
+img {
+  width: 350px;
+}
+
+img:hover {
+  width: 350px;
+  transition: 80ms;
+}
+
+#movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex: space-between;
 }
 
